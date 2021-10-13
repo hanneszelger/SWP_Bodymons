@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Bodymons
+/// <summary>
+/// Summary description for Class1
+/// </summary>
+public class Class1
 {
-     public class Bodymons
+    public class Bodymons
     {
         private int defaultHp = 100;
         private string defaultName = "Mwenye Munyaradzi";
@@ -97,8 +96,4 @@ namespace Bodymons
             set { muscles = value; }
         }
     }
-
-    
-
-    //ronnie.m.lat.value = 10;
 }
