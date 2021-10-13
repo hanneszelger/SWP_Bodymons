@@ -1,10 +1,5 @@
 ﻿using System;
 
-/// <summary>
-/// Summary description for Class1
-/// </summary>
-public class Class1
-{
     public class Bodymons
     {
         private int defaultHp = 100;
@@ -18,7 +13,6 @@ public class Class1
         private bool owned;
         private MuscleSet muscles = new MuscleSet();
         private int posingSkill;
-
 
 
         public int PosingSkill
@@ -96,4 +90,3 @@ public class Class1
             set { muscles = value; }
         }
     }
-}

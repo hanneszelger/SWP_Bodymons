@@ -1,10 +1,5 @@
 ﻿using System;
 
-/// <summary>
-/// Summary description for Class1
-/// </summary>
-public class Class1
-{
     public class MuscleSet
     {
         private int defaultValue = 1;
@@ -50,7 +45,4 @@ public class Class1
                 return value;
             }
         }
-
-
     }
-}
