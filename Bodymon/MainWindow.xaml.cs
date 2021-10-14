@@ -24,5 +24,28 @@ namespace Bodymon
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        
+
+        
+
+
+    }
+
+    public partial class DispatcherTimerSample : Window
+    {
+        public DispatcherTimerSample()
+        {
+            InitializeComponent();
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += timer_Tick;
+            timer.Start();
+        }
     }
 }
