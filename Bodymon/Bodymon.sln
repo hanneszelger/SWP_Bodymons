@@ -49,9 +49,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PsdPlugin", "PsdPlugin.cspr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.CollabProxy.Editor", "Unity.CollabProxy.Editor.csproj", "{07464E7C-951D-1CD5-CA52-8B62CF126395}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.2D.Common.Editor", "Unity.2D.Common.Editor.csproj", "{B090CD22-E00D-7067-93EF-1A06459BE063}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.VSCode.Editor", "Unity.VSCode.Editor.csproj", "{D0408858-7DCF-EA7B-AADA-52BEA812C045}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.2D.Common.Editor", "Unity.2D.Common.Editor.csproj", "{B090CD22-E00D-7067-93EF-1A06459BE063}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.2D.Psdimporter.Editor", "Unity.2D.Psdimporter.Editor.csproj", "{F8A448FC-B396-C3DE-A26A-40D28240EDCA}"
 EndProject
@@ -163,14 +163,14 @@ Global
 		{07464E7C-951D-1CD5-CA52-8B62CF126395}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07464E7C-951D-1CD5-CA52-8B62CF126395}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07464E7C-951D-1CD5-CA52-8B62CF126395}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B090CD22-E00D-7067-93EF-1A06459BE063}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B090CD22-E00D-7067-93EF-1A06459BE063}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B090CD22-E00D-7067-93EF-1A06459BE063}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B090CD22-E00D-7067-93EF-1A06459BE063}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D0408858-7DCF-EA7B-AADA-52BEA812C045}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D0408858-7DCF-EA7B-AADA-52BEA812C045}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0408858-7DCF-EA7B-AADA-52BEA812C045}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0408858-7DCF-EA7B-AADA-52BEA812C045}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B090CD22-E00D-7067-93EF-1A06459BE063}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B090CD22-E00D-7067-93EF-1A06459BE063}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B090CD22-E00D-7067-93EF-1A06459BE063}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B090CD22-E00D-7067-93EF-1A06459BE063}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F8A448FC-B396-C3DE-A26A-40D28240EDCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F8A448FC-B396-C3DE-A26A-40D28240EDCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8A448FC-B396-C3DE-A26A-40D28240EDCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
