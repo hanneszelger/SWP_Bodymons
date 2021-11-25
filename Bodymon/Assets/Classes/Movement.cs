@@ -8,6 +8,13 @@ public class Movement : MonoBehaviour
     float vertical;
 
     private Vector2 camPosition;
+    Vector2 position;
+
+    Vector2 camLimit;
+    bool moved;
+
+    private float height;
+    private float width;
 
     private Vector2 move;
     private Rigidbody2D body;
@@ -19,6 +26,9 @@ public class Movement : MonoBehaviour
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
+
+        height = camera.orthographicSize;
+        width = height * camera.aspect;
     }
 
     void Update()
@@ -26,56 +36,33 @@ public class Movement : MonoBehaviour
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
 
-        Debug.Log(horizontal + ";" + vertical);
-
         move = new Vector2(speed * horizontal, speed * vertical);
+        position = camera.transform.position;
+
+        camLimit = new Vector2(width - 3, height -3);
         //camPosition = camera.transform.position;
     }
 
     // Update is called once per frame
     private void FixedUpdate()
     {
-        //camera.transform.position = Vector3.Lerp(camera.transform.position, new Vector3(camPosition.x + move.x, camPosition.y + move.y, -10), speed);
-
-
-        // Ensure the camera always looks at the player
-        //transform.LookAt(transform.parent);
-
-        if ((body.position.x + move.x*Time.deltaTime > 2 || body.position.x - move.x*Time.deltaTime < -2) && move.x != 0)
-            camera.transform.position = Vector3.Lerp(camera.transform.position, new Vector3(camPosition.x + move.x*Time.deltaTime, camPosition.y, -10), 1);
-        if ((body.position.y + move.y*Time.deltaTime > 2 || body.position.y - move.y*Time.deltaTime < -2) && move.y != 0)
-                camera.transform.position = Vector3.Lerp(camera.transform.position, new Vector3(camPosition.x, camPosition.y + move.y*Time.deltaTime, -10), 1);
-        else
+        if ((body.position.x + move.x * Time.deltaTime > position.x + camLimit.x && horizontal == 1) || (body.position.x - move.x * Time.deltaTime < position.x - camLimit.x && horizontal == -1))
         {
-                body.velocity = move;
+            camera.transform.position = Vector3.Lerp(camera.transform.position, new Vector3(position.x + move.x * Time.deltaTime, position.y, -10), 30);
+            moved = true;
         }
 
-      
-        
+        if ((body.position.y + move.y * Time.deltaTime > position.y + camLimit.y && vertical == 1) || (body.position.y - move.y * Time.deltaTime < position.y - camLimit.y && vertical == -1))
+        {
+            camera.transform.position = Vector3.Lerp(camera.transform.position, new Vector3(position.x, position.y + move.y * Time.deltaTime, -10), 30);
+            moved = true;
+        }
 
+        if (!moved)
+        {
+            body.velocity = move;
+        }
+        moved = false;
 
-        //if (Input.GetKeyDown(KeyCode.W))
-        //{
-        //    body.velocity = new Vector2(horizontal, vertical * speed);
-        //    Debug.Log("W");
-        //}
-
-        //if (Input.GetKeyDown(KeyCode.A))
-        //{
-        //    body.velocity = new Vector2(horizontal - speed, vertical);
-        //    Debug.Log("A");
-        //}
-
-        //if (Input.GetKeyDown(KeyCode.S))
-        //{
-        //    body.velocity = new Vector2(horizontal, vertical - speed);
-        //    Debug.Log("S");
-        //}
-
-        //if (Input.GetKeyDown(KeyCode.D))
-        //{
-        //    body.velocity = new Vector2(horizontal/speed, vertical);
-        //    Debug.Log("D");
-        //}
     }
 }
