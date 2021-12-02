@@ -7,62 +7,43 @@ public class Movement : MonoBehaviour
     float horizontal;
     float vertical;
 
-    private Vector2 camPosition;
-    Vector2 position;
-
-    Vector2 camLimit;
-    bool moved;
-
-    private float height;
-    private float width;
+    private Rigidbody2D camRigid;
 
     private Vector2 move;
     private Rigidbody2D body;
 
-    public Camera camera;
-    public float speed = 150.0f;
+    public float speed;
 
-    // Start is called before the first frame update
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
-
-        height = camera.orthographicSize;
-        width = height * camera.aspect;
+        camRigid = Camera.main.GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
-
         move = new Vector2(speed * horizontal, speed * vertical);
-        position = camera.transform.position;
-
-        camLimit = new Vector2(width - 3, height -3);
-        //camPosition = camera.transform.position;
     }
 
-    // Update is called once per frame
+    
     private void FixedUpdate()
     {
-        if ((body.position.x + move.x * Time.deltaTime > position.x + camLimit.x && horizontal == 1) || (body.position.x - move.x * Time.deltaTime < position.x - camLimit.x && horizontal == -1))
+        body.velocity = move;
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.tag == "left" || collision.tag == "right")
         {
-            camera.transform.position = Vector3.Lerp(camera.transform.position, new Vector3(position.x + move.x * Time.deltaTime, position.y, -10), 30);
-            moved = true;
+            camRigid.velocity = new Vector2(move.x, camRigid.velocity.y);
         }
 
-        if ((body.position.y + move.y * Time.deltaTime > position.y + camLimit.y && vertical == 1) || (body.position.y - move.y * Time.deltaTime < position.y - camLimit.y && vertical == -1))
+        if (collision.tag == "bottom" || collision.tag == "top")
         {
-            camera.transform.position = Vector3.Lerp(camera.transform.position, new Vector3(position.x, position.y + move.y * Time.deltaTime, -10), 30);
-            moved = true;
+            camRigid.velocity = new Vector2(camRigid.velocity.x, move.y);
         }
-
-        if (!moved)
-        {
-            body.velocity = move;
-        }
-        moved = false;
 
     }
 }
