@@ -1,21 +1,22 @@
 ﻿using System;
 
+
 public class Class1
 {
 
 	int Damage;
 	public Class1()
 	{
-		
+
 	}
 
 	public Class1(Bodymons Bodymon, Bodymons EnemyBodymon, string TypeOfAttack)
-    {
+	{
 		//Recognise what kind of attack was chosen
 		switch (TypeOfAttack)
-        {
-			case "FrontDoubleBiceps":
-				 Damage = FrontDoubleBiceps(Bodymon, EnemyBodymon);
+		{
+            case "FrontDoubleBiceps":
+				Damage = FrontDoubleBiceps(Bodymon, EnemyBodymon);
 				break;
 			case "LatSpread"
 				Damage = LatSpread(Bodymon, EnemyBodymon);
@@ -34,12 +35,12 @@ public class Class1
 		}
 		//inflict the calculated damage 
 		EnemyBodymon.hp = -Damage;
-    }
+	}
 
 	public static int FrontDoubleBiceps(Bodymon BodymonParameter, Bodymon EnemyBodymon)
-    {
+	{
 		//allied bodymon 
-		int ValueDamage = BodymonParameter.Muscleset.Biceps*1,15 + BodymonParameter.Muscleset.Lat*0,45 + BodymonParameter.Muscleset.abdominals*0,5;
+		int ValueDamage = BodymonParameter.Muscleset.Biceps * 1,15 + BodymonParameter.Muscleset.Lat * 0,45 + BodymonParameter.Muscleset.abdominals * 0,5;
 		//enemy bodymon
 		int ValueDamageFromEnemy = EnemyBodymon.Muscleset.Biceps * 1 + EnemyBodymon.Muscleset.Lat * 0,3 + EnemyBodymon.Muscleset.abdominals * 0,5;
 		//total damage, that will be dealt to enemy 
@@ -96,12 +97,10 @@ public class Class1
 		//allied bodymon 
 		int ValueDamage = BodymonParameter.Muscleset.Biceps * 1 + BodymonParameter.Muscleset.Lat * 1,5 + BodymonParameter.Muscleset.abdominals * 0,2;
 		//enemy bodymon
-		int ValueDamageFromEnemy = EnemyBodymon.Muscleset.Biceps * 0,5 + EnemyBodymon.Muscleset.Lat * 0,5 + EnemyBodymon.Muscleset.abdominals * 0,1;
+		int ValueDamageFromEnemy = EnemyBodymon.Muscleset.Biceps * 0.5 + EnemyBodymon.Muscleset.Lat * 0.5 + EnemyBodymon.Muscleset.abdominals * 0.1;
 		//total damage, that will be dealt to enemy 
 		int TotalDamage = ValueDamage - ValueDamageFromEnemy;
 		return TotalDamage;
 	}
-
-
 
 }
