@@ -596,10 +596,6 @@
       <Project>{7E514365-BAE0-F39A-8191-4D3A2B4A9AB4}</Project>
       <Name>Unity.Timeline.Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.VSCode.Editor.csproj">
-      <Project>{D0408858-7DCF-EA7B-AADA-52BEA812C045}</Project>
-      <Name>Unity.VSCode.Editor</Name>
-    </ProjectReference>
     <ProjectReference Include="Unity.TextMeshPro.Editor.csproj">
       <Project>{118421E2-A150-3BF9-000C-2415F11D7AC4}</Project>
       <Name>Unity.TextMeshPro.Editor</Name>
@@ -627,6 +623,10 @@
     <ProjectReference Include="UnityEditor.UI.csproj">
       <Project>{E9610E60-BC81-791D-4743-E1BAFD807B58}</Project>
       <Name>UnityEditor.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.VSCode.Editor.csproj">
+      <Project>{D0408858-7DCF-EA7B-AADA-52BEA812C045}</Project>
+      <Name>Unity.VSCode.Editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

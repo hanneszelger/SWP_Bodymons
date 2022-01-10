@@ -107,7 +107,4 @@ class Fight
 		int TotalDamage = ValueDamage - ValueDamageFromEnemy;
 		return TotalDamage;
 	}
-
-
-
 }
