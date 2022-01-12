@@ -2,47 +2,67 @@
 
     public class MuscleSet
     {
-        private int defaultValue = 1;
+        private double defaultValue = 1;
 
-        private int lat;
-        private int chest;
-        private int quads;
-        private int biceps;
+        private double lat;
+        private double chest;
+        private double quads;
+        private double biceps;
+        private double abdominals;
 
 
-        public int Lat
+        public double Lat
         {
-            get { return checkInt(lat); }
+            get { return checkDouble(lat); }
             set { lat = value; }
         }
 
-        public int Chest
+        public double Chest
         {
-            get { return checkInt(chest); }
+            get { return checkDouble(chest); }
             set { chest = value; }
         }
 
-        public int Quads
+        public double Quads
         {
-            get { return checkInt(quads); }
+            get { return checkDouble(quads); }
             set { quads = value; }
         }
 
-        public int Biceps
+        public double Biceps
         {
-            get { return checkInt(biceps); }
+            get { return checkDouble(biceps); }
             set { biceps = value; }
         }
 
-        private int checkInt(int value)
+    public double Abdominals
+    {
+        get { return checkDouble(abdominals); }
+        set { abdominals = value; }
+    }
+
+
+    //private int checkInt(int value)
+    //    {
+    //        if (value < 1 || value.Equals(null))
+    //        {
+    //            return defaultValue;
+    //        }
+    //        else
+    //        {
+    //            return value;
+    //        }
+    //    }
+
+    private double checkDouble(double value)
+    {
+        if (value.Equals(null))
         {
-            if (value < 1 || value.Equals(null))
-            {
-                return defaultValue;
-            }
-            else
-            {
-                return value;
-            }
+            return defaultValue;
+        }
+        else
+        {
+            return value;
         }
     }
+}
