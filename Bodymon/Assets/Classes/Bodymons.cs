@@ -2,13 +2,13 @@
 
     public class Bodymons
     {
-        private int defaultHp = 100;
+        private double defaultHp = 100;
         private string defaultName = "Mwenye Munyaradzi";
         private bool defaultowned = false;
         private MuscleSet defaultMuscleset = new MuscleSet();
         private int defaultPosingSkill = 1;
 
-        private int hp;
+        private double hp;
         private string name;
         private bool owned;
         private MuscleSet muscles = new MuscleSet();
@@ -32,7 +32,7 @@
         }
 
 
-        public int Hp
+        public double Hp
         {
             get
             {
