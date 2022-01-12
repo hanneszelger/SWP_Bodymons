@@ -57,15 +57,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Library\PackageCache\com.unity.ide.vscode@1.2.4\Editor\ProjectGeneration\AssemblyNameProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ide.vscode@1.2.4\Editor\ProjectGeneration\FileIO.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ide.vscode@1.2.4\Editor\ProjectGeneration\GUIDGenerator.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ide.vscode@1.2.4\Editor\ProjectGeneration\ProjectGeneration.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ide.vscode@1.2.4\Editor\ProjectGeneration\ProjectGenerationFlag.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ide.vscode@1.2.4\Editor\ProjectGeneration\StringUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ide.vscode@1.2.4\Editor\VSCodeDiscovery.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ide.vscode@1.2.4\Editor\VSCodeScriptEditor.cs" />
-    <None Include="Library\PackageCache\com.unity.ide.vscode@1.2.4\Editor\Unity.com.unity.vscode.Editor.asmdef" />
+    <Compile Include="Library\PackageCache\com.unity.ide.vscode@1.2.0\Editor\ProjectGeneration\AssemblyNameProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ide.vscode@1.2.0\Editor\ProjectGeneration\FileIO.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ide.vscode@1.2.0\Editor\ProjectGeneration\GUIDGenerator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ide.vscode@1.2.0\Editor\ProjectGeneration\ProjectGeneration.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ide.vscode@1.2.0\Editor\ProjectGeneration\ProjectGenerationFlag.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ide.vscode@1.2.0\Editor\VSCodeDiscovery.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ide.vscode@1.2.0\Editor\VSCodeScriptEditor.cs" />
+    <None Include="Library\PackageCache\com.unity.ide.vscode@1.2.0\Editor\Unity.com.unity.vscode.Editor.asmdef" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.15f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
@@ -262,7 +261,7 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.15f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-      <HintPath>C:/Users/hannes.zelger/Documents/GitHub/SWP_Bodymons/Bodymon/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
+      <HintPath>C:/Users/do.koestenbaumer/Documents/GitHub/SWP_Bodymons/Bodymon/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.15f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
