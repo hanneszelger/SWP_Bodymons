@@ -1,25 +1,13 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-<<<<<<< Updated upstream
-class Fight
-{
-
-	public static int Damage;
-	public Fight()
-	{
-
-=======
 public class Fight
 {
 
 	public static double Damage;
 	public Fight()
 	{
-		
->>>>>>> Stashed changes
-
 	}
 
 	public Fight(Bodymons Bodymon, Bodymons EnemyBodymon, string TypeOfAttack)
@@ -48,77 +36,6 @@ public class Fight
 				break;
 		}
 		//inflict the calculated damage 
-<<<<<<< Updated upstream
-		EnemyBodymon.hp = -Damage;
-	}
-
-	public static int FrontDoubleBiceps(Bodymons BodymonParameter, Bodymons EnemyBodymon)
-	{
-		MuscleSet ms = new MuscleSet();
-		//allied bodymon 
-		int ValueDamage = BodymonParameter.ms.Biceps * 1.15 + BodymonParameter.Muscleset.Lat * 0.45 + BodymonParameter.Muscleset.abdominals * 0.5;
-		//enemy bodymon
-		int ValueDamageFromEnemy = EnemyBodymon.Muscleset.Biceps * 1 + EnemyBodymon.Muscleset.Lat * 0.3 + EnemyBodymon.Muscleset.abdominals * 0.5;
-		//total damage, that will be dealt to enemy 
-		int TotalDamage = ValueDamage - ValueDamageFromEnemy;
-		return TotalDamage;
-	}
-
-	public static int LatSpread(Bodymons BodymonParameter, Bodymons EnemyBodymon)
-	{
-		//allied bodymon 
-		int ValueDamage = BodymonParameter.Muscleset.Biceps * 0.6 + BodymonParameter.Muscleset.Lat * 1.75 + BodymonParameter.Muscleset.abdominals * 1;
-		//enemy bodymon
-		int ValueDamageFromEnemy = EnemyBodymon.Muscleset.Biceps * 0.4 + EnemyBodymon.Muscleset.Lat * 1.25 + EnemyBodymon.Muscleset.abdominals * 0.5;
-		//total damage, that will be dealt to enemy 
-		int TotalDamage = ValueDamage - ValueDamageFromEnemy;
-		return TotalDamage;
-	}
-
-	public static int SideChest(Bodymons BodymonParameter, Bodymons EnemyBodymon)
-	{
-		//allied bodymon 
-		int ValueDamage = BodymonParameter.Muscleset.Biceps * 0.75 + BodymonParameter.Muscleset.Lat * 0.1 + BodymonParameter.Muscleset.chest * 2;
-		//enemy bodymon
-		int ValueDamageFromEnemy = EnemyBodymon.Muscleset.Biceps * 0.25 + EnemyBodymon.Muscleset.Lat * 0.01 + EnemyBodymon.Muscleset.chest * 1.5;
-		//total damage, that will be dealt to enemy 
-		int TotalDamage = ValueDamage - ValueDamageFromEnemy;
-		return TotalDamage;
-	}
-
-	public static int QuadStomp(Bodymons BodymonParameter, Bodymons EnemyBodymon)
-	{
-		//allied bodymon 
-		int ValueDamage = BodymonParameter.Muscleset.Quad * 2 + BodymonParameter.Muscleset.Lat * 0.5 + BodymonParameter.Muscleset.abdominals * 0.75;
-		//enemy bodymon
-		int ValueDamageFromEnemy = EnemyBodymon.Muscleset.Quad * 1 + EnemyBodymon.Muscleset.Lat * 0.35 + EnemyBodymon.Muscleset.abdominals * 0.6;
-		//total damage, that will be dealt to enemy 
-		int TotalDamage = ValueDamage - ValueDamageFromEnemy;
-		return TotalDamage;
-	}
-
-	public static int BackDoubleBiceps(Bodymons BodymonParameter, Bodymons EnemyBodymon)
-	{
-		//allied bodymon 
-		int ValueDamage = BodymonParameter.Muscleset.Biceps * 1.5 + BodymonParameter.Muscleset.Lat * 2 + BodymonParameter.Muscleset.Quad * 0.1;
-		//enemy bodymon
-		int ValueDamageFromEnemy = EnemyBodymon.Muscleset.Biceps * 0.5 + EnemyBodymon.Muscleset.Lat * 1 + EnemyBodymon.Muscleset.abdominals * 0.01;
-		//total damage, that will be dealt to enemy 
-		int TotalDamage = ValueDamage - ValueDamageFromEnemy;
-		return TotalDamage;
-	}
-
-	public static int DorianEagle(Bodymons BodymonParameter, Bodymons EnemyBodymon)
-	{
-		//allied bodymon 
-		int ValueDamage = BodymonParameter.Muscleset.Biceps * 1 + BodymonParameter.Muscleset.Lat * 1.5 + BodymonParameter.Muscleset.abdominals * 0.2;
-		//enemy bodymon
-		int ValueDamageFromEnemy = EnemyBodymon.Muscleset.Biceps * 0.5 + EnemyBodymon.Muscleset.Lat * 0.5 + EnemyBodymon.Muscleset.abdominals * 0.1;
-		//total damage, that will be dealt to enemy 
-		int TotalDamage = ValueDamage - ValueDamageFromEnemy;
-		return TotalDamage;
-	}
-=======
 		EnemyBodymon.Hp =- Damage;
 	}
 
@@ -187,6 +104,4 @@ public class Fight
 		double TotalDamage = ValueDamage - ValueDamageFromEnemy;
 		return TotalDamage;
 	}
-
->>>>>>> Stashed changes
 }
