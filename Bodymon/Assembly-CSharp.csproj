@@ -60,7 +60,6 @@
      <Compile Include="Assets\Classes\GymInside.cs" />
      <Compile Include="Assets\Classes\Movement.cs" />
      <Compile Include="Assets\Classes\MuscleSet.cs" />
-     <Compile Include="Assets\Classes\ShowText.cs" />
      <None Include="Assets\Graphics\Battles\pokemon_pixel_font\readme.txt" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.15f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

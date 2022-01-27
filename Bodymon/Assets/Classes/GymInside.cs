@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GymInside : MonoBehaviour
 {
@@ -16,9 +17,12 @@ public class GymInside : MonoBehaviour
       
     }
 
-    void OnCollisionStay(Collision bump)
+
+
+
+    void OnCollisionStay(Collider2D collisioninfo)
     {
-        if (bump.name == "Player" && input.GetKeyDown(KeyCode.E))
+        if (collisioninfo.gameObject.name == "Player" && Input.GetKeyDown(KeyCode.E))
         {
             MuscleSet ms = new MuscleSet();
             ms.Chest += 1;
