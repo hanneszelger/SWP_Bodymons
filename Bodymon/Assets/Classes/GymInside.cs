@@ -20,7 +20,7 @@ public class GymInside : MonoBehaviour
 
 
 
-    void OnCollisionStay(Collider2D collisioninfo)
+    void OnCollisionStay(Collision collisioninfo)
     {
         if (collisioninfo.gameObject.name == "Player" && Input.GetKeyDown(KeyCode.E))
         {
