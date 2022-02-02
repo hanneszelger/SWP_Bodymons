@@ -36,7 +36,7 @@ public class Fight
 				break;
 		}
 		//inflict the calculated damage 
-		EnemyBodymon.Hp =- Damage;
+		EnemyBodymon.Hp =- (int)Damage;
 	}
 
 	public static double FrontDoubleBiceps(Bodymons BodymonParameter, Bodymons EnemyBodymon)
