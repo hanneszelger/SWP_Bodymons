@@ -147,10 +147,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1411156628}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e35dba30dbcec9347bc4a28d7fce6f17, type: 3}
+  m_Script: {fileID: 11500000, guid: ec9e3f38dea559e479bb9928cbf20f23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObject: {fileID: 1762253073}
 --- !u!4 &1411156630
 Transform:
   m_ObjectHideFlags: 0
@@ -178,7 +177,7 @@ GameObject:
   - component: {fileID: 1762253074}
   m_Layer: 0
   m_Name: New Sprite
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -195,7 +194,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81338394640e53c4cb6f882af416bf64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: josef
 --- !u!212 &1762253075
 SpriteRenderer:
   m_ObjectHideFlags: 0

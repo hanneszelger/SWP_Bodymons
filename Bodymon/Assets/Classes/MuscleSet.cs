@@ -10,8 +10,14 @@
         private double biceps;
         private double abdominals;
 
+        private double maxValue = 100;
+        public double MaxValue
+        {
+            get { return maxValue; }
+        }
 
-        public double Lat
+
+    public double Lat
         {
             get { return checkDouble(lat); }
             set { lat = value; }
@@ -21,6 +27,7 @@
         {
             get { return checkDouble(chest); }
             set { chest = value; }
+            
         }
 
         public double Quads

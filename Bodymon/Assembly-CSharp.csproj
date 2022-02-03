@@ -59,6 +59,7 @@
      <Compile Include="Assets\Classes\Fight.cs" />
      <Compile Include="Assets\Classes\Movement.cs" />
      <Compile Include="Assets\Classes\MuscleSet.cs" />
+     <Compile Include="Assets\Classes\PumpingIron.cs" />
      <Compile Include="Assets\Classes\SaveGame.cs" />
      <Compile Include="Assets\Classes\ShowText.cs" />
      <None Include="Assets\Graphics\Battles\pokemon_pixel_font\readme.txt" />

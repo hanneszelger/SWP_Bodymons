@@ -16,18 +16,18 @@ public class SaveGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(player.Hp);
     }
 
     void Save()
     {
 
-        PlayerPrefs.SetString("PlayerCharacter", JsonUtility.ToJson(player));
+        PlayerPrefs.SetString("player_bodymon", JsonUtility.ToJson(player));
+        PlayerPrefs.Save();
         //https://answers.unity.com/questions/1325056/how-to-use-playerprefs-2.html
     }
 
     void Load()
     {
-        player = JsonUtility.FromJson<Bodymons>(PlayerPrefs.GetString("PlayerCharacter"));
+        JsonUtility.FromJsonOverwrite(PlayerPrefs.GetString("player_bodymon"), player);
     }
 }

@@ -2,6 +2,7 @@
 using Unity;
 using UnityEngine;
 
+[Serializable]
 public class Bodymons : MonoBehaviour
 {
         private int defaultHp = 100;
@@ -11,7 +12,7 @@ public class Bodymons : MonoBehaviour
         private int defaultPosingSkill = 1;
 
         private int hp;
-        public string name;
+        private string name;
         private bool owned;
         private MuscleSet muscles = new MuscleSet();
         private int posingSkill;
