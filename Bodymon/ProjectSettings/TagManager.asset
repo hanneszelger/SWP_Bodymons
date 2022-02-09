@@ -8,8 +8,7 @@ TagManager:
   - right
   - bottom
   - top
-  - fight_FrontDoubleBiceps
-  - fight_SideChest
+  - bench
   layers:
   - Default
   - TransparentFX

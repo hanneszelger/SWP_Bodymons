@@ -285,11 +285,11 @@
  <Reference Include="UnityEditor.WindowsStandalone.Extensions">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.15f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
  </Reference>
- <Reference Include="UnityEditor.WebGL.Extensions">
- <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.15f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll</HintPath>
+ <Reference Include="Newtonsoft.Json">
+ <HintPath>D:/Users/Hannes/Documents/GitHub/SWP_Bodymons/Bodymon/Assets/JsonDotNet/Assemblies/Standalone/Newtonsoft.Json.dll</HintPath>
  </Reference>
  <Reference Include="nunit.framework">
- <HintPath>C:/Users/do.koestenbaumer/source/repos/hanneszelger/SWP_Bodmons/SWP_Bodymons/Bodymon/Library/PackageCache/com.unity.ext.nunit@1.0.6/net35/unity-custom/nunit.framework.dll</HintPath>
+ <HintPath>D:/Users/Hannes/Documents/GitHub/SWP_Bodymons/Bodymon/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
  </Reference>
  <Reference Include="mscorlib">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.15f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>

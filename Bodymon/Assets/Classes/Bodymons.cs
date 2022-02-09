@@ -1,14 +1,17 @@
 ﻿using System;
+using Unity;
+using UnityEngine;
 
-    public class Bodymons
-    {
-        private double defaultHp = 100;
+[Serializable]
+public class Bodymons : MonoBehaviour
+{
+        private int defaultHp = 100;
         private string defaultName = "Mwenye Munyaradzi";
         private bool defaultowned = false;
         private MuscleSet defaultMuscleset = new MuscleSet();
         private int defaultPosingSkill = 1;
 
-        private double hp;
+        private int hp;
         private string name;
         private bool owned;
         private MuscleSet muscles = new MuscleSet();
@@ -32,7 +35,7 @@
         }
 
 
-        public double Hp
+        public int Hp
         {
             get
             {
@@ -89,4 +92,5 @@
             get { return muscles; }
             set { muscles = value; }
         }
+
     }
