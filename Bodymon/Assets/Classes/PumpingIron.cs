@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PumpingIron : MonoBehaviour
 {
-    private GameObject gameObject;
+    private GameObject gameObject_player;
     bool inRange;
     Bodymons player;
 
@@ -12,9 +12,9 @@ public class PumpingIron : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameObject = GameObject.FindWithTag("Player");
-        player = gameObject.GetComponent<Bodymons>();
-        Debug.Log(gameObject.name);
+        gameObject_player = GameObject.FindWithTag("Player");
+        player = gameObject_player.GetComponent<Bodymons>();
+        Debug.Log(gameObject_player.name);
     }
 
     // Update is called once per frame
@@ -25,7 +25,7 @@ public class PumpingIron : MonoBehaviour
             switch (gameObject.tag)
             {
                 case "bench":
-
+                    BenchPress();
                     break;
             }
         }
@@ -41,6 +41,7 @@ public class PumpingIron : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D playerCollider)
     {
+        Debug.Log("out");
         if (playerCollider.CompareTag("Player"))
         {
             inRange = false;
@@ -54,5 +55,8 @@ public class PumpingIron : MonoBehaviour
         //10-> 10 %; 355kg-> 80 % -> 12 wdh
         //player.Muscles.Chest / player.Muscles.MaxValue * 355 / 80 % = 12 wdh
         //player.Muscles.Chest +=
+
+        player.Muscles.Chest += 1;
+        Debug.Log(player.Muscles.Chest);
     }
 }
