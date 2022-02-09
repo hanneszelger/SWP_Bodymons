@@ -2,62 +2,60 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using UnityEngine;
+using UnityEngine.UI;
 
-public class Fight
+public class Fight : MonoBehaviour
 	{
 
 		public static double Damage;
-		public Fight()
-		{
-
-		
-
-		}
-	/*
-	[SerializeField] private Button btn = null;
-
-	private void Awake()
+		public static double TotalDamage;
+		public Button ButtonForAttack1;
+		Bodymons BodymonOne = new Bodymons();
+		Bodymons EnemyBodymon = new Bodymons();
+	
+	void Start()
 	{
-		// adding a delegate with no parameters
-		btn.onClick.AddListener(NoParamaterOnclick);
+		GameObject gameObject = GameObject.FindWithTag("Player");
+		BodymonOne = gameObject.GetComponent<Bodymons>();
+		Button btn = ButtonForAttack1.GetComponent<Button>();
+		btn.onClick.AddListener(() => { TypeOfFight(BodymonOne, EnemyBodymon, btn.tag);});
+    }
 
-		// adding a delegate with parameters
-		btn.onClick.AddListener(delegate { ParameterOnClick("Button was pressed!"); });
+	public Fight()
+	{
+
 	}
 
-	private void NoParamaterOnclick()
-	{
-		Debug.Log("Button clicked with no parameters");
-	}
+	public void awake()
+    {
 
-	private void ParameterOnClick(string test)
-	{
-		Debug.Log(test);
-	}
-	*/
+    }
 
-	public Fight(Bodymons Bodymon, Bodymons EnemyBodymon, string TypeOfAttack)
+
+
+	private void TypeOfFight(Bodymons Bodymon, Bodymons EnemyBodymon, string Tag)
 		{
 			MuscleSet ms = new MuscleSet();
 			//Recognise what kind of attack was chosen
-			switch (TypeOfAttack)
+			switch (Tag)
 			{
-				case "FrontDoubleBiceps":
+				case "fight_FrontDoubleBiceps":
 					Damage = FrontDoubleBiceps(Bodymon, EnemyBodymon);
 					break;
-				case "LatSpread":
+				case "fight_LatSpread":
 					Damage = LatSpread(Bodymon, EnemyBodymon);
 					break;
-				case "SideChest":
+				case "fight_SideChest":
 					Damage = SideChest(Bodymon, EnemyBodymon);
 					break;
-				case "QuadStomp":
+				case "fight_QuadStomp":
 					Damage = QuadStomp(Bodymon, EnemyBodymon);
 					break;
-				case "BackDoubleBiceps":
+				case "fight_BackDoubleBiceps":
 					Damage = BackDoubleBiceps(Bodymon, EnemyBodymon);
 					break;
-				case "DorianEagle":
+				case "fight_DorianEagle":
 					Damage = DorianEagle(Bodymon, EnemyBodymon);
 					break;
 			}
@@ -73,6 +71,7 @@ public class Fight
 			double ValueDamageFromEnemy = EnemyBodymon.Muscles.Biceps * 1 + EnemyBodymon.Muscles.Lat * 0.3 + EnemyBodymon.Muscles.Abdominals * 0.5;
 			//total damage, that will be dealt to enemy 
 			double TotalDamage = ValueDamage - ValueDamageFromEnemy;
+			UnityEngine.Debug.Log("Hannes Mutter ist Fett: " + TotalDamage);
 			return TotalDamage;
 		}
 
@@ -95,6 +94,7 @@ public class Fight
 			double ValueDamageFromEnemy = EnemyBodymon.Muscles.Biceps * 0.25 + EnemyBodymon.Muscles.Lat * 0.01 + EnemyBodymon.Muscles.Chest * 1.5;
 			//total damage, that will be dealt to enemy 
 			double TotalDamage = ValueDamage - ValueDamageFromEnemy;
+			UnityEngine.Debug.Log("Meine Mutter ist Fett: " + TotalDamage);
 			return TotalDamage;
 		}
 
@@ -131,5 +131,10 @@ public class Fight
 			return TotalDamage;
 		}
 	
+
+	void LoadEnemy ()
+    {
+		JsonUtility.FromJsonOverwrite(PlayerPrefs.GetString("markusRühl_bodymon"), EnemyBodymon);
+    }
 	
 }
