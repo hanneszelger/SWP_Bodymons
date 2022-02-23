@@ -14,6 +14,9 @@ public class Fight : MonoBehaviour
 		Bodymons BodymonOne = new Bodymons();
 		Bodymons EnemyBodymon = new Bodymons();
 	
+
+
+	
 	void Start()
 	{
 		GameObject gameObject = GameObject.FindWithTag("Player");
