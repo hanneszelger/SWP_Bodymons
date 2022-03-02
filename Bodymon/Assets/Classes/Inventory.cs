@@ -6,10 +6,12 @@ public class Inventory : MonoBehaviour
 {
     public bool[] isFull;
     public GameObject[] slots;
+    private SpriteRenderer sr;
     // Start is called before the first frame update
     void Start()
     {
-        
+        sr = gameObject.GetComponent<SpriteRenderer>();
+        sr.enabled = false;
     }
 
     // Update is called once per frame
@@ -17,7 +19,7 @@ public class Inventory : MonoBehaviour
     {
         //if (Input.GetAxis("Inventory1") == 1)
         //{
-           
+
         //}
         //if (Input.GetAxis("Inventory2") == 1)
         //{
@@ -27,5 +29,10 @@ public class Inventory : MonoBehaviour
         //{
 
         //}
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            sr.enabled = !sr.enabled;
+        }
+
     }
 }
