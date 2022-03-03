@@ -2,7 +2,11 @@
 
     public class MuscleSet
     {
-        private double defaultValue = 1;
+
+    
+
+
+    private double defaultValue = 1;
 
         private double lat;
         private double chest;
@@ -60,6 +64,10 @@
     //            return value;
     //        }
     //    }
+
+    
+
+
 
     private double checkDouble(double value)
     {
