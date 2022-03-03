@@ -1,13 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    float horizontal;
-    float vertical;
+    private float horizontal;
+    private float vertical;
 
+    private Camera camera;
     private Rigidbody2D camRigid;
+    private float camWidth;
+    private float camHeight;
 
     private Vector2 move;
     private Rigidbody2D body;
@@ -15,14 +16,17 @@ public class Movement : MonoBehaviour
     //public allows to edit its value in Unity
     public float speed;
 
-    void Start()
+    private void Start()
     {
+        camera = Camera.main;
+        camHeight = camera.orthographicSize;
+        camWidth = camHeight * 2;
         //gets the player and main camera object as Rigidbody2D
         body = GetComponent<Rigidbody2D>();
-        camRigid = Camera.main.GetComponent<Rigidbody2D>();
+        camRigid = camera.GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    private void Update()
     {
         //Left/A = -1, none = 0, Right/D = 1
         horizontal = Input.GetAxisRaw("Horizontal");
@@ -34,24 +38,25 @@ public class Movement : MonoBehaviour
         move = new Vector2(speed * horizontal, speed * vertical);
     }
 
-    
     private void FixedUpdate()
     {
         //Moves the player
+        camRigid.velocity = new Vector2(0, 0);
         body.velocity = move;
+
+        if ((camera.transform.position.x + camWidth - 2 < body.position.x + (body.velocity.x * Time.fixedDeltaTime) && body.velocity.x > 0) ||
+            (camera.transform.position.x - camWidth + 2 > body.position.x + (body.velocity.x * Time.fixedDeltaTime) && body.velocity.x < 0))
+        {
+            camRigid.velocity = new Vector2(body.velocity.x, camRigid.velocity.y);
+        }
+        if ((camera.transform.position.y + camHeight - 2 < body.position.y + (body.velocity.y * Time.fixedDeltaTime) && body.velocity.y > 0) ||
+            (camera.transform.position.y - camHeight + 2 > body.position.y + (body.velocity.y * Time.fixedDeltaTime) && body.velocity.y < 0))
+        {
+            camRigid.velocity = new Vector2(camRigid.velocity.x, body.velocity.y);
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        //Checks the collision tag and adjusts the camera accordingly
-        if ((collision.tag == "left" && horizontal == -1) || (collision.tag == "right" && horizontal == 1))
-        {
-            camRigid.velocity = new Vector2(move.x, camRigid.velocity.y);
-        }
-
-        if ((collision.tag == "bottom" && vertical == -1) || (collision.tag == "top" && vertical == 1))
-        {
-            camRigid.velocity = new Vector2(camRigid.velocity.x, move.y);
-        }
     }
 }
