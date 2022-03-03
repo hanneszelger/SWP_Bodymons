@@ -58,10 +58,12 @@
      <Compile Include="Assets\Classes\Bodymons.cs" />
      <Compile Include="Assets\Classes\Fight.cs" />
      <Compile Include="Assets\Classes\GymInside.cs" />
+     <Compile Include="Assets\Classes\Inventory.cs" />
      <Compile Include="Assets\Classes\Movement.cs" />
      <Compile Include="Assets\Classes\MuscleSet.cs" />
      <Compile Include="Assets\Classes\PumpingIron.cs" />
      <Compile Include="Assets\Classes\SaveGame.cs" />
+     <Compile Include="Assets\Classes\Shop.cs" />
      <None Include="Assets\Graphics\Battles\pokemon_pixel_font\readme.txt" />
      <None Include="Assets\JsonDotNet\link.xml" />
  <Reference Include="UnityEngine">
