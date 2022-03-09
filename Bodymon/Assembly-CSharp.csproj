@@ -626,6 +626,9 @@
  <Reference Include="UnityEditor.UI">
  <HintPath>C:/Users/Domi/OneDrive - Bundeshandelsakademie und Bundeshandelsschule Kitzbühel/Pictures/body/body/Bodymon/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.2D.Tilemap.Editor">
+ <HintPath>C:/Users/Domi/OneDrive - Bundeshandelsakademie und Bundeshandelsschule Kitzbühel/Pictures/body/body/Bodymon/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+ </Reference>
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>
