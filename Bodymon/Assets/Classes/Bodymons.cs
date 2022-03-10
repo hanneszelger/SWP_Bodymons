@@ -12,11 +12,10 @@ public class Bodymons : MonoBehaviour
         private int defaultPosingSkill = 1;
 
         private int hp;
-        private string name;
+        private new string name;
         private bool owned;
         private MuscleSet muscles = new MuscleSet();
         private int posingSkill;
-
 
         public int PosingSkill
         {

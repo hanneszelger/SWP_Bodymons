@@ -9,6 +9,8 @@ TagManager:
   - bottom
   - top
   - bench
+  - Inventory
+  - Items
   layers:
   - Default
   - TransparentFX

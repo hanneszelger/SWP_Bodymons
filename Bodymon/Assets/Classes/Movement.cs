@@ -5,7 +5,7 @@ public class Movement : MonoBehaviour
     private float horizontal;
     private float vertical;
 
-    private Camera camera;
+    private Camera cam;
     private Rigidbody2D camRigid;
     private float camWidth;
     private float camHeight;
@@ -18,12 +18,12 @@ public class Movement : MonoBehaviour
 
     private void Start()
     {
-        camera = Camera.main;
-        camHeight = camera.orthographicSize;
+        cam = Camera.main;
+        camHeight = cam.orthographicSize;
         camWidth = camHeight * 2;
-        //gets the player and main camera object as Rigidbody2D
+        //gets the player and main cam object as Rigidbody2D
         body = GetComponent<Rigidbody2D>();
-        camRigid = camera.GetComponent<Rigidbody2D>();
+        camRigid = cam.GetComponent<Rigidbody2D>();
     }
 
     private void Update()
@@ -44,13 +44,13 @@ public class Movement : MonoBehaviour
         camRigid.velocity = new Vector2(0, 0);
         body.velocity = move;
 
-        if ((camera.transform.position.x + camWidth - 2 < body.position.x + (body.velocity.x * Time.fixedDeltaTime) && body.velocity.x > 0) ||
-            (camera.transform.position.x - camWidth + 2 > body.position.x + (body.velocity.x * Time.fixedDeltaTime) && body.velocity.x < 0))
+        if ((cam.transform.position.x + camWidth - 2 < body.position.x + (body.velocity.x * Time.fixedDeltaTime) && body.velocity.x > 0) ||
+            (cam.transform.position.x - camWidth + 2 > body.position.x + (body.velocity.x * Time.fixedDeltaTime) && body.velocity.x < 0))
         {
             camRigid.velocity = new Vector2(body.velocity.x, camRigid.velocity.y);
         }
-        if ((camera.transform.position.y + camHeight - 2 < body.position.y + (body.velocity.y * Time.fixedDeltaTime) && body.velocity.y > 0) ||
-            (camera.transform.position.y - camHeight + 2 > body.position.y + (body.velocity.y * Time.fixedDeltaTime) && body.velocity.y < 0))
+        if ((cam.transform.position.y + camHeight - 2 < body.position.y + (body.velocity.y * Time.fixedDeltaTime) && body.velocity.y > 0) ||
+            (cam.transform.position.y - camHeight + 2 > body.position.y + (body.velocity.y * Time.fixedDeltaTime) && body.velocity.y < 0))
         {
             camRigid.velocity = new Vector2(camRigid.velocity.x, body.velocity.y);
         }

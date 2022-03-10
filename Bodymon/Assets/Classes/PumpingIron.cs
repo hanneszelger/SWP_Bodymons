@@ -14,7 +14,7 @@ public class PumpingIron : MonoBehaviour
     {
         gameObject_player = GameObject.FindWithTag("Player");
         player = gameObject_player.GetComponent<Bodymons>();
-        Debug.Log(gameObject_player.name);
+        //Debug.Log(gameObject_player.name);
     }
 
     // Update is called once per frame

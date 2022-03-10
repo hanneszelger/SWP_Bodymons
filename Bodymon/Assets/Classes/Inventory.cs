@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
@@ -12,6 +13,7 @@ public class Inventory : MonoBehaviour
     {
         sr = gameObject.GetComponent<SpriteRenderer>();
         sr.enabled = false;
+       
     }
 
     // Update is called once per frame
@@ -33,6 +35,5 @@ public class Inventory : MonoBehaviour
         {
             sr.enabled = !sr.enabled;
         }
-
     }
 }
