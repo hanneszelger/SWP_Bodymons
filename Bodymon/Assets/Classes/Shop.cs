@@ -1,5 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.RendererUtils;
+using UnityEngine.Rendering.PostProcessing;
 using UnityEngine;
 
 public class Shop : MonoBehaviour
@@ -7,8 +10,9 @@ public class Shop : MonoBehaviour
     private Inventory inventory;
     public GameObject item;
 
+    public GameObject fire;
     public GameObject arrow;
-    List<List<Vector2>> rows = new List<List<Vector2>>();
+    List<List<Transform>> rows = new List<List<Transform>>();
     private int currentX = 0;
     private int currentY = 0;
     public float smoothTime = 0.3F;
@@ -22,7 +26,7 @@ public class Shop : MonoBehaviour
     void Start()
     {
         inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
-        LoadGrid();
+        LoadGrid1();
 
         for (int y = 0; y < rows.Count; y++)
         {
@@ -51,38 +55,67 @@ public class Shop : MonoBehaviour
             else if (currentX + 1 + (int)horizontal > rows[currentY].Count) currentX = 0;
             else currentX += (int)horizontal;
 
-
+            
             Debug.Log("[" + currentY + "][" + currentX + "];" + rows[currentY][currentX]);
         }
     }
 
     private void FixedUpdate()
     {
-        Vector2 targetPosition = (rows[currentY])[currentX];
-        arrow.transform.position = Vector2.SmoothDamp(arrow.transform.position, targetPosition, ref velocity, smoothTime);
+        Bloom b = null;
+        Vector2 targetPosition = rows[currentY][currentX].position;
+        arrow.transform.position = Vector2.SmoothDamp(arrow.transform.position, new Vector2(targetPosition.x, targetPosition.y + 2.5f), ref velocity, smoothTime);
+        fire.transform.position = new Vector2(targetPosition.x, targetPosition.y - 0.5f);
+       
         Debug.Log(currentX);
+
+        //child.GetComponent<PostProcessVolume>();
     }
 
-    void LoadGrid()
+    //void LoadGrid()
+    //{
+    //    float previousY = 0;
+
+    //    List<Vector2> positions = new List<Vector2>();
+    //    Transform[] items = gameObject.GetComponentsInChildren<Transform>();
+    //    for (int i = 1; i < items.Length; i++)
+    //    {
+    //        positions.Add(new Vector2(items[i].position.x, items[i].position.y + 2.5f));
+    //        previousY = items[i].position.y;
+    //        if (i + 1 == items.Length || (items[i].position.y != items[i+1].position.y))
+    //        {
+    //            Debug.Log(positions.Count);
+    //            rows.Add(new List<Vector2>(positions));
+    //            Debug.Log("Added");
+    //            positions.Clear();
+    //        }
+    //        //Debug.Log(new Vector2(items[i].position.x, items[i].position.y) + ";" + rows.Count + items);
+    //    }
+    //}
+    void LoadGrid1()
     {
         float previousY = 0;
 
-        List<Vector2> positions = new List<Vector2>();
-        Transform[] items = gameObject.GetComponentsInChildren<Transform>();
-        for (int i = 1; i < items.Length; i++)
+        List<Transform> positions = new List<Transform>();
+        
+        for (int i = 0; i < gameObject.transform.childCount; i++)
         {
-            positions.Add(new Vector2(items[i].position.x, items[i].position.y + 2.5f));
-            previousY = items[i].position.y;
-            if (i + 1 == items.Length || (items[i].position.y != items[i+1].position.y))
+            Transform child = gameObject.transform.GetChild(i);
+            //positions.Add(new Vector2(child.position.x, child.position.y + 2.5f));
+            positions.Add(child);
+            previousY = child.position.y;
+            if (i + 1 == gameObject.transform.childCount || (child.position.y != gameObject.transform.GetChild(i+ 1).position.y))
             {
                 Debug.Log(positions.Count);
-                rows.Add(new List<Vector2>(positions));
+                rows.Add(new List<Transform>(positions));
                 Debug.Log("Added");
                 positions.Clear();
             }
+            
             //Debug.Log(new Vector2(items[i].position.x, items[i].position.y) + ";" + rows.Count + items);
         }
     }
+
     private List<GameObject> GetAllChilds(GameObject Go)
     {
         List<GameObject> list = new List<GameObject>();
@@ -109,3 +142,4 @@ public class Shop : MonoBehaviour
         }
     }
 }
+
