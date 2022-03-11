@@ -65,6 +65,10 @@
     <Compile Include="Assets\Classes\PumpingIron.cs" />
     <Compile Include="Assets\Classes\Inventory.cs" />
     <Compile Include="Assets\Classes\GymInside.cs" />
+    <Compile Include="Assets\Classes\PlayerBuffs.cs" />
+    <Compile Include="Assets\Classes\Boots.cs" />
+    <Compile Include="Assets\Classes\Item.cs" />
+    <Compile Include="Assets\Classes\Items.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Graphics\Battles\pokemon_pixel_font\readme.txt" />

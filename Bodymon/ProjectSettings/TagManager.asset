@@ -11,6 +11,8 @@ TagManager:
   - bench
   - Inventory
   - Items
+  - EmptyItem
+  - EpicBoots
   layers:
   - Default
   - TransparentFX

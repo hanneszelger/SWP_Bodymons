@@ -15,6 +15,7 @@ public class Bodymons : MonoBehaviour
         private new string name;
         private bool owned;
         private MuscleSet muscles = new MuscleSet();
+        private PlayerBuffs pb = new PlayerBuffs();
         private int posingSkill;
 
         public int PosingSkill
@@ -92,4 +93,9 @@ public class Bodymons : MonoBehaviour
             set { muscles = value; }
         }
 
+        public PlayerBuffs Pb
+        {
+            get { return pb; }
+            set { pb = value; }
+        }
     }
