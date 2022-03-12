@@ -8,8 +8,8 @@ public class Fight : MonoBehaviour
 {
 
 	public static double Damage;
-	public static Bodymons Bodymon;
-	public static Bodymons EnemyBodymon;
+	public static Bodymon Bodymon;
+	public static Bodymon EnemyBodymon;
 	public static string TypeOfAttack;
 
 	public Fight(MuscleSet Bodymon, MuscleSet EnemyBodymon, string TypeOfAttack)
@@ -96,7 +96,7 @@ public class Fight : MonoBehaviour
 		return TotalDamage;
 	}
 
-	public static double LatSpread(Bodymons BodymonParameter, Bodymons EnemyBodymon)
+	public static double LatSpread(Bodymon BodymonParameter, Bodymon EnemyBodymon)
 	{
 		//allied bodymon 
 		double ValueDamage = BodymonParameter.Muscles.Biceps * 0.6 + BodymonParameter.Muscles.Lat * 1.75 + BodymonParameter.Muscles.Abdominals * 1;
@@ -107,7 +107,7 @@ public class Fight : MonoBehaviour
 		return TotalDamage;
 	}
 
-	public static double SideChest(Bodymons BodymonParameter, Bodymons EnemyBodymon)
+	public static double SideChest(Bodymon BodymonParameter, Bodymon EnemyBodymon)
 	{
 		//allied bodymon 
 		double ValueDamage = BodymonParameter.Muscles.Biceps * 0.75 + BodymonParameter.Muscles.Lat * 0.1 + BodymonParameter.Muscles.Chest * 2;
@@ -118,7 +118,7 @@ public class Fight : MonoBehaviour
 		return TotalDamage;
 	}
 
-	public static double QuadStomp(Bodymons BodymonParameter, Bodymons EnemyBodymon)
+	public static double QuadStomp(Bodymon BodymonParameter, Bodymon EnemyBodymon)
 	{
 		//allied bodymon 
 		double ValueDamage = BodymonParameter.Muscles.Quads * 2 + BodymonParameter.Muscles.Lat * 0.5 + BodymonParameter.Muscles.Abdominals * 0.75;
@@ -129,7 +129,7 @@ public class Fight : MonoBehaviour
 		return TotalDamage;
 	}
 
-	public static double BackDoubleBiceps(Bodymons BodymonParameter, Bodymons EnemyBodymon)
+	public static double BackDoubleBiceps(Bodymon BodymonParameter, Bodymon EnemyBodymon)
 	{
 		//allied bodymon 
 		double ValueDamage = BodymonParameter.Muscles.Biceps * 1.5 + BodymonParameter.Muscles.Lat * 2 + BodymonParameter.Muscles.Quads * 0.1;
@@ -140,7 +140,7 @@ public class Fight : MonoBehaviour
 		return TotalDamage;
 	}
 
-	public static double DorianEagle(Bodymons BodymonParameter, Bodymons EnemyBodymon)
+	public static double DorianEagle(Bodymon BodymonParameter, Bodymon EnemyBodymon)
 	{
 		//allied bodymon 
 		double ValueDamage = BodymonParameter.Muscles.Biceps * 1 + BodymonParameter.Muscles.Lat * 1.5 + BodymonParameter.Muscles.Abdominals * 0.2;

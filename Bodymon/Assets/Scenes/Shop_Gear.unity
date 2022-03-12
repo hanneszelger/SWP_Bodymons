@@ -1420,6 +1420,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1381236149 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8440121735434883740, guid: 2cf62e670fee58c4ebaa6f6368093822,
+    type: 3}
+  m_PrefabInstance: {fileID: 1553956662}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1381236156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1381236149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e35dba30dbcec9347bc4a28d7fce6f17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerObject: {fileID: 1381236149}
 --- !u!1001 &1419559426
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1614,6 +1633,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8440121735434883743, guid: 2cf62e670fee58c4ebaa6f6368093822,
+        type: 3}
+      propertyPath: _Bodymons
+      value: 
+      objectReference: {fileID: 11400000, guid: 4c84bd3a67ce2a04fa88485427976030,
+        type: 2}
+    - target: {fileID: 8440121735434883743, guid: 2cf62e670fee58c4ebaa6f6368093822,
+        type: 3}
+      propertyPath: activeItems.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8440121735434883743, guid: 2cf62e670fee58c4ebaa6f6368093822,
+        type: 3}
+      propertyPath: activeItems.Array.data[0]
+      value: 
+      objectReference: {fileID: 1856060470}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2cf62e670fee58c4ebaa6f6368093822, type: 3}
 --- !u!4 &1683515810 stripped
@@ -1641,6 +1676,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1094428861}
     m_Modifications:
+    - target: {fileID: -7849035970800269107, guid: 56f8d1f138cf7dc4a9bf2780d2a7eaad,
+        type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: 21d3d9043db243743ba414c22c91196d,
+        type: 2}
     - target: {fileID: -7849035970800269107, guid: 56f8d1f138cf7dc4a9bf2780d2a7eaad,
         type: 3}
       propertyPath: Items
@@ -1782,6 +1823,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.48, y: 1.51}
   m_EdgeRadius: 0
+--- !u!114 &1856060470 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -7849035970800269107, guid: 56f8d1f138cf7dc4a9bf2780d2a7eaad,
+    type: 3}
+  m_PrefabInstance: {fileID: 1856060466}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856060468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cf3c62cc681a1940b42dbac424cd0ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2029859364
 GameObject:
   m_ObjectHideFlags: 0

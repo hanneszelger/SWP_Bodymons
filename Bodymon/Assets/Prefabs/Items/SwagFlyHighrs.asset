@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e7b5ca4e886d2647aaf78d1fe0b5768, type: 3}
   m_Name: SwagFlyHighrs
   m_EditorClassIdentifier: 
-  prefabName: SwagFlyHighrs
+  PrefabName: SwagFlyHighrs
   Name: Swag Fly Highrs
   Icon: {fileID: 21300000, guid: 655949a2b71c575468b3d10fd6d4fcf3, type: 3}
-  Cost: 100
-  ItemType: 1
+  Cost: 10
+  ItemType: 0
+  ItemBuffs:
+  - Buffstyle: 0
+    value: 10
+    duration: 60

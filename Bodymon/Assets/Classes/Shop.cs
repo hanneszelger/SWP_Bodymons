@@ -51,7 +51,6 @@ public class Shop : MonoBehaviour
         {
             item = rows[currentY][currentX].gameObject;
             buyItem();
-            Debug.Log(inventory.slots.Length + ";" + rows[currentY][currentX].gameObject);
         }
             
             

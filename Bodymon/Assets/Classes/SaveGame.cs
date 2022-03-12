@@ -4,30 +4,30 @@ using UnityEngine;
 public class SaveGame : MonoBehaviour
 {
     public GameObject playerObject;
-    Bodymons player;
+    Bodymon player;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        player = playerObject.GetComponent<Bodymons>();
+        player = playerObject.GetComponent<Bodymon>();
     }
 
     // Update is called once per frame
     void Update()
     {
+
     }
 
-    void Save()
+    void Save(string preferenceName)
     {
-
-        PlayerPrefs.SetString("player_bodymon", JsonUtility.ToJson(player));
+        PlayerPrefs.SetString(preferenceName, JsonUtility.ToJson(player));
         PlayerPrefs.Save();
         //https://answers.unity.com/questions/1325056/how-to-use-playerprefs-2.html
     }
 
-    void Load()
+    void Load(string preferenceName)
     {
-        JsonUtility.FromJsonOverwrite(PlayerPrefs.GetString("player_bodymon"), player);
+        JsonUtility.FromJsonOverwrite(PlayerPrefs.GetString(preferenceName), player);
     }
 }
