@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.RendererUtils;
-using UnityEngine.Rendering.PostProcessing;
 using UnityEngine;
 
 public class Shop : MonoBehaviour
 {
     private Inventory inventory;
     private GameObject item;
+    private GameObject player;
 
     public GameObject fire;
     public GameObject arrow;
@@ -29,6 +29,17 @@ public class Shop : MonoBehaviour
     {
         inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
         LoadGrid1();
+        player = GameObject.FindGameObjectWithTag("Player");
+        player.active = false;
+        //player.enabled = false;
+    }
+
+    void Leave()
+    {
+        if (Input.GetAxis("Cancel") == 1)
+        {
+            player.active = true; 
+        }
     }
 
     // Update is called once per frame
@@ -52,8 +63,7 @@ public class Shop : MonoBehaviour
             item = rows[currentY][currentX].gameObject;
             buyItem();
         }
-            
-            
+        Leave();            
     }
 
     private void FixedUpdate()

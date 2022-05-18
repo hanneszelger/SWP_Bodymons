@@ -21,6 +21,7 @@ public class Inventory : MonoBehaviour
                 isFull[i] = false;
             }
         }
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
     }
 
     // Update is called once per frame

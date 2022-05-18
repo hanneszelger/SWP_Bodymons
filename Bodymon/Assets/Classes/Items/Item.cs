@@ -20,7 +20,7 @@ public class Item : MonoBehaviour
         PrefabName = item.PrefabName;
         gameObject.name = item.PrefabName;
         Name = item.Name;
-        Icon = GetComponent<SpriteRenderer>().sprite = item.Icon;
+        //Icon = GetComponent<SpriteRenderer>().sprite = item.Icon;
         Cost = item.Cost;
         ItemType = item.ItemType;
         ItemBuffs = item.ItemBuffs;

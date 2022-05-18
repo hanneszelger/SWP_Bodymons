@@ -17,6 +17,7 @@ public class Bodymon : MonoBehaviour
     private MuscleSet muscles = new MuscleSet();
     private List<Item> activeItems;
     private int posingSkill;
+    private int coins;
 
     private void Start()
     {
@@ -25,7 +26,16 @@ public class Bodymon : MonoBehaviour
         Muscles = _Bodymons.muscles;
         ActiveItems = _Bodymons.activeItems;
         PosingSkill = _Bodymons.posingSkill;
+        Coins = _Bodymons.coins;
     }
+
+    [SerializeField]
+    public int Coins
+    {
+        get { return coins; }
+        set { coins = value; }
+    }
+
 
     [SerializeField]
     public int PosingSkill

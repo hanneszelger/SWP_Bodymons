@@ -12,4 +12,5 @@ public class Bodymons : ScriptableObject
     public MuscleSet muscles;
     public List<Item> activeItems;
     public int posingSkill;
+    public int coins;
 }
