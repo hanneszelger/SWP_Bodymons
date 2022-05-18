@@ -9,6 +9,11 @@ TagManager:
   - bottom
   - top
   - bench
+  - Inventory
+  - Items
+  - EmptyItem
+  - EpicBoots
+  - wall
   layers:
   - Default
   - TransparentFX
@@ -16,7 +21,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Post processing
   - 
   - 
   - 

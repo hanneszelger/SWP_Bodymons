@@ -6,15 +6,15 @@ public class PumpingIron : MonoBehaviour
 {
     private GameObject gameObject_player;
     bool inRange;
-    Bodymons player;
+    Bodymon player;
 
 
     // Start is called before the first frame update
     void Start()
     {
         gameObject_player = GameObject.FindWithTag("Player");
-        player = gameObject_player.GetComponent<Bodymons>();
-        Debug.Log(gameObject_player.name);
+        player = gameObject_player.GetComponent<Bodymon>();
+        //Debug.Log(gameObject_player.name);
     }
 
     // Update is called once per frame
