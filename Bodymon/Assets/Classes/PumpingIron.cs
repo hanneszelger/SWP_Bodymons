@@ -5,6 +5,7 @@ using UnityEngine;
 public class PumpingIron : MonoBehaviour
 {
     private GameObject gameObject_player;
+    private GameObject gameObject_gymSpawn;
     bool inRange;
     Bodymon player;
 
@@ -14,18 +15,22 @@ public class PumpingIron : MonoBehaviour
     {
         gameObject_player = GameObject.FindWithTag("Player");
         player = gameObject_player.GetComponent<Bodymon>();
+        gameObject_gymSpawn = GameObject.FindWithTag("GymSpawn");
         //Debug.Log(gameObject_player.name);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetAxis("Interact") == 1 && inRange)
+        if(Input.GetButtonDown("Interact") && inRange)
         {
             switch (gameObject.tag)
             {
                 case "bench":
                     BenchPress();
+                    break;
+                case "SquatRack":
+                    //ToDo: squat method
                     break;
             }
         }
@@ -41,7 +46,6 @@ public class PumpingIron : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D playerCollider)
     {
-        Debug.Log("out");
         if (playerCollider.CompareTag("Player"))
         {
             inRange = false;
@@ -58,5 +62,9 @@ public class PumpingIron : MonoBehaviour
 
         player.Muscles.Chest += 1;
         Debug.Log(player.Muscles.Chest);
+
+        gameObject_player.transform.position = gameObject_gymSpawn.transform.position;
+
+
     }
 }

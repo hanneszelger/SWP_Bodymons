@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3e1bd55cb317b44d84bc3239147486e, type: 3}
+  m_Name: JayCuttler
+  m_EditorClassIdentifier: 
+  hp: 100
+  name: Chris Bumstead
+  owned: 0
+  muscles:
+    defaultValue: 1
+    lat: 10
+    chest: 10
+    quads: 10
+    biceps: 10
+    abdominals: 10
+  activeItems:
+  - {fileID: 0}
+  item:
+  - {fileID: 11400000, guid: 9b166aeb4a37f394ba0514a3fb8b6de8, type: 2}
+  posingSkill: 100
+  coins: 100

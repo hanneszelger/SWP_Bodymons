@@ -17,8 +17,12 @@ MonoBehaviour:
   owned: 0
   muscles:
     defaultValue: 1
+    lat: 0
+    chest: 2
     quads: 0
     biceps: 0
     abdominals: 0
-  activeItems: []
+  activeItems:
+  - {fileID: 0}
   posingSkill: 0
+  coins: 0

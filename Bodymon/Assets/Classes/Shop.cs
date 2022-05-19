@@ -30,7 +30,7 @@ public class Shop : MonoBehaviour
         inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
         LoadGrid1();
         player = GameObject.FindGameObjectWithTag("Player");
-        player.active = false;
+        player.SetActive(false);
         //player.enabled = false;
     }
 
@@ -38,7 +38,7 @@ public class Shop : MonoBehaviour
     {
         if (Input.GetAxis("Cancel") == 1)
         {
-            player.active = true; 
+            player.SetActive(true); 
         }
     }
 

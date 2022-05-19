@@ -19,8 +19,8 @@ public class MuscleSet
     public double defaultValue = 1;
     private double maxValue = 100;
 
-    private double lat;
-    private double chest;
+    public double lat;
+    public double chest;
     public double quads;
     public double biceps;
     public double abdominals;
@@ -31,7 +31,6 @@ public class MuscleSet
         get { return maxValue; }
     }
 
-    
     public double Lat
     {
         get { return checkDouble(lat); }
