@@ -121,6 +121,8 @@ public class Shop : MonoBehaviour
                     temp.bounds.size.y / rend.bounds.size.y - 0.1f, 1);
                 rend.sortingOrder = 101;
 
+                rend.enabled = inventory.visible;
+
                 break;
             }
         }

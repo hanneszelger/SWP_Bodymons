@@ -5,6 +5,7 @@ public class Inventory : MonoBehaviour
     public bool[] isFull;
     public GameObject[] slots;
     private SpriteRenderer[] sr;
+    public bool visible;
 
     private Bodymon player;
     // Start is called before the first frame update
@@ -21,7 +22,7 @@ public class Inventory : MonoBehaviour
                 isFull[i] = false;
             }
         }
-        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        SetVisible(false);
     }
 
     // Update is called once per frame
@@ -55,11 +56,18 @@ public class Inventory : MonoBehaviour
 
     void ToggleVisible()
     {
+        SetVisible(!gameObject.GetComponent<SpriteRenderer>().enabled);
+    }
+
+    void SetVisible(bool activation)
+    {
+        gameObject.GetComponent<SpriteRenderer>().enabled = activation;
         sr = gameObject.GetComponentsInChildren<SpriteRenderer>();
         for (int i = 0; i < sr.Length; i++)
         {
-            sr[i].enabled = !sr[i].enabled;
+            sr[i].enabled = activation;
         }
+        visible = activation;
     }
 
     void UseItem(int i)
