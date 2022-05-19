@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637885531863880716
-    m_Hash: 3088832272
+      ticks: 637824797059209197
+    m_Hash: 2813507624
   m_LockFileStatus:
     m_FilePath: D:/Users/Hannes/Documents/GitHub/SWP_Bodymons/Bodymon/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637885532527618429
-    m_Hash: 850399300
+      ticks: 637824797060326186
+    m_Hash: 467048765
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -78,18 +78,12 @@ m_ResolvedPackages:
     - 1.14.9
     - 1.14.12
     - 1.14.13
-    - 1.14.15
-    - 1.14.16
-    - 1.14.17
     - 1.15.1
     - 1.15.4
     - 1.15.7
     - 1.15.9
     - 1.15.12
     - 1.15.13
-    - 1.15.15
-    - 1.15.16
-    - 1.15.17
     - 2.0.0-preview.6
     - 2.0.0-preview.8
     - 2.0.0-preview.15
@@ -108,18 +102,12 @@ m_ResolvedPackages:
     - 1.14.9
     - 1.14.12
     - 1.14.13
-    - 1.14.15
-    - 1.14.16
-    - 1.14.17
     - 1.15.1
     - 1.15.4
     - 1.15.7
     - 1.15.9
     - 1.15.12
     - 1.15.13
-    - 1.15.15
-    - 1.15.16
-    - 1.15.17
     - 2.0.0-preview.6
     - 2.0.0-preview.8
     - 2.0.0-preview.15
@@ -228,16 +216,12 @@ m_ResolvedPackages:
     - 3.0.9
     - 3.0.10
     - 3.0.12
-    - 3.0.13
-    - 3.0.14
     compatible:
     - 3.0.7
     - 3.0.9
     - 3.0.10
     - 3.0.12
-    - 3.0.13
-    - 3.0.14
-    verified: 3.0.14
+    verified: 3.0.12
   dependencies:
   - name: com.unity.ext.nunit
     version: 1.0.6
@@ -266,12 +250,12 @@ m_ResolvedPackages:
   unityLifecycle:
     version: 3.0.7
     nextVersion: 
-- packageId: com.unity.ide.visualstudio@2.0.11
+- packageId: com.unity.ide.visualstudio@2.0.14
   testable: 0
   isDirectDependency: 1
-  version: 2.0.11
+  version: 2.0.14
   source: 1
-  resolvedPath: D:\Users\Hannes\Documents\GitHub\SWP_Bodymons\Bodymon\Library\PackageCache\com.unity.ide.visualstudio@2.0.11
+  resolvedPath: D:\Users\Hannes\Documents\GitHub\SWP_Bodymons\Bodymon\Library\PackageCache\com.unity.ide.visualstudio@2.0.14
   assetPath: Packages/com.unity.ide.visualstudio
   name: com.unity.ide.visualstudio
   displayName: Visual Studio Editor
@@ -305,13 +289,11 @@ m_ResolvedPackages:
     - 2.0.11
     - 2.0.12
     - 2.0.14
-    - 2.0.15
     compatible:
     - 2.0.11
     - 2.0.12
     - 2.0.14
-    - 2.0.15
-    verified: 2.0.15
+    verified: 2.0.14
   dependencies:
   - name: com.unity.test-framework
     version: 1.1.9
@@ -335,13 +317,13 @@ m_ResolvedPackages:
   hasRegistry: 1
   hideInEditor: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 637613656180000000
+  datePublishedTicks: 637782923640000000
   documentationUrl: 
-  hasRepository: 1
+  hasRepository: 0
   repository:
-    type: git
-    url: https://github.cds.internal.unity3d.com/unity/com.unity.ide.visualstudio.git
-    revision: 680e06d94ffca728223ae2cb14bb919cd354e2c1
+    type: 
+    url: 
+    revision: 
     path: 
   unityLifecycle:
     version: 2.0.11
@@ -409,6 +391,96 @@ m_ResolvedPackages:
   unityLifecycle:
     version: 1.2.4
     nextVersion: 
+- packageId: com.unity.postprocessing@3.1.1
+  testable: 0
+  isDirectDependency: 1
+  version: 3.1.1
+  source: 1
+  resolvedPath: D:\Users\Hannes\Documents\GitHub\SWP_Bodymons\Bodymon\Library\PackageCache\com.unity.postprocessing@3.1.1
+  assetPath: Packages/com.unity.postprocessing
+  name: com.unity.postprocessing
+  displayName: Post Processing
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: 
+  description: The post-processing stack (v2) comes with a collection of effects
+    and image filters you can apply to your cameras to improve the visuals of your
+    games.
+  status: 4
+  errors: []
+  versions:
+    all:
+    - 0.1.7
+    - 0.1.8
+    - 2.0.0-beta
+    - 2.0.1-beta
+    - 2.0.2-preview
+    - 2.0.3-preview
+    - 2.0.5-preview
+    - 2.0.7-preview
+    - 2.0.8-preview
+    - 2.0.9-preview
+    - 2.0.10-preview
+    - 2.0.11-preview
+    - 2.0.12-preview
+    - 2.0.13-preview
+    - 2.0.14-preview
+    - 2.0.15-preview
+    - 2.0.16-preview
+    - 2.0.17-preview
+    - 2.1.0
+    - 2.1.1
+    - 2.1.2
+    - 2.1.3
+    - 2.1.4
+    - 2.1.5
+    - 2.1.6
+    - 2.1.7
+    - 2.2.1
+    - 2.2.2
+    - 2.3.0
+    - 3.0.1
+    - 3.0.3
+    - 3.1.0
+    - 3.1.1
+    - 3.2.0
+    - 3.2.1
+    compatible:
+    - 3.1.1
+    - 3.2.0
+    - 3.2.1
+    verified: 3.1.1
+  dependencies:
+  - name: com.unity.modules.physics
+    version: 1.0.0
+  resolvedDependencies:
+  - name: com.unity.modules.physics
+    version: 1.0.0
+  keywords: []
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+  hasRegistry: 1
+  hideInEditor: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 637576678760000000
+  documentationUrl: 
+  hasRepository: 1
+  repository:
+    type: git
+    url: git+https://github.com/Unity-Technologies/Graphics.git
+    revision: 075b452f2c4bf910a168632b3cedbd6835477ddd
+    path: 
+  unityLifecycle:
+    version: 3.1.1
+    nextVersion: 
 - packageId: com.unity.test-framework@1.1.29
   testable: 0
   isDirectDependency: 1
@@ -462,14 +534,12 @@ m_ResolvedPackages:
     - 1.1.29
     - 1.1.30
     - 1.1.31
-    - 2.0.1-exp.1
     - 2.0.1-pre.12
     - 2.0.1-pre.18
     compatible:
     - 1.1.29
     - 1.1.30
     - 1.1.31
-    - 2.0.1-exp.1
     - 2.0.1-pre.12
     - 2.0.1-pre.18
     verified: 1.1.31
@@ -677,12 +747,12 @@ m_ResolvedPackages:
   unityLifecycle:
     version: 3.0.6
     nextVersion: 
-- packageId: com.unity.timeline@1.6.2
+- packageId: com.unity.timeline@1.7.1
   testable: 0
   isDirectDependency: 1
-  version: 1.6.2
+  version: 1.7.1
   source: 1
-  resolvedPath: D:\Users\Hannes\Documents\GitHub\SWP_Bodymons\Bodymon\Library\PackageCache\com.unity.timeline@1.6.2
+  resolvedPath: D:\Users\Hannes\Documents\GitHub\SWP_Bodymons\Bodymon\Library\PackageCache\com.unity.timeline@1.7.1
   assetPath: Packages/com.unity.timeline
   name: com.unity.timeline
   displayName: Timeline
@@ -813,13 +883,13 @@ m_ResolvedPackages:
   hasRegistry: 1
   hideInEditor: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 637643657750000000
+  datePublishedTicks: 637824211470000000
   documentationUrl: 
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/com.unity.timeline.git
-    revision: d0d66dff04e2ee077546a894ea0af2b750055b32
+    revision: 9cec37f449d04026a6c454de9e1bf6f34672764e
     path: 
   unityLifecycle:
     version: 1.6.2
@@ -886,95 +956,6 @@ m_ResolvedPackages:
     path: 
   unityLifecycle:
     version: 1.0.0
-    nextVersion: 
-- packageId: com.unity.visualscripting@1.7.5
-  testable: 0
-  isDirectDependency: 1
-  version: 1.7.5
-  source: 1
-  resolvedPath: D:\Users\Hannes\Documents\GitHub\SWP_Bodymons\Bodymon\Library\PackageCache\com.unity.visualscripting@1.7.5
-  assetPath: Packages/com.unity.visualscripting
-  name: com.unity.visualscripting
-  displayName: Visual Scripting
-  author:
-    name: 
-    email: 
-    url: 
-  category: 
-  type: 
-  description: 'Visual scripting is a workflow that uses visual, node-based graphs
-    to design behaviors rather than write lines of C# script.
-
-
-    Enabling artists,
-    designers and programmers alike, visual scripting can be used to design final
-    logic, quickly create prototypes, iterate on gameplay and create custom nodes
-    to help streamline collaboration.
-
-
-    Visual scripting is compatible with third-party
-    APIs, including most packages, assets and custom libraries.'
-  status: 4
-  errors: []
-  versions:
-    all:
-    - 1.5.0
-    - 1.5.1-pre.3
-    - 1.5.1-pre.5
-    - 1.5.1
-    - 1.5.2
-    - 1.6.0-pre.3
-    - 1.6.0
-    - 1.6.1
-    - 1.7.1
-    - 1.7.2
-    - 1.7.3
-    - 1.7.5
-    - 1.7.6
-    - 1.7.7
-    - 1.7.8
-    - 1.8.0-pre.1
-    compatible:
-    - 1.7.5
-    - 1.7.6
-    - 1.7.7
-    - 1.7.8
-    verified: 1.7.8
-  dependencies:
-  - name: com.unity.ugui
-    version: 1.0.0
-  - name: com.unity.modules.jsonserialize
-    version: 1.0.0
-  resolvedDependencies:
-  - name: com.unity.ugui
-    version: 1.0.0
-  - name: com.unity.modules.ui
-    version: 1.0.0
-  - name: com.unity.modules.imgui
-    version: 1.0.0
-  - name: com.unity.modules.jsonserialize
-    version: 1.0.0
-  keywords: []
-  registry:
-    id: main
-    name: 
-    url: https://packages.unity.com
-    scopes: []
-    isDefault: 1
-    capabilities: 7
-  hasRegistry: 1
-  hideInEditor: 1
-  isAssetStorePackage: 0
-  datePublishedTicks: 637702395950000000
-  documentationUrl: 
-  hasRepository: 1
-  repository:
-    type: git
-    url: https://github.cds.internal.unity3d.com/unity/com.unity.visualscripting.git
-    revision: 92f3faf93c43d4d12ab8258dedff1ec23db47872
-    path: 
-  unityLifecycle:
-    version: 1.7.5
     nextVersion: 
 - packageId: com.unity.modules.ai@1.0.0
   testable: 0
@@ -2849,13 +2830,11 @@ m_ResolvedPackages:
     - 2.0.1-preview.1
     - 2.0.2
     - 3.0.1
-    - 3.0.2
     compatible:
     - 2.0.0
     - 2.0.1-preview.1
     - 2.0.2
     - 3.0.1
-    - 3.0.2
     verified: 2.0.2
   dependencies: []
   resolvedDependencies: []
@@ -2914,9 +2893,6 @@ m_ResolvedPackages:
     - 1.1.0-pre.41
     - 1.1.0-pre.69
     - 1.2.0
-    - 1.3.1
-    - 1.3.2
-    - 1.4.0
     compatible:
     - 1.0.1
     - 1.1.0-pre.7
@@ -2927,9 +2903,6 @@ m_ResolvedPackages:
     - 1.1.0-pre.41
     - 1.1.0-pre.69
     - 1.2.0
-    - 1.3.1
-    - 1.3.2
-    - 1.4.0
     verified: 1.0.1
   dependencies:
   - name: com.unity.modules.unitywebrequest

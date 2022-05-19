@@ -64,11 +64,12 @@
     <Compile Include="Assets\Classes\Player\MuscleSet.cs" />
     <Compile Include="Assets\Classes\Items\Items.cs" />
     <Compile Include="Assets\Classes\Items\Item.cs" />
+    <Compile Include="Assets\Classes\MuscleSet.cs" />
+    <Compile Include="Assets\Classes\Player\Bodymons.cs" />
     <Compile Include="Assets\Classes\Fight.cs" />
     <Compile Include="Assets\Classes\PumpingIron.cs" />
     <Compile Include="Assets\Classes\Player\Inventory.cs" />
     <Compile Include="Assets\Classes\GymInside.cs" />
-    <Compile Include="Assets\Classes\Player\Bodymons.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Graphics\Battles\pokemon_pixel_font\readme.txt" />

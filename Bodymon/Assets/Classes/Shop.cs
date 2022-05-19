@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.RendererUtils;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Shop : MonoBehaviour
 {
@@ -36,9 +37,11 @@ public class Shop : MonoBehaviour
 
     void Leave()
     {
-        if (Input.GetAxis("Cancel") == 1)
+        if (Input.GetButtonDown("Cancel"))
         {
-            player.SetActive(true); 
+            //player.SetActive(true);
+            
+            SceneManager.LoadScene("Gym_Hannes", LoadSceneMode.Single);
         }
     }
 

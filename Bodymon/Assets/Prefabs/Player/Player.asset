@@ -18,11 +18,13 @@ MonoBehaviour:
   muscles:
     defaultValue: 1
     lat: 0
-    chest: 2
+    chest: 0
     quads: 0
     biceps: 0
     abdominals: 0
   activeItems:
+  - {fileID: 0}
+  item:
   - {fileID: 0}
   posingSkill: 0
   coins: 0
