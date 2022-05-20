@@ -19,17 +19,17 @@ public class Bodymon : MonoBehaviour
     private int posingSkill;
     private int coins;
 
-    private void Start()
+    public void Start()
     {
-        Hp = _Bodymons.hp;
-        Name = _Bodymons.name;
-        Muscles = _Bodymons.muscles;
-        ActiveItems = _Bodymons.activeItems;
-        PosingSkill = _Bodymons.posingSkill;
-        Coins = _Bodymons.coins;
+        Hp = _Bodymons.Hp;
+        Name = _Bodymons.Name;
+        Muscles = _Bodymons.Muscles;
+        ActiveItems = _Bodymons.ActiveItems;
+        PosingSkill = _Bodymons.PosingSkill;
+        Coins = _Bodymons.Coins;
     }
 
-    [SerializeField]
+
     public int Coins
     {
         get { return coins; }
@@ -37,7 +37,6 @@ public class Bodymon : MonoBehaviour
     }
 
 
-    [SerializeField]
     public int PosingSkill
     {
         get
@@ -54,7 +53,7 @@ public class Bodymon : MonoBehaviour
         set { }
     }
 
-    [SerializeField]
+
     public int Hp
     {
         get
@@ -75,7 +74,7 @@ public class Bodymon : MonoBehaviour
         }
     }
 
-    [SerializeField]
+    
     public string Name
     {
         get
@@ -95,14 +94,13 @@ public class Bodymon : MonoBehaviour
         }
     }
 
-    [SerializeField]
+
     public MuscleSet Muscles
     {
         get { return muscles; }
         set { muscles = value; }
     }
 
-    [SerializeField]
     public List<Item> ActiveItems
     {
         get { return activeItems; }
