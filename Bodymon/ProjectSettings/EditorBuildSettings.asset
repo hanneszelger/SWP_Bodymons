@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Doctor.unity
     guid: 2f66f3a336c475649ae2d2a66bb8608b
+  - enabled: 1
+    path: Assets/Scenes/Dealer.unity
+    guid: b0b167bef1ba8fb42a3ec0fdcf5b8457
   m_configObjects: {}
