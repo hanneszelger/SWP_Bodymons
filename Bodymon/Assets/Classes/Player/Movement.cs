@@ -15,6 +15,7 @@ public class Movement : MonoBehaviour
 
     //public allows to edit its value in Unity
     public float speed;
+    public Animator animator;
 
     private void Start()
     {
@@ -24,6 +25,8 @@ public class Movement : MonoBehaviour
         //gets the player and main cam object as Rigidbody2D
         body = GetComponent<Rigidbody2D>();
         camRigid = cam.GetComponent<Rigidbody2D>();
+
+        camRigid.position = transform.position;
     }
 
     private void Update()
@@ -36,6 +39,10 @@ public class Movement : MonoBehaviour
 
         //Combines user input and speed to a Vector2
         move = new Vector2(speed * horizontal, speed * vertical);
+
+        animator.SetFloat("Horizontal", horizontal);
+        animator.SetFloat("Vertical", vertical);
+        animator.SetFloat("Speed", move.sqrMagnitude);
     }
 
     private void FixedUpdate()
@@ -49,8 +56,8 @@ public class Movement : MonoBehaviour
         {
             camRigid.velocity = new Vector2(body.velocity.x, camRigid.velocity.y);
         }
-        if ((cam.transform.position.y + camHeight - 2 < body.position.y + (body.velocity.y * Time.fixedDeltaTime) && body.velocity.y > 0) ||
-            (cam.transform.position.y - camHeight + 2 > body.position.y + (body.velocity.y * Time.fixedDeltaTime) && body.velocity.y < 0))
+        if ((cam.transform.position.y + camHeight - 1.5 < body.position.y + (body.velocity.y * Time.fixedDeltaTime) && body.velocity.y > 0) ||
+            (cam.transform.position.y - camHeight + 1.5 > body.position.y + (body.velocity.y * Time.fixedDeltaTime) && body.velocity.y < 0))
         {
             camRigid.velocity = new Vector2(camRigid.velocity.x, body.velocity.y);
         }

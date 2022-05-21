@@ -83,15 +83,15 @@ public class Inventory : MonoBehaviour
                 alreadyActive = player.ActiveItems.FindIndex(f => f.PrefabName == item.PrefabName);
                 Debug.Log(alreadyActive);
                 if (alreadyActive == -1) break;
-                
-                
+
+
                 Debug.Log("runs");
                 //int index = activeItem.ItemBuffs.FindIndex(f => f.Buffstyle == item.ItemBuffs[j].Buffstyle);
             }
 
             if (alreadyActive == -1)
             {
-                player.ActiveItems.Add(item);
+                player.ActiveItems.Add(item.item);
                 Inventory.Destroy(slots[i].transform.GetChild(0).gameObject);
                 Debug.Log(item.Name + " wurde verwendet!");
                 isFull[i] = false;
@@ -102,5 +102,10 @@ public class Inventory : MonoBehaviour
             }
         }
 
+    }
+
+    private void OnDestroy()
+    {
+        //SaveGame.SaveInventoryItems();
     }
 }

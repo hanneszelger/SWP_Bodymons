@@ -5,8 +5,6 @@ public class SaveAndRestorePosition : MonoBehaviour
 {
     void Start() // Check if we've saved a position for this scene; if so, go there.
     {
-
-        Debug.Log(SavedPositionManager.lastScene);
         if (SavedPositionManager.lastScene != 0)
         {
             transform.position = SavedPositionManager.savedPositions[SavedPositionManager.lastScene];

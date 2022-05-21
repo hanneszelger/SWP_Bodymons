@@ -1,33 +1,41 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class SaveGame : MonoBehaviour
+public static class SaveGame 
 {
-    public GameObject playerObject;
-    Bodymon player;
-
-
-    // Start is called before the first frame update
-    void Start()
+    public static void Save(string preferenceName, string data)
     {
-        player = playerObject.GetComponent<Bodymon>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    void Save(string preferenceName)
-    {
-        PlayerPrefs.SetString(preferenceName, JsonUtility.ToJson(player));
+        PlayerPrefs.SetString(preferenceName, data);
         PlayerPrefs.Save();
         //https://answers.unity.com/questions/1325056/how-to-use-playerprefs-2.html
     }
 
-    void Load(string preferenceName)
+    public static void SavePlayer(string preferenceName)
     {
-        JsonUtility.FromJsonOverwrite(PlayerPrefs.GetString(preferenceName), player);
+        Save(preferenceName, JsonUtility.ToJson(PlayerBodymon.player));
     }
+
+
+
+    public static void Load(string preferenceName, object output)
+    {
+        JsonUtility.FromJsonOverwrite(PlayerPrefs.GetString(preferenceName), output);
+    }
+
+    public static void LoadPlayer(string preferenceName)
+    {
+        JsonUtility.FromJsonOverwrite(PlayerPrefs.GetString(preferenceName), PlayerBodymon.player);
+    }
+
+    //public static void loadItems()
+    //{
+    //    Resources.Load<GameObject>("Items/BadeSalz");
+    //    SaveGame.Load("inventory", );
+    //}
+
+    //public static void SaveInventoryItems()
+    //{
+    //    SaveGame.Save("inventory", );
+    //}
 }
+

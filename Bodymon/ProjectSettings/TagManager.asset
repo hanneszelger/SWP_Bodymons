@@ -16,6 +16,10 @@ TagManager:
   - wall
   - GymSpawn
   - SquatRack
+  - fight_SideChest
+  - fight_FrontDoubleBiceps
+  - Coins
+  - ui_coins
   layers:
   - Default
   - TransparentFX

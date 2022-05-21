@@ -22,8 +22,6 @@ public class Bodymons : ScriptableObject
     [SerializeField]
     private MuscleSet muscles;
     [SerializeField]
-    private List<Item> activeItems;
-    [SerializeField]
     private List<Items> item;
     [SerializeField]
     private int posingSkill;
@@ -91,18 +89,18 @@ public class Bodymons : ScriptableObject
         set { muscles = value; }
     }
 
-    public List<Item> ActiveItems
+    public List<Items> Items
     {
-        get { return activeItems; }
+        get { return item; }
         set
         {
             if (value is null)
             {
-                activeItems = new List<Item>();
+                item = new List<Items>();
             }
             else
             {
-                activeItems = value;
+                item = value;
             }
         }
     }

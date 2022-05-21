@@ -15,7 +15,7 @@ public class Bodymon : MonoBehaviour
     private int hp;
     private new string name;
     private MuscleSet muscles = new MuscleSet();
-    private List<Item> activeItems;
+    private List<Items> activeItems;
     private int posingSkill;
     private int coins;
 
@@ -24,7 +24,7 @@ public class Bodymon : MonoBehaviour
         Hp = _Bodymons.Hp;
         Name = _Bodymons.Name;
         Muscles = _Bodymons.Muscles;
-        ActiveItems = _Bodymons.ActiveItems;
+        ActiveItems = _Bodymons.Items;
         PosingSkill = _Bodymons.PosingSkill;
         Coins = _Bodymons.Coins;
     }
@@ -101,14 +101,14 @@ public class Bodymon : MonoBehaviour
         set { muscles = value; }
     }
 
-    public List<Item> ActiveItems
+    public List<Items> ActiveItems
     {
         get { return activeItems; }
         set
         {
             if (value is null)
             {
-                activeItems = new List<Item>();
+                activeItems = new List<Items>();
             }
             else
             {
