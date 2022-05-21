@@ -25,6 +25,12 @@ public class DialogueManagerDealer : MonoBehaviour
         int luck = Random.Range(1, 10);
         if (dialogActive && Input.GetKeyDown(KeyCode.Space) && exitScene)
         {
+            //SceneManager.LoadScene(0, LoadSceneMode.Additive);
+            //GameObject gameObject_player = GameObject.FindWithTag("Player");
+            //gameObject_player.transform.position = new Vector3(-13.77f, 18.6f, -2);
+            //Debug.Log(gameObject_player.name);
+
+            SavedPositionManager.lastScene = 4;
             SceneManager.LoadScene(0, LoadSceneMode.Single);
         }
         if (dialogActive && Input.GetKeyDown(KeyCode.Space) && !exitScene)
@@ -39,6 +45,7 @@ public class DialogueManagerDealer : MonoBehaviour
         if (Input.GetKeyDown("n"))
         {
             dText.text = "Ok, looser schönen Tag noch!";
+            SavedPositionManager.lastScene = 4;
             SceneManager.LoadScene(0, LoadSceneMode.Single);
         }
     }

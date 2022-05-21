@@ -47,14 +47,11 @@
   <PropertyGroup>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Package</UnityProjectGenerator>
-    <UnityProjectGeneratorVersion>2.0.11</UnityProjectGeneratorVersion>
+    <UnityProjectGeneratorVersion>2.0.15</UnityProjectGeneratorVersion>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>2021.2.2f1</UnityVersion>
   </PropertyGroup>
-  <ItemGroup>
-    <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
-  </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Classes\SaveGame.cs" />
     <Compile Include="Assets\Classes\Boots.cs" />
@@ -65,11 +62,16 @@
     <Compile Include="Assets\Classes\MuscleSet.cs" />
     <Compile Include="Assets\Classes\PumpingIron.cs" />
     <Compile Include="Assets\Classes\Player\Inventory.cs" />
+    <Compile Include="Assets\Classes\ChangeScene.cs" />
     <Compile Include="Assets\Classes\Player\Bodymon.cs" />
     <Compile Include="Assets\Classes\Player\MuscleSet.cs" />
+    <Compile Include="Assets\Classes\DialogueManagerDealer.cs" />
     <Compile Include="Assets\Classes\Player\Bodymons.cs" />
+    <Compile Include="Assets\Classes\DialogueManager.cs" />
     <Compile Include="Assets\Classes\Fight.cs" />
     <Compile Include="Assets\Classes\GymInside.cs" />
+    <Compile Include="Assets\Classes\SceneManagement\SavedPositionManager.cs" />
+    <Compile Include="Assets\Classes\SceneManagement\SaveAndRestorePosition.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Graphics\Battles\pokemon_pixel_font\readme.txt" />

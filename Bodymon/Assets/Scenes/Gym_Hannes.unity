@@ -169,6 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneBuildIndex: 0
+  player: {fileID: 838818392}
 --- !u!61 &454787594
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -221,6 +222,12 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!4 &838818392 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8440121735434883737, guid: 2cf62e670fee58c4ebaa6f6368093822,
+    type: 3}
+  m_PrefabInstance: {fileID: 1152579259}
+  m_PrefabAsset: {fileID: 0}
 --- !u!850595691 &852001291
 LightingSettings:
   m_ObjectHideFlags: 0
