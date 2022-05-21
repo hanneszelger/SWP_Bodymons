@@ -15,7 +15,6 @@ public class Movement : MonoBehaviour
 
     //public allows to edit its value in Unity
     public float speed;
-    public Animator animator;
 
     private void Start()
     {
@@ -37,10 +36,6 @@ public class Movement : MonoBehaviour
 
         //Combines user input and speed to a Vector2
         move = new Vector2(speed * horizontal, speed * vertical);
-
-        animator.SetFloat("Horizontal", horizontal);
-        animator.SetFloat("Vertical", vertical);
-        animator.SetFloat("Speed", move.sqrMagnitude);
     }
 
     private void FixedUpdate()

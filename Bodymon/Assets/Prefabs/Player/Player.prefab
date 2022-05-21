@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 8440121735434883736}
   - component: {fileID: 8440121735434883739}
   - component: {fileID: 8440121735434883738}
-  - component: {fileID: 3611557842570459488}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -101,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81338394640e53c4cb6f882af416bf64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Bodymons: {fileID: 0}
+  _Bodymons: {fileID: 11400000, guid: 4c84bd3a67ce2a04fa88485427976030, type: 2}
 --- !u!114 &8440121735434883736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,7 +114,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7.5
-  animator: {fileID: 0}
 --- !u!50 &8440121735434883739
 Rigidbody2D:
   serializedVersion: 4
@@ -163,15 +161,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.95, y: 1.5}
   m_EdgeRadius: 0
---- !u!114 &3611557842570459488
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8440121735434883740}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a019b300604adf4d9e9d05ba0505650, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
