@@ -97,4 +97,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cf3c62cc681a1940b42dbac424cd0ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Items: {fileID: 11400000, guid: 027f0e625771fe34da68cb976a9b2d69, type: 2}
+  item: {fileID: 11400000, guid: 0bd0d8b8bfbe74c4e83cad850b5a368d, type: 2}
+  PrefabName: 
+  Name: 
+  Icon: {fileID: 0}
+  Cost: 0
+  ItemType: 0
+  Prefab: {fileID: 0}

@@ -22,9 +22,6 @@ MonoBehaviour:
     quads: 4
     biceps: 5
     abdominals: 6
-  activeItems:
-  - {fileID: 0}
-  item:
-  - {fileID: 0}
+  item: []
   posingSkill: 7
-  coins: 200
+  coins: 23

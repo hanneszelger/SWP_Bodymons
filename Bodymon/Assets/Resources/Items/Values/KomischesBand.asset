@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: KomischesBand
   m_EditorClassIdentifier: 
   PrefabName: SumoRingerBelt
+  prefab: {fileID: 6183640789179338167, guid: 9101bde21106b4e4baad52b8017cf1e6, type: 3}
   Name: SumoRingerBelt
   Icon: {fileID: 21300000, guid: 1500983552971c04c87831dbe243e43a, type: 3}
   Cost: 100

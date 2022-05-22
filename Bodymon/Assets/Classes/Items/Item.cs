@@ -13,6 +13,7 @@ public class Item : MonoBehaviour
     public int Cost;
     public ItemType ItemType;
     public List<ItemBuff> ItemBuffs;
+    public GameObject Prefab;
     //private ItemType _ItemType;
 
     void Start()
@@ -24,6 +25,7 @@ public class Item : MonoBehaviour
         Cost = item.Cost;
         ItemType = item.ItemType;
         ItemBuffs = item.ItemBuffs;
+        Prefab = item.prefab;
     }
 
     // Update is called once per frame

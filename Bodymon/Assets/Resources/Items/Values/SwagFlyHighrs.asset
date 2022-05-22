@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: SwagFlyHighrs
   m_EditorClassIdentifier: 
   PrefabName: SwagFlyHighrs
+  prefab: {fileID: 7663049690397485420, guid: 30eedc0681d4f5e44a8e3907d8719fee, type: 3}
   Name: Swag Fly Highrs
   Icon: {fileID: 21300000, guid: 655949a2b71c575468b3d10fd6d4fcf3, type: 3}
   Cost: 1000

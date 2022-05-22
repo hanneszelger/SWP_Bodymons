@@ -15,8 +15,6 @@ public static class SaveGame
         Save(preferenceName, JsonUtility.ToJson(PlayerBodymon.player));
     }
 
-
-
     public static void Load(string preferenceName, object output)
     {
         JsonUtility.FromJsonOverwrite(PlayerPrefs.GetString(preferenceName), output);
@@ -38,4 +36,3 @@ public static class SaveGame
     //    SaveGame.Save("inventory", );
     //}
 }
-

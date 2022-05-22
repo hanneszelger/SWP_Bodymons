@@ -13,11 +13,9 @@ MonoBehaviour:
   m_Name: Band2
   m_EditorClassIdentifier: 
   PrefabName: Band2
+  prefab: {fileID: 7477932435671067293, guid: 6e30cab77c24ba846888f5f4ac19dece, type: 3}
   Name: Band2
   Icon: {fileID: 0}
   Cost: 100
   ItemType: 1
-  ItemBuffs:
-  - Buffstyle: 0
-    value: 5
-    duration: 0
+  ItemBuffs: []

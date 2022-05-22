@@ -4,10 +4,11 @@ using UnityEngine.Rendering;
 using UnityEngine.Rendering.RendererUtils;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Threading.Tasks;
 
 public class Shop : MonoBehaviour
 {
-    private Inventory inventory;
+    public Inventory inventory;
     private GameObject item;
     private GameObject player;
 
@@ -33,16 +34,12 @@ public class Shop : MonoBehaviour
         inv = GameObject.FindGameObjectWithTag("Inventory");
         inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
         LoadGrid1();
-        player = GameObject.FindGameObjectWithTag("Player");
-        player.SetActive(false);
-        //player.enabled = false;
     }
 
     void Leave()
     {
         if (Input.GetButtonDown("Cancel"))
         {
-            //player.SetActive(true);
             SavedPositionManager.lastScene = 1;
             SceneManager.LoadScene(0, LoadSceneMode.Single);
         }
@@ -67,7 +64,7 @@ public class Shop : MonoBehaviour
         if (Input.GetButtonDown("Interact"))
         {
             item = rows[currentY][currentX].gameObject;
-            addItem(item);
+            buyItem(item);
         }
         Leave();            
     }
@@ -110,28 +107,44 @@ public class Shop : MonoBehaviour
         return list;
     }
 
-    public void addItem(GameObject _item)
+    public void buyItem(GameObject _item)
     {
-        for(int i = 0; i - 1 < inventory.slots.Length; i++)
+        if (PlayerBodymon.player.Coins >= _item.GetComponent<Item>().Cost)
         {
-            if (!inventory.isFull[i])
+            for (int i = 0; i - 1 < inventory.slots.Length; i++)
             {
-                inventory.isFull[i] = true;
+                if (!inventory.isFull[i])
+                {
+                    addItem(i, _item);
 
-                BoxCollider2D temp = inventory.slots[i].gameObject.GetComponent<BoxCollider2D>();
-                          
-                GameObject go = Instantiate(_item, inventory.slots[i].transform.position, new Quaternion(), inventory.slots[i].transform) as GameObject;
-                
-                Renderer rend = go.GetComponentInChildren<SpriteRenderer>();
-                go.transform.localScale = new Vector3(temp.bounds.size.x / rend.bounds.size.x - 0.1f,
-                    temp.bounds.size.y / rend.bounds.size.y - 0.1f, 1);
-                rend.sortingOrder = 101;
-
-                rend.enabled = inventory.visible;
-
-                break;
+                    break;
+                }
             }
+            PlayerBodymon.player.Coins -= _item.GetComponent<Item>().Cost;
+            Canvas.ForceUpdateCanvases();
         }
+        else
+        {
+            Debug.Log("Dir Fehlen: " + (PlayerBodymon.player.Coins - _item.GetComponent<Item>().Cost)*-1 + " Coins");
+        }
+    }
+
+    public void addItem(int i, GameObject _item)
+    {
+        inventory.isFull[i] = true;
+
+
+        BoxCollider2D temp = inventory.slots[i].gameObject.GetComponent<BoxCollider2D>();
+
+        GameObject go = Instantiate(_item, inventory.slots[i].transform.position, new Quaternion(), inventory.slots[i].transform) as GameObject;
+
+        Renderer rend = go.GetComponentInChildren<SpriteRenderer>();
+        go.transform.localScale = new Vector3(temp.bounds.size.x / rend.bounds.size.x - 0.1f,
+            temp.bounds.size.y / rend.bounds.size.y - 0.1f, 1);
+        rend.sortingOrder = 101;
+
+        rend.enabled = inventory.visible;
+        inventory.items[i] = go.GetComponent<Item>().item;
     }
 }
 

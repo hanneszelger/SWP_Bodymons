@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 [CreateAssetMenu(menuName = "ScriptableObject/Items", fileName = "Item", order = 0)]
 public class Items : ScriptableObject
 {
     public string PrefabName;
+    public GameObject prefab;
     public string Name;
     public Sprite Icon;
     public int Cost;
@@ -30,7 +32,7 @@ public class ItemBuff
     //    value = _value;
     //}
 }
-
+[SerializeField]
 public enum Buffstyle
 {
     Strenght,

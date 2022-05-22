@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Band
   m_EditorClassIdentifier: 
   PrefabName: Band
+  prefab: {fileID: 1714623859101337761, guid: 6ca6c25078225dd4ab5b892d03df02bc, type: 3}
   Name: Band
   Icon: {fileID: 0}
   Cost: 100

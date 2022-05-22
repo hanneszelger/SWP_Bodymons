@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Belt
   m_EditorClassIdentifier: 
   PrefabName: SumoRingerBelt
+  prefab: {fileID: 7943331468801354194, guid: a1ee300e0ba531d46821edf9f7c2ea0c, type: 3}
   Name: belt
   Icon: {fileID: 21300000, guid: e2ff815d939360e4b90b83d568cb9342, type: 3}
   Cost: 500

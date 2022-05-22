@@ -5,24 +5,48 @@ public class Inventory : MonoBehaviour
     public bool[] isFull;
     public GameObject[] slots;
     private SpriteRenderer[] sr;
+    public Items[] items;
     public bool visible;
 
-    private Bodymon player;
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Bodymon>();
+        //player = go.GetComponent<Bodymon>();
         sr = gameObject.GetComponentsInChildren<SpriteRenderer>();
 
         isFull = new bool[slots.Length];
-        for (int i = 0; i < isFull.Length; i++)
+        items = new Items[slots.Length];
+
+        for(int i = 0; i < slots.Length; i++)
         {
-            if (slots[i].gameObject.tag.Equals("EmptyItem"))
-            {
-                isFull[i] = false;
-            }
+            isFull[i] = false;
         }
         SetVisible(false);
+
+        SaveGame.Load("invItems", this);
+
+        Shop temp = new Shop();
+        temp.inventory = this;
+
+        for (int j = 0; j - 1 < items.Length; j++)
+        {
+            try
+            {
+                if (this.isFull[j])
+                {
+                    GameObject goTemp = items[j].prefab;
+
+                    temp.inventory = this;
+
+                    temp.addItem(j ,goTemp);
+                    Debug.Log(goTemp.name);
+                }
+            }
+            catch
+            {
+                Debug.Log("Error");
+            }
+        }
     }
 
     // Update is called once per frame
@@ -75,26 +99,27 @@ public class Inventory : MonoBehaviour
         if ((float)slots[i].transform.childCount != 0)
         {
             int alreadyActive = -1;
-            Item item = slots[i].transform.GetChild(0).GetComponent<Item>();
+            Items item = slots[i].transform.GetChild(0).GetComponent<Item>().item;
 
 
-            for (int j = 0; j < item.ItemBuffs.Count; j++)
-            {
-                alreadyActive = player.ActiveItems.FindIndex(f => f.PrefabName == item.PrefabName);
-                Debug.Log(alreadyActive);
-                if (alreadyActive == -1) break;
 
 
-                Debug.Log("runs");
-                //int index = activeItem.ItemBuffs.FindIndex(f => f.Buffstyle == item.ItemBuffs[j].Buffstyle);
-            }
+
+            alreadyActive = PlayerBodymon.player.Items.FindIndex(f => f == item);
+            Debug.Log(alreadyActive);
+
+
+            Debug.Log("runs");
+            //int index = activeItem.ItemBuffs.FindIndex(f => f.Buffstyle == item.ItemBuffs[j].Buffstyle);
+
 
             if (alreadyActive == -1)
             {
-                player.ActiveItems.Add(item.item);
+                PlayerBodymon.player.Items.Add(item);
                 Inventory.Destroy(slots[i].transform.GetChild(0).gameObject);
                 Debug.Log(item.Name + " wurde verwendet!");
                 isFull[i] = false;
+                items[i] = null;
             }
             else
             {
@@ -106,6 +131,8 @@ public class Inventory : MonoBehaviour
 
     private void OnDestroy()
     {
-        //SaveGame.SaveInventoryItems();
+        SaveGame.Save("invItems", JsonUtility.ToJson(this));
+        //Debug.Log(JsonUtility.ToJson(this));
+        //Debug.Log(JsonUtility.ToJson(isFull));
     }
 }

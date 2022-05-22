@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: BadeSalz
   m_EditorClassIdentifier: 
   PrefabName: BadeSalz
+  prefab: {fileID: 313402148660678692, guid: cd6555c22d449ac418a2d5fcb430b4a8, type: 3}
   Name: BadeSalz
   Icon: {fileID: 0}
   Cost: 10
