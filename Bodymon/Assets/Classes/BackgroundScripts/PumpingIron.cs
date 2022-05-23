@@ -58,14 +58,16 @@ public class PumpingIron : MonoBehaviour
                 string message = "";
                 for (int i = 0; i < MuscleXValue.Count; i++)
                 {
-                    PropertyInfo propInf = player.Muscles.GetType().GetProperty(MuscleXValue[i].MuscleName);
+                    //Debug.Log(MuscleXValue[i].MuscleName);
+                    PropertyInfo propInf = PlayerBodymon.player.Muscles.GetType().GetProperty(MuscleXValue[i].MuscleName);
+
                     float calcValue = (float)(loadingBar.value < 0.5 ? 0 : loadingBar.value * MuscleXValue[i].MaxGainsPerLevel);
 
-                    propInf.SetValue(player.Muscles, (double)calcValue + +(double)propInf.GetValue(player.Muscles, null), null);
+                    propInf.SetValue(PlayerBodymon.player.Muscles, (double)calcValue + +(double)propInf.GetValue(PlayerBodymon.player.Muscles, null), null);
                     message += "+" + string.Format("{0:F1}", calcValue) + " " + MuscleXValue[i].MuscleName + "\n";
 
                 }
-                Debug.Log(player.Muscles.Chest + ";" + player.Muscles.Abdominals);
+                //Debug.Log(PlayerBodymon.player.Muscles.Chest + ";" + PlayerBodymon.player.Muscles.Abdominals);
                 progressMade.text = message;
                 StartCoroutine(showText());
 
