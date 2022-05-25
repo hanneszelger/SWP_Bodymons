@@ -8,11 +8,10 @@ using System.Threading.Tasks;
 
 public class Shop : MonoBehaviour
 {
-    public Inventory inventory;
+    [HideInInspector]
+    public Inventory inventory = new Inventory();
     private GameObject item;
     private GameObject player;
-
-    private GameObject inv;
 
     public GameObject fire;
     public GameObject arrow;
@@ -31,7 +30,6 @@ public class Shop : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        inv = GameObject.FindGameObjectWithTag("Inventory");
         inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
         LoadGrid1();
     }
@@ -111,17 +109,19 @@ public class Shop : MonoBehaviour
     {
         if (PlayerBodymon.player.Coins >= _item.GetComponent<Item>().Cost)
         {
-            for (int i = 0; i - 1 < inventory.slots.Length; i++)
+            Debug.Log(inventory.slots.Count);
+            for (int i = 0; i < inventory.slots.Count; i++)
             {
                 if (!inventory.isFull[i])
                 {
                     addItem(i, _item);
-
+                    Debug.Log("BOUGHT");
+                    PlayerBodymon.player.Coins -= _item.GetComponent<Item>().Cost;
+                    Canvas.ForceUpdateCanvases();
                     break;
                 }
             }
-            PlayerBodymon.player.Coins -= _item.GetComponent<Item>().Cost;
-            Canvas.ForceUpdateCanvases();
+            
         }
         else
         {
@@ -147,4 +147,3 @@ public class Shop : MonoBehaviour
         inventory.items[i] = go.GetComponent<Item>().item;
     }
 }
-

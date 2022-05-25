@@ -1,9 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
     public bool[] isFull;
-    public GameObject[] slots;
+    [NonSerialized]
+    public List<GameObject> slots = new List<GameObject>();
     private SpriteRenderer[] sr;
     public Items[] items;
     public bool visible;
@@ -13,20 +16,21 @@ public class Inventory : MonoBehaviour
     {
         //player = go.GetComponent<Bodymon>();
         sr = gameObject.GetComponentsInChildren<SpriteRenderer>();
-
-        isFull = new bool[slots.Length];
-        items = new Items[slots.Length];
-
-        for(int i = 0; i < slots.Length; i++)
-        {
-            isFull[i] = false;
-        }
-        SetVisible(false);
+        Transform[] childs = gameObject.GetComponentsInChildren<Transform>();
 
         SaveGame.Load("invItems", this);
 
         Shop temp = new Shop();
         temp.inventory = this;
+
+        for (int i = 0; i < childs.Length; i++)
+        {
+            if (childs[i].tag.Equals("slot"))
+            {
+                //Debug.Log(childs);
+                slots.Add(childs[i].gameObject);
+            }
+        }
 
         for (int j = 0; j - 1 < items.Length; j++)
         {
@@ -38,8 +42,7 @@ public class Inventory : MonoBehaviour
 
                     temp.inventory = this;
 
-                    temp.addItem(j ,goTemp);
-                    Debug.Log(goTemp.name);
+                    temp.addItem(j, goTemp);
                 }
             }
             catch
@@ -47,6 +50,7 @@ public class Inventory : MonoBehaviour
                 Debug.Log("Error");
             }
         }
+        SetVisible(false);
     }
 
     // Update is called once per frame
