@@ -17,6 +17,7 @@ public class Menu : MonoBehaviour
 
     public AudioSource soundSource;
     public Text soundText;
+    public Image Zyzz;
 
     public Text invertText;
     public Text distanceText;
@@ -29,6 +30,7 @@ public class Menu : MonoBehaviour
     void Start()
     {
         ChangeText();
+        Zyzz.enabled = false;
     }
 
     public void ChangeText()
@@ -57,6 +59,19 @@ public class Menu : MonoBehaviour
         optionsMenu.SetActive(false);
         mainMenu.SetActive(true);
         ChangeText();
+    }
+
+    public void ToggleZyzz()
+    {
+        if(!Zyzz.enabled)
+            StartCoroutine(ShowZyzzXSec(2));
+    }
+
+    public IEnumerator ShowZyzzXSec(byte seconds)
+    {
+        Zyzz.enabled = true;
+        yield return new WaitForSeconds(seconds);
+        Zyzz.enabled = false;
     }
 
     public void SwitchMusic()
