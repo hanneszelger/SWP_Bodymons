@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.Playables;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,19 +12,49 @@ public class Fight : MonoBehaviour
     public Bodymons EnemyBodymon;
     public static string TypeOfAttack;
 
-    public Button ButtonForAttack1;
+    bool playerTurn;
+
+    public List<Button> AttackButtons;
 
     void Start()
     {
         LoadPlayers();
+        playerTurn = true;
 
         //Button btn = ButtonForAttack1.GetComponent<Button>();
-        ButtonForAttack1.onClick.AddListener(() => { Attack(Bodymon.Muscles, EnemyBodymon.Muscles, "fight_FrontDoubleBiceps"); });
         //Debug.Log(ButtonForAttack1.tag);
+
+    }
+
+    static T GetRandomEnum<T>()
+    {
+        System.Array A = System.Enum.GetValues(typeof(T));
+        T V = (T)A.GetValue(UnityEngine.Random.Range(0, A.Length));
+        return V;
+    }
+
+    public void EnemyTurn()
+    {
+        Attack(Bodymon.Muscles, EnemyBodymon.Muscles, GetRandomEnum<AttackType>());
+    }
+
+    public void ReassignValues()
+    {
+        foreach (Button b in AttackButtons)
+        {
+            ButtonInfo binf = b.GetComponent<ButtonInfo>();
+            //b.onClick.AddListener(() => { Attack(Bodymon.Muscles, EnemyBodymon.Muscles, b.tag); });
+            //b.onClick.AddListener(() => { Debug.Log(b.tag); });
+            //Debug.Log(b.tag);
+
+            b.onClick.RemoveAllListeners();
+            binf.SetText(binf.TypeOfAttack.ToString());
+            b.onClick.AddListener(() => { Attack(Bodymon.Muscles, EnemyBodymon.Muscles, binf.TypeOfAttack); });
+        }
     }
 
 
-    public void Attack(MuscleSet BodymonMS, MuscleSet EnemyBodymonMS, string TypeOfAttack)
+    public void Attack(MuscleSet BodymonMS, MuscleSet EnemyBodymonMS, AttackType attackType)
     {
         List<Calculator> lstAlly = new List<Calculator>();
         List<Calculator> lstEnemy = new List<Calculator>();
@@ -35,28 +67,31 @@ public class Fight : MonoBehaviour
         double[] enemyMultiplier = new double[3];
 
         //Recognise what kind of attack was chosen
-        switch (TypeOfAttack)
+        switch (attackType)
         {
-            case "fight_FrontDoubleBiceps":
+            case AttackType.frontDoubleBiceps:
                 propertyNames = new string[] { "Biceps", "Lat", "Abdominals" };
                 allyMultiplier = new double[] { 1.15, 0.45, 0.5 };
                 enemyMultiplier = new double[] { 1, 0.3, 0.5 };
                 break;
-            case "LatSpread":
-
+            case AttackType.SideChest:
+                propertyNames = new string[] { "Chest", "Biceps", "Abdominals" };
+                allyMultiplier = new double[] { 1.75, 1.05, 0.3 };
+                enemyMultiplier = new double[] { 1.5, 1, 0.3 };
                 break;
-            case "SideChest":
+            //case "LatSpread":
 
-                break;
-            case "QuadStomp":
+            //    break;
+            
+            //case "QuadStomp":
 
-                break;
-            case "BackDoubleBiceps":
+            //    break;
+            //case "BackDoubleBiceps":
 
-                break;
-            case "DorianEagle":
+            //    break;
+            //case "DorianEagle":
 
-                break;
+            //    break;
         }
 
         for (int i = 0; i < propertyNames.Length; i++)
@@ -115,76 +150,8 @@ public class Fight : MonoBehaviour
         EnemyBodymon = Resources.Load<Bodymons>("Enemies/JayCuttler");
         //JsonUtility.FromJsonOverwrite(PlayerPrefs.GetString("markusRühl_bodymon"), EnemyBodymon);
     }
-
-
-    #region old
-    //public static double FrontDoubleBiceps(MuscleSet BodymonParameter, MuscleSet EnemyBodymon)
-    //{
-    //	//allied bodymon 
-    //	double ValueDamage = BodymonParameter.Biceps * 1.15 + BodymonParameter.Lat * 0.45 + BodymonParameter.Abdominals * 0.5;
-    //	//enemy bodymon
-    //	double ValueDamageFromEnemy = EnemyBodymon.Biceps * 1 + EnemyBodymon.Lat * 0.3 + EnemyBodymon.Abdominals * 0.5;
-    //	//total damage, that will be dealt to enemy 
-    //	double TotalDamage = ValueDamage - ValueDamageFromEnemy;
-    //	return TotalDamage;
-    //}
-
-    //public static double LatSpread(Bodymon BodymonParameter, Bodymon EnemyBodymon)
-    //{
-    //	//allied bodymon 
-    //	double ValueDamage = BodymonParameter.Muscles.Biceps * 0.6 + BodymonParameter.Muscles.Lat * 1.75 + BodymonParameter.Muscles.Abdominals * 1;
-    //	//enemy bodymon
-    //	double ValueDamageFromEnemy = EnemyBodymon.Muscles.Biceps * 0.4 + EnemyBodymon.Muscles.Lat * 1.25 + EnemyBodymon.Muscles.Abdominals * 0.5;
-    //	//total damage, that will be dealt to enemy 
-    //	double TotalDamage = ValueDamage - ValueDamageFromEnemy;
-    //	return TotalDamage;
-    //}
-
-    //public static double SideChest(Bodymon BodymonParameter, Bodymon EnemyBodymon)
-    //{
-    //	//allied bodymon 
-    //	double ValueDamage = BodymonParameter.Muscles.Biceps * 0.75 + BodymonParameter.Muscles.Lat * 0.1 + BodymonParameter.Muscles.Chest * 2;
-    //	//enemy bodymon
-    //	double ValueDamageFromEnemy = EnemyBodymon.Muscles.Biceps * 0.25 + EnemyBodymon.Muscles.Lat * 0.01 + EnemyBodymon.Muscles.Chest * 1.5;
-    //	//total damage, that will be dealt to enemy 
-    //	double TotalDamage = ValueDamage - ValueDamageFromEnemy;
-    //	return TotalDamage;
-    //}
-
-    //public static double QuadStomp(Bodymon BodymonParameter, Bodymon EnemyBodymon)
-    //{
-    //	//allied bodymon 
-    //	double ValueDamage = BodymonParameter.Muscles.Quads * 2 + BodymonParameter.Muscles.Lat * 0.5 + BodymonParameter.Muscles.Abdominals * 0.75;
-    //	//enemy bodymon
-    //	double ValueDamageFromEnemy = EnemyBodymon.Muscles.Quads * 1 + EnemyBodymon.Muscles.Lat * 0.35 + EnemyBodymon.Muscles.Abdominals * 0.6;
-    //	//total damage, that will be dealt to enemy 
-    //	double TotalDamage = ValueDamage - ValueDamageFromEnemy;
-    //	return TotalDamage;
-    //}
-
-    //public static double BackDoubleBiceps(Bodymon BodymonParameter, Bodymon EnemyBodymon)
-    //{
-    //	//allied bodymon 
-    //	double ValueDamage = BodymonParameter.Muscles.Biceps * 1.5 + BodymonParameter.Muscles.Lat * 2 + BodymonParameter.Muscles.Quads * 0.1;
-    //	//enemy bodymon
-    //	double ValueDamageFromEnemy = EnemyBodymon.Muscles.Biceps * 0.5 + EnemyBodymon.Muscles.Lat * 1 + EnemyBodymon.Muscles.Abdominals * 0.01;
-    //	//total damage, that will be dealt to enemy 
-    //	double TotalDamage = ValueDamage - ValueDamageFromEnemy;
-    //	return TotalDamage;
-    //}
-
-    //public static double DorianEagle(Bodymon BodymonParameter, Bodymon EnemyBodymon)
-    //{
-    //	//allied bodymon 
-    //	double ValueDamage = BodymonParameter.Muscles.Biceps * 1 + BodymonParameter.Muscles.Lat * 1.5 + BodymonParameter.Muscles.Abdominals * 0.2;
-    //	//enemy bodymon
-    //	double ValueDamageFromEnemy = EnemyBodymon.Muscles.Biceps * 0.5 + EnemyBodymon.Muscles.Lat * 0.5 + EnemyBodymon.Muscles.Abdominals * 0.1;
-    //	//total damage, that will be dealt to enemy 
-    //	double TotalDamage = ValueDamage - ValueDamageFromEnemy;
-    //	return TotalDamage;
-    //}
-    #endregion
 }
+
 public class Calculator
 {
     public double MuscleValue { get; set; }
