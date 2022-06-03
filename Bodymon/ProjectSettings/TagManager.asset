@@ -21,6 +21,7 @@ TagManager:
   - Coins
   - ui_coins
   - slot
+  - Music
   layers:
   - Default
   - TransparentFX

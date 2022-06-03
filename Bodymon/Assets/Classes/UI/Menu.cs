@@ -8,6 +8,7 @@ public class Menu : MonoBehaviour
 {
     public GameObject mainMenu;
     public GameObject optionsMenu;
+    public static bool MainTracks = true;
 
     public Text label;
 
@@ -81,11 +82,13 @@ public class Menu : MonoBehaviour
         {
             musicSource.volume = 0;
             musicText.text = "Musik: AUS";
+            MainTracks = false;
         }
         else
         {
             musicSource.volume = 1;
             musicText.text = "Musik: AN";
+            MainTracks = true;
         }
     }
 
