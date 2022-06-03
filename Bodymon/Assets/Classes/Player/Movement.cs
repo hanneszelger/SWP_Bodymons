@@ -17,6 +17,8 @@ public class Movement : MonoBehaviour
     public float speed;
     public Animator animator;
 
+    
+
     private void Start()
     {
         cam = Camera.main;
@@ -31,6 +33,7 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
+        
         //Left/A = -1, none = 0, Right/D = 1
         horizontal = Input.GetAxisRaw("Horizontal");
 
@@ -43,6 +46,15 @@ public class Movement : MonoBehaviour
         animator.SetFloat("Horizontal", horizontal);
         animator.SetFloat("Vertical", vertical);
         animator.SetFloat("Speed", move.sqrMagnitude);
+
+        if (horizontal != 0 || vertical != 0 || move.sqrMagnitude != 0 && GetComponent<AudioSource>().isPlaying == false)
+        {
+            GetComponent<AudioSource>().UnPause();
+        }
+        else
+        {
+            GetComponent<AudioSource>().Pause();
+        }
     }
 
     private void FixedUpdate()

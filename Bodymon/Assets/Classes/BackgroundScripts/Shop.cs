@@ -63,6 +63,7 @@ public class Shop : MonoBehaviour
         {
             item = rows[currentY][currentX].gameObject;
             buyItem(item);
+            GetComponent<AudioSource>().Play();
         }
         Leave();            
     }
