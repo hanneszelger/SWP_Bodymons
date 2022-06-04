@@ -1,4 +1,7 @@
+using DigitalRuby.LightningBolt;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Movement : MonoBehaviour
 {
@@ -16,11 +19,15 @@ public class Movement : MonoBehaviour
     //public allows to edit its value in Unity
     public float speed;
     public Animator animator;
+    
 
     
 
+
+
     private void Start()
     {
+        WaitForThunder.toggleGUI(true);
         cam = Camera.main;
         camHeight = cam.orthographicSize;
         camWidth = camHeight * 2;
@@ -29,6 +36,10 @@ public class Movement : MonoBehaviour
         camRigid = cam.GetComponent<Rigidbody2D>();
 
         camRigid.position = transform.position;
+
+        
+        //progressMade.CrossFadeAlpha(0, 0, false);
+        
     }
 
     private void Update()
@@ -57,9 +68,8 @@ public class Movement : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.B))
         {
-            GameObject gameObject_player = GameObject.FindWithTag("Player");
-            gameObject_player.transform.position = new Vector3(-13.77f, 1.3f, -2);
-            cam.transform.position = new Vector3(-13.5f, 1.68f, -10);
+            WaitForThunder.toggleGUI(false);
+            StartCoroutine(GameObject.Find("Thunder").GetComponent<WaitForThunder>().TimerRoutine());
         }
     }
 
@@ -81,6 +91,6 @@ public class Movement : MonoBehaviour
         }
     }
 
-   
+
 
 }

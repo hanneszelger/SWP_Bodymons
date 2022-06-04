@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>9.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -53,10 +53,14 @@
     <UnityVersion>2021.2.2f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Assets\Classes\SaveGame.cs" />
     <Compile Include="Assets\Classes\BackgroundScripts\Shop.cs" />
     <Compile Include="Assets\Classes\Player\Movement.cs" />
     <Compile Include="Assets\Classes\UI\Menu.cs" />
+    <Compile Include="Assets\Classes\BackgroundScripts\WaitForThunder.cs" />
     <Compile Include="Assets\Classes\Items\Items.cs" />
     <Compile Include="Assets\Classes\Items\Item.cs" />
     <Compile Include="Assets\Classes\SceneManagement\SaveAndRestorePosition.cs" />
@@ -65,6 +69,7 @@
     <Compile Include="Assets\Classes\Player\Inventory.cs" />
     <Compile Include="Assets\Classes\SceneManagement\ChangeScene.cs" />
     <Compile Include="Assets\Classes\Player\Bodymon.cs" />
+    <Compile Include="Assets\LightningBolt\LightningBoltScript.cs" />
     <Compile Include="Assets\Classes\Player\MuscleSet.cs" />
     <Compile Include="Assets\Classes\SceneManagement\SavedPositionManager.cs" />
     <Compile Include="Assets\Classes\Dialogs\DialogueManagerDealer.cs" />
@@ -76,6 +81,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Graphics\Battles\pokemon_pixel_font\readme.txt" />
+    <None Include="Assets\LightningBolt\Readme.txt" />
     <None Include="Assets\Hovl Studio\Procedural fire\Shaders\FireSphere.shader" />
     <None Include="Assets\Hovl Studio\Procedural fire\Demo scene\Readme.txt" />
   </ItemGroup>
