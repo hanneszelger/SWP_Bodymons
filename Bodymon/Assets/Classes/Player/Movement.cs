@@ -55,6 +55,12 @@ public class Movement : MonoBehaviour
         {
             GetComponent<AudioSource>().Pause();
         }
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            GameObject gameObject_player = GameObject.FindWithTag("Player");
+            gameObject_player.transform.position = new Vector3(-13.77f, 1.3f, -2);
+            cam.transform.position = new Vector3(-13.5f, 1.68f, -10);
+        }
     }
 
     private void FixedUpdate()
@@ -75,14 +81,6 @@ public class Movement : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-    }
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if (collision.collider.CompareTag("wall"))
-    //    {
+   
 
-    //    }
-    //}
 }

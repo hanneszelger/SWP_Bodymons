@@ -121,4 +121,13 @@ public class Menu : MonoBehaviour
             distanceText.text = "Render Distanz: WEIT";
         }
     }
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            optionsMenu.SetActive(false);
+            mainMenu.SetActive(true);
+            ChangeText();
+        }
+    }
 }
