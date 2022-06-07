@@ -21,6 +21,7 @@ public static class SavedPositionManager // Static class to remember player posi
         {
             6, new Vector3(-6f, 40.6f, -2)
         },
+        
 
     };
     public static int lastScene;

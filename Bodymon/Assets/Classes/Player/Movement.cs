@@ -1,6 +1,7 @@
 using DigitalRuby.LightningBolt;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Movement : MonoBehaviour
@@ -27,7 +28,10 @@ public class Movement : MonoBehaviour
 
     private void Start()
     {
-        WaitForThunder.toggleGUI(true);
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            WaitForThunder.toggleGUI(true); 
+        }
         cam = Camera.main;
         camHeight = cam.orthographicSize;
         camWidth = camHeight * 2;
@@ -66,7 +70,7 @@ public class Movement : MonoBehaviour
         {
             GetComponent<AudioSource>().Pause();
         }
-        if (Input.GetKeyDown(KeyCode.B))
+        if (Input.GetKeyDown(KeyCode.B) && SceneManager.GetActiveScene().buildIndex == 0)
         {
             WaitForThunder.toggleGUI(false);
             StartCoroutine(GameObject.Find("Thunder").GetComponent<WaitForThunder>().TimerRoutine());

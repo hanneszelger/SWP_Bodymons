@@ -18,6 +18,8 @@ public class PumpingIron : MonoBehaviour
     private float currCountdownValue;
     private bool currentlyRunning;
 
+    private AudioSource lightweight;
+
     private List<MuscleXGains> MuscleXValue;
 
 
@@ -35,9 +37,12 @@ public class PumpingIron : MonoBehaviour
 
     void Update()
     {
+        
         if (Input.GetButtonDown("Interact") && inRange && !currentlyRunning)
         {
+            
             loadingPanel.SetActive(true);
+           
             StartCoroutine(Progress(10));
 
         }
@@ -66,6 +71,11 @@ public class PumpingIron : MonoBehaviour
                     propInf.SetValue(PlayerBodymon.player.Muscles, (double)calcValue + +(double)propInf.GetValue(PlayerBodymon.player.Muscles, null), null);
                     message += "+" + string.Format("{0:F1}", calcValue) + " " + MuscleXValue[i].MuscleName + "\n";
 
+                    if(loadingBar.value == 1)
+                    {
+                        lightweight = GameObject.Find("LightweightBaby").GetComponent<AudioSource>();
+                        lightweight.Play();
+                    }
                 }
                 //Debug.Log(PlayerBodymon.player.Muscles.Chest + ";" + PlayerBodymon.player.Muscles.Abdominals);
                 progressMade.text = message;
@@ -87,11 +97,13 @@ public class PumpingIron : MonoBehaviour
 
     public IEnumerator Progress(float countdownValue)
     {
+        
         currCountdownValue = countdownValue;
         currentlyRunning = true;
         while (currCountdownValue > 0)
         {
-            //Debug.Log("Countdown: " + currCountdownValue);
+
+            Debug.Log("Countdown: " + currCountdownValue);
             loadingBar.value = (countdownValue - currCountdownValue + 1) / countdownValue;
             yield return new WaitForSeconds(0.2f);
             currCountdownValue--;

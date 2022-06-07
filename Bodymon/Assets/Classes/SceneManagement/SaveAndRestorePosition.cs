@@ -9,14 +9,15 @@ public class SaveAndRestorePosition : MonoBehaviour
     private bool resume = false;
     AudioClip lastClip;
     Vector3 lastpo = LookForESC.Vector3;
+    public static int lastSceneForMenu;
     
     void Start() // Check if we've saved a position for this scene; if so, go there.
     {
         if (Maintracks)
         {
-            if (!resume)
+            if (SceneManager.GetActiveScene().buildIndex == 0)
             {
-                soundSource.PlayOneShot(RandomClip()); 
+                soundSource.PlayOneShot(RandomClip());
             }
             soundSource.Play();
         }
@@ -25,7 +26,7 @@ public class SaveAndRestorePosition : MonoBehaviour
             soundSource.Stop();
         }
 
-        if (SavedPositionManager.lastScene != 5)
+        if (SavedPositionManager.lastScene != 5 && SavedPositionManager.lastScene != 0)
         {
             transform.position = SavedPositionManager.savedPositions[SavedPositionManager.lastScene];
         }
@@ -39,7 +40,7 @@ public class SaveAndRestorePosition : MonoBehaviour
     {
         
         SavedPositionManager.lastScene = SceneManager.GetActiveScene().buildIndex;
-        
+        lastSceneForMenu = SceneManager.GetActiveScene().buildIndex;
         //soundSource.Stop();
     }
     AudioClip RandomClip()

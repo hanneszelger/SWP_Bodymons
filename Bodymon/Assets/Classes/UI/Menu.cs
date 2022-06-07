@@ -42,7 +42,9 @@ public class Menu : MonoBehaviour
 
     public void NewLevel()
     {
-        SceneManager.LoadScene(0, LoadSceneMode.Single);
+       
+        SceneManager.LoadScene(SaveAndRestorePosition.lastSceneForMenu, LoadSceneMode.Single); 
+        
     }
 
     public void LoadLevel()
