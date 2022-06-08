@@ -47,7 +47,7 @@ public class Inventory : MonoBehaviour
             }
             catch
             {
-                Debug.Log("Error");
+                //Debug.Log("Error");
             }
         }
         SetVisible(false);

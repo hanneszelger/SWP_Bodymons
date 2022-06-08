@@ -21,6 +21,7 @@ TagManager:
   - Coins
   - ui_coins
   - slot
+  - gym_squat
   layers:
   - Default
   - TransparentFX

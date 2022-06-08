@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LangVersion>9.0</LangVersion>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -47,32 +47,35 @@
   <PropertyGroup>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Package</UnityProjectGenerator>
-    <UnityProjectGeneratorVersion>2.0.14</UnityProjectGeneratorVersion>
+    <UnityProjectGeneratorVersion>2.0.11</UnityProjectGeneratorVersion>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>2021.2.2f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Assets\Classes\SceneManagement\ChangeScene.cs" />
-    <Compile Include="Assets\Classes\Player\Bodymon.cs" />
     <Compile Include="Assets\Classes\SaveGame.cs" />
     <Compile Include="Assets\Classes\BackgroundScripts\Shop.cs" />
     <Compile Include="Assets\Classes\Player\Movement.cs" />
+    <Compile Include="Assets\Classes\UI\Menu.cs" />
+    <Compile Include="Assets\Classes\FIght\ButtonInfo.cs" />
+    <Compile Include="Assets\Classes\Items\Items.cs" />
+    <Compile Include="Assets\Classes\Items\Item.cs" />
+    <Compile Include="Assets\Classes\SceneManagement\SaveAndRestorePosition.cs" />
+    <Compile Include="Assets\Menu.cs" />
+    <Compile Include="Assets\Classes\BackgroundScripts\GYM\PumpingIron.cs" />
+    <Compile Include="Assets\Classes\Player\Inventory.cs" />
+    <Compile Include="Assets\Classes\SceneManagement\ChangeScene.cs" />
+    <Compile Include="Assets\Classes\Player\Bodymon.cs" />
     <Compile Include="Assets\Classes\Player\MuscleSet.cs" />
     <Compile Include="Assets\Classes\SceneManagement\SavedPositionManager.cs" />
     <Compile Include="Assets\Classes\Dialogs\DialogueManagerDealer.cs" />
-    <Compile Include="Assets\Classes\Items\Items.cs" />
-    <Compile Include="Assets\Classes\Items\Item.cs" />
     <Compile Include="Assets\Classes\Player\Bodymons.cs" />
-    <Compile Include="Assets\Classes\SceneManagement\SaveAndRestorePosition.cs" />
     <Compile Include="Assets\Classes\UI\Stats.cs" />
     <Compile Include="Assets\Classes\Dialogs\DialogueManager.cs" />
     <Compile Include="Assets\Classes\BackgroundScripts\Fight.cs" />
-    <Compile Include="Assets\Classes\BackgroundScripts\PumpingIron.cs" />
-    <Compile Include="Assets\Classes\Player\Inventory.cs" />
+    <Compile Include="Assets\TicTacToe\Scripts\TicTacToeSettings.cs" />
+    <Compile Include="Assets\TicTacToe\Scripts\TicTacToeController.cs" />
+    <Compile Include="Assets\Classes\BackgroundScripts\GYM\ChildMachine.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Graphics\Battles\pokemon_pixel_font\readme.txt" />
@@ -280,6 +283,9 @@
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@2.0.0\Runtime\AOT\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
+      <HintPath>Library\PackageCache\com.unity.visualscripting@1.7.5\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>D:\Unity\Editor\2021.2.2f1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>
@@ -649,21 +655,29 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Unity.Postprocessing.Runtime.Player.csproj">
-      <Project>{DA71C0E4-36D2-6D86-03D5-9BBC65A12CC0}</Project>
-      <Name>Unity.Postprocessing.Runtime.Player</Name>
+    <ProjectReference Include="Unity.Timeline.csproj">
+      <Project>{20E2FAC1-F1D9-D7B9-220A-44DB069C9F40}</Project>
+      <Name>Unity.Timeline</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.Timeline.Player.csproj">
-      <Project>{F7E0D6C5-711B-E289-6D95-DB1D1A6A3567}</Project>
-      <Name>Unity.Timeline.Player</Name>
+    <ProjectReference Include="Unity.TextMeshPro.csproj">
+      <Project>{BD97F034-4F4D-27BD-67E6-0FFB7C0D8C82}</Project>
+      <Name>Unity.TextMeshPro</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.TextMeshPro.Player.csproj">
-      <Project>{23EEAE12-DEDA-97A2-D4D0-3C05EBA56837}</Project>
-      <Name>Unity.TextMeshPro.Player</Name>
+    <ProjectReference Include="Unity.VisualScripting.Flow.csproj">
+      <Project>{DF7CFB67-89F4-1449-FDB6-C4BF5B3DA2CC}</Project>
+      <Name>Unity.VisualScripting.Flow</Name>
     </ProjectReference>
-    <ProjectReference Include="UnityEngine.UI.Player.csproj">
-      <Project>{E26B78F4-DF29-F4DC-D0A3-964637FC23F0}</Project>
-      <Name>UnityEngine.UI.Player</Name>
+    <ProjectReference Include="UnityEngine.UI.csproj">
+      <Project>{113276E7-E08A-ECA7-AE8E-1204CD453C81}</Project>
+      <Name>UnityEngine.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.VisualScripting.State.csproj">
+      <Project>{ADC4515E-606C-31F4-036A-7489E267A273}</Project>
+      <Name>Unity.VisualScripting.State</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.VisualScripting.Core.csproj">
+      <Project>{2454E9F3-C87B-E630-B000-65462B03265E}</Project>
+      <Name>Unity.VisualScripting.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 409842445}
   - component: {fileID: 409842444}
   m_Layer: 5
-  m_Name: Text
+  m_Name: GainzMade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -352,9 +352,10 @@ GameObject:
   - component: {fileID: 1074677686}
   - component: {fileID: 1074677687}
   - component: {fileID: 1074677688}
+  - component: {fileID: 1074677689}
   m_Layer: 0
   m_Name: Squat
-  m_TagString: Untagged
+  m_TagString: gym_squat
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -384,7 +385,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -2.6173644, y: -3.842133}
@@ -415,6 +416,18 @@ MonoBehaviour:
   loadingPanel: {fileID: 0}
   loadingBar: {fileID: 0}
   progressMade: {fileID: 0}
+--- !u!114 &1074677689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074677685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa42a691cac935b44bac0e413816453b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1133866048
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,6 +472,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5827433460893058906, guid: 2cf62e670fee58c4ebaa6f6368093822,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8440121735434883736, guid: 2cf62e670fee58c4ebaa6f6368093822,
         type: 3}
       propertyPath: speed
@@ -553,7 +571,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _Bodymons
       value: 
-      objectReference: {fileID: 11400000, guid: 4c84bd3a67ce2a04fa88485427976030,
+      objectReference: {fileID: 11400000, guid: e81ea6eeeb1d88f4a9b79f05a5da2fc0,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2cf62e670fee58c4ebaa6f6368093822, type: 3}
@@ -625,7 +643,7 @@ Canvas:
   m_GameObject: {fileID: 1258579145}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 1961332075}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -700,6 +718,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1636633122}
   - component: {fileID: 1636633121}
+  - component: {fileID: 1636633123}
   m_Layer: 0
   m_Name: GYM inside
   m_TagString: Untagged
@@ -777,6 +796,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1636633123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1636633120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec9e3f38dea559e479bb9928cbf20f23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadingPanel: {fileID: 1680263895}
+  loadingBar: {fileID: 1952913411}
+  progressMade: {fileID: 409842444}
 --- !u!1 &1680263895
 GameObject:
   m_ObjectHideFlags: 0
@@ -813,7 +847,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -96.74}
+  m_AnchoredPosition: {x: 0, y: -96.73999}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1680263897
@@ -1282,6 +1316,7 @@ GameObject:
   - component: {fileID: 1986525424}
   - component: {fileID: 1986525425}
   - component: {fileID: 1986525426}
+  - component: {fileID: 1986525427}
   m_Layer: 0
   m_Name: bench
   m_TagString: bench
@@ -1337,7 +1372,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1986525423}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec9e3f38dea559e479bb9928cbf20f23, type: 3}
   m_Name: 
@@ -1345,3 +1380,15 @@ MonoBehaviour:
   loadingPanel: {fileID: 1680263895}
   loadingBar: {fileID: 1952913411}
   progressMade: {fileID: 409842444}
+--- !u!114 &1986525427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986525423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa42a691cac935b44bac0e413816453b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
