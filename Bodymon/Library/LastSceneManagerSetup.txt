@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/Gym_Hannes.unity
+- path: Assets/Scenes/MiniGames/Game.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

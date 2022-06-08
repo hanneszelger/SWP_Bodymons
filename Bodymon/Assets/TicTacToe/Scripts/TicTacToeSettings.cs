@@ -59,7 +59,6 @@ public class TicTacToeSettings : MonoBehaviour
         MinigameSave.stillOpen = true;
         Debug.Log(MinigameSave.lastPlayerPosition);
         SceneManager.LoadScene(2, LoadSceneMode.Single);
-
     }
 
     public void CheckIfAnyAiIsActive()

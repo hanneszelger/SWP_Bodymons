@@ -53,6 +53,7 @@
     <UnityVersion>2021.2.2f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Assets\Classes\BackgroundScripts\GYM\ChildMachine.cs" />
     <Compile Include="Assets\Classes\SaveGame.cs" />
     <Compile Include="Assets\Classes\BackgroundScripts\Shop.cs" />
     <Compile Include="Assets\Classes\Player\Movement.cs" />
@@ -64,21 +65,30 @@
     <Compile Include="Assets\Menu.cs" />
     <Compile Include="Assets\Classes\BackgroundScripts\GYM\PumpingIron.cs" />
     <Compile Include="Assets\Classes\Player\Inventory.cs" />
+    <Compile Include="Assets\TicTacToe\Scripts\TicTacToeSettings.cs" />
     <Compile Include="Assets\Classes\SceneManagement\ChangeScene.cs" />
     <Compile Include="Assets\Classes\Player\Bodymon.cs" />
     <Compile Include="Assets\Classes\Player\MuscleSet.cs" />
     <Compile Include="Assets\Classes\SceneManagement\SavedPositionManager.cs" />
     <Compile Include="Assets\Classes\Dialogs\DialogueManagerDealer.cs" />
+    <Compile Include="Assets\TicTacToe\Scripts\TicTacToeController.cs" />
     <Compile Include="Assets\Classes\Player\Bodymons.cs" />
     <Compile Include="Assets\Classes\UI\Stats.cs" />
     <Compile Include="Assets\Classes\Dialogs\DialogueManager.cs" />
     <Compile Include="Assets\Classes\BackgroundScripts\Fight.cs" />
-    <Compile Include="Assets\TicTacToe\Scripts\TicTacToeSettings.cs" />
-    <Compile Include="Assets\TicTacToe\Scripts\TicTacToeController.cs" />
-    <Compile Include="Assets\Classes\BackgroundScripts\GYM\ChildMachine.cs" />
+    <Compile Include="Assets\PerfectJump\Scripts\Gameplay\CameraFollowTarget.cs" />
+    <Compile Include="Assets\PerfectJump\Scripts\UIManager.cs" />
+    <Compile Include="Assets\PerfectJump\Scripts\Gameplay\Player.cs" />
+    <Compile Include="Assets\PerfectJump\Scripts\AudioButton.cs" />
+    <Compile Include="Assets\PerfectJump\Scripts\GameManager.cs" />
+    <Compile Include="Assets\PerfectJump\Scripts\ScoreManager.cs" />
+    <Compile Include="Assets\PerfectJump\Scripts\AudioManager.cs" />
+    <Compile Include="Assets\PerfectJump\Scripts\GameState.cs" />
+    <Compile Include="Assets\PerfectJump\Scripts\Gameplay\Obstacle.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Graphics\Battles\pokemon_pixel_font\readme.txt" />
+    <None Include="Assets\PerfectJump\Documentation\Readme.txt" />
     <None Include="Assets\Hovl Studio\Procedural fire\Shaders\FireSphere.shader" />
     <None Include="Assets\Hovl Studio\Procedural fire\Demo scene\Readme.txt" />
   </ItemGroup>
