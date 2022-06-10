@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
     public GameObject mainMenu;
     public GameObject optionsMenu;
+    public static bool MainTracks = true;
 
     public Text label;
 
@@ -40,7 +42,9 @@ public class Menu : MonoBehaviour
 
     public void NewLevel()
     {
-        //Switch level
+       
+        SceneManager.LoadScene(SaveAndRestorePosition.lastSceneForMenu, LoadSceneMode.Single); 
+        
     }
 
     public void LoadLevel()
@@ -80,11 +84,13 @@ public class Menu : MonoBehaviour
         {
             musicSource.volume = 0;
             musicText.text = "Musik: AUS";
+            MainTracks = false;
         }
         else
         {
             musicSource.volume = 1;
             musicText.text = "Musik: AN";
+            MainTracks = true;
         }
     }
 
@@ -115,6 +121,15 @@ public class Menu : MonoBehaviour
         else
         {
             distanceText.text = "Render Distanz: WEIT";
+        }
+    }
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            optionsMenu.SetActive(false);
+            mainMenu.SetActive(true);
+            ChangeText();
         }
     }
 }

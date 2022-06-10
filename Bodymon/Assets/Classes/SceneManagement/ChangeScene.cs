@@ -13,25 +13,31 @@ public class ChangeScene : MonoBehaviour
     // Move game to another scene
     private void OnTriggerEnter2D(Collider2D other)
     {
-        print("Trigger Entered");
+        Debug.Log("Trigger Entered");
 
         // Could use other.GetComponent<Player>() to see if the game object has a Player component
         // Tags work too. Maybe some players have different script components?
-        if (other.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
             int old = SceneManager.GetActiveScene().buildIndex;
             // Player entered, so move level
             SceneManager.LoadScene(sceneBuildIndex, LoadSceneMode.Single);
-            print("Switching Scene to " + sceneBuildIndex);
-            
+
             //if (startingPosition.ContainsKey(sceneBuildIndex)) player.position = startingPosition[sceneBuildIndex];
-            switch (old)
+            switch (SavedPositionManager.lastScene)
             {
                 case 0:
+                    Debug.Log("Trigger Entered: 0");
                     break;
                 case 4:
                     GameObject gameObject_player = GameObject.FindWithTag("Player");
                     gameObject_player.transform.position = new Vector3(-13.77f, 18.6f, -2);
+                    Debug.Log("Trigger Entered: 4");
+                    break;
+                case 6:
+                    GameObject gameObject_player1 = GameObject.FindWithTag("Player");
+                    gameObject_player1.transform.position = new Vector3(-6f, 40.6f, -2);
+                    Debug.Log("Trigger Entered: 6");
                     break;
                 default:
                     break;
