@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
     {
         if (uIManager.gameState == GameState.PLAYING)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 if (uIManager.IsButton())
                     return;

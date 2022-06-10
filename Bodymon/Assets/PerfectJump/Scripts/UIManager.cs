@@ -24,7 +24,7 @@ public class UIManager : MonoBehaviour {
 
     void Update()
     {
-		if (Input.GetMouseButtonDown(0) && gameState == GameState.MENU && !clicked)
+		if (Input.GetKeyDown(KeyCode.Space) && gameState == GameState.MENU && !clicked)
 		{
 			if (IsButton())
 				return;
@@ -33,7 +33,7 @@ public class UIManager : MonoBehaviour {
 			ShowGameplay();
 			AudioManager.Instance.PlayMusic(AudioManager.Instance.gameMusic);
 		}
-		else if (Input.GetMouseButtonUp(0) && clicked && gameState == GameState.MENU)
+		else if (Input.GetKeyDown(KeyCode.Space) && clicked && gameState == GameState.MENU)
 			clicked = false;
 	}
 
