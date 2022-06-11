@@ -20,7 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Dealer.unity
     guid: b0b167bef1ba8fb42a3ec0fdcf5b8457
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Fight.unity
     guid: 92c19cfa739c036409ee9d7db3d75518
   - enabled: 1

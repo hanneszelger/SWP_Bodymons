@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public static class SaveGame 
+public static class SaveGame
 {
     public static void Save(string preferenceName, string data)
     {
@@ -23,6 +23,48 @@ public static class SaveGame
     public static void LoadPlayer(string preferenceName)
     {
         JsonUtility.FromJsonOverwrite(PlayerPrefs.GetString(preferenceName), PlayerBodymon.player);
+    }
+
+    public static void AddItemToInventory(Items SOitem)
+    {
+        #pragma warning disable 414
+        Inventory temp = new Inventory();
+        #pragma warning restore 414
+        Load("invItems", temp);
+        bool bought = false;
+        for (int i = 0; i < temp.isFull.Length; i++)
+        {
+            if (!temp.isFull[i])
+            {
+                temp.items[i] = SOitem;
+                temp.isFull[i] = true;
+
+                Debug.Log("Bought: " + SOitem.Name);
+                bought = true;
+                break;
+            }
+        }
+
+        if (!bought)
+        {
+            //Debug.Log("Player's inventory is full!");
+            //throw new System.Exception("Player's inventory is full!");
+        }
+
+        Save("invItems", JsonUtility.ToJson(temp));
+    }
+
+    public static void AddItemToInventoryBuy(Items SOitem)
+    {
+        if (PlayerBodymon.player.Coins >= SOitem.Cost)
+        {
+            AddItemToInventory(SOitem);
+        }
+        else
+        {
+            Debug.Log("Player has not enough Coins to buy this Item(" + (SOitem.Cost - PlayerBodymon.player.Coins) + " Coins missing");
+            //throw new System.Exception("Player has not enough Coins to buy this Item (" + (SOitem.Cost - PlayerBodymon.player.Coins) + " Coins missing");
+        }
     }
 
     //public static void loadItems()

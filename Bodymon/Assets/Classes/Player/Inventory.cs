@@ -14,14 +14,12 @@ public class Inventory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         //player = go.GetComponent<Bodymon>();
         sr = gameObject.GetComponentsInChildren<SpriteRenderer>();
         Transform[] childs = gameObject.GetComponentsInChildren<Transform>();
 
         SaveGame.Load("invItems", this);
-
-        Shop temp = new Shop();
-        temp.inventory = this;
 
         for (int i = 0; i < childs.Length; i++)
         {
@@ -40,9 +38,7 @@ public class Inventory : MonoBehaviour
                 {
                     GameObject goTemp = items[j].prefab;
 
-                    temp.inventory = this;
-
-                    temp.addItem(j, goTemp);
+                    LoadItemGameObject(j, goTemp);
                 }
             }
             catch
@@ -50,24 +46,49 @@ public class Inventory : MonoBehaviour
                 //Debug.Log("Error");
             }
         }
+
+        if (isFull.Length == 0)
+        {
+            isFull = new bool[9];
+            sr = new SpriteRenderer[9];
+             items = new Items[9];
+        }
         SetVisible(false);
+    }
+
+    public void LoadItemGameObject(int i, GameObject _item)
+    {
+        this.isFull[i] = true;
+
+
+        BoxCollider2D temp = this.slots[i].gameObject.GetComponent<BoxCollider2D>();
+
+        GameObject go = Instantiate(_item, this.slots[i].transform.position, new Quaternion(), this.slots[i].transform) as GameObject;
+
+        Renderer rend = go.GetComponentInChildren<SpriteRenderer>();
+        go.transform.localScale = new Vector3(temp.bounds.size.x / rend.bounds.size.x - 0.1f,
+            temp.bounds.size.y / rend.bounds.size.y - 0.1f, 1);
+        rend.sortingOrder = 101;
+
+        rend.enabled = visible;
+        this.items[i] = go.GetComponent<Item>().item;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            UseItem(0);
-            //if ((float)slots[0].transform.childCount != 0)
-            //{
-            //    Inventory.Destroy(slots[0].transform.GetChild(0).gameObject);
-            //    //foreach (Component c in slots[0].transform.GetChild(0).gameObject.GetComponents(typeof(Component)))
-            //    //{
-            //    //    Inventory.Destroy(c);
-            //    //}
-            //}
-        }
+        //if (Input.GetKeyDown(KeyCode.Q))
+        //{
+        //    UseItem(0);
+        //    //if ((float)slots[0].transform.childCount != 0)
+        //    //{
+        //    //    Inventory.Destroy(slots[0].transform.GetChild(0).gameObject);
+        //    //    //foreach (Component c in slots[0].transform.GetChild(0).gameObject.GetComponents(typeof(Component)))
+        //    //    //{
+        //    //    //    Inventory.Destroy(c);
+        //    //    //}
+        //    //}
+        //}
         //if (Input.GetAxis("Inventory2") == 1)
         //{
 
@@ -76,6 +97,19 @@ public class Inventory : MonoBehaviour
         //{
 
         //}
+
+        for (int number = 1; number <= 9; number++)
+        {
+            
+                if (Input.GetKeyDown(number.ToString()))
+                    UseItem(number - 1);
+            
+            //catch 
+            //{
+            //    Debug.Log("Itemslot is empty!");
+            //}
+        }
+
         if (Input.GetKeyDown(KeyCode.R))
         {
             ToggleVisible();
@@ -105,17 +139,9 @@ public class Inventory : MonoBehaviour
             int alreadyActive = -1;
             Items item = slots[i].transform.GetChild(0).GetComponent<Item>().item;
 
-
-
-
-
             alreadyActive = PlayerBodymon.player.Items.FindIndex(f => f == item);
-            Debug.Log(alreadyActive);
 
-
-            Debug.Log("runs");
             //int index = activeItem.ItemBuffs.FindIndex(f => f.Buffstyle == item.ItemBuffs[j].Buffstyle);
-
 
             if (alreadyActive == -1)
             {

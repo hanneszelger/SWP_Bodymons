@@ -512,6 +512,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2f1529d9ad49bdf4098b9d4f4cab3f04, type: 3}
   - {fileID: 8300000, guid: 82715e7064b256d4d80a9fce8abbe63b, type: 3}
   - {fileID: 8300000, guid: 5d444b847a06fd04e88521a39e6ebf04, type: 3}
+  trenItem: {fileID: 11400000, guid: 59a675f382b6bad4f9a323909ee46f5f, type: 2}
 --- !u!4 &594809912
 Transform:
   m_ObjectHideFlags: 0

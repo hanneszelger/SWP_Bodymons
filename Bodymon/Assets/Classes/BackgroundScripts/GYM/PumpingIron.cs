@@ -16,12 +16,15 @@ public class PumpingIron : MonoBehaviour
     public GameObject loadingPanel;
     public Slider loadingBar;
     public Text progressMade;
+    private AudioSource lightweight;
 
     private float currCountdownValue;
     private bool currentlyRunning;
 
     private List<MuscleXGains> MuscleXValue;
     private string currentTag;
+
+    
 
 
     // Start is called before the first frame update
@@ -52,6 +55,11 @@ public class PumpingIron : MonoBehaviour
                     {
                         MuscleXValue = new List<MuscleXGains>() { new MuscleXGains("Chest", 3), new MuscleXGains("Abdominals", 1) };
                         tempCalc = (float)(loadingBar.value < 0.5 ? 0 : (float)loadingBar.value);
+                        if (loadingBar.value == 1)
+                        {
+                            lightweight = GameObject.Find("LightweightBaby").GetComponent<AudioSource>();
+                            lightweight.Play();
+                        }
                         GetGainz(tempCalc);
                     }
                     else if (!currentlyRunning)

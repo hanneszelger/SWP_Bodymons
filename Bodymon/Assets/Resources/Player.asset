@@ -24,5 +24,6 @@ MonoBehaviour:
     abdominals: 1
   item:
   - {fileID: 11400000, guid: ca2be7beaea8d5b44b6ddb6804fbe6bc, type: 2}
+  - {fileID: 11400000, guid: 7736447993c40c549987178246d74ad6, type: 2}
   posingSkill: 7
   coins: 2147473607

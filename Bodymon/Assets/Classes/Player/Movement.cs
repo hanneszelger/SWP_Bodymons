@@ -20,17 +20,12 @@ public class Movement : MonoBehaviour
     //public allows to edit its value in Unity
     public float speed;
     public Animator animator;
-    
-
-    
-
-
 
     private void Start()
     {
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
-            WaitForThunder.toggleGUI(true); 
+            WaitForThunder.toggleGUI(true);
         }
         cam = Camera.main;
         camHeight = cam.orthographicSize;
@@ -41,14 +36,14 @@ public class Movement : MonoBehaviour
 
         camRigid.position = transform.position;
 
-        
+
         //progressMade.CrossFadeAlpha(0, 0, false);
-        
+
     }
 
     private void Update()
     {
-        
+
         //Left/A = -1, none = 0, Right/D = 1
         horizontal = Input.GetAxisRaw("Horizontal");
 
@@ -62,18 +57,25 @@ public class Movement : MonoBehaviour
         animator.SetFloat("Vertical", vertical);
         animator.SetFloat("Speed", move.sqrMagnitude);
 
-        if (horizontal != 0 || vertical != 0 || move.sqrMagnitude != 0 && GetComponent<AudioSource>().isPlaying == false)
+        try
         {
-            GetComponent<AudioSource>().UnPause();
+            if (horizontal != 0 || vertical != 0 || move.sqrMagnitude != 0 && GetComponent<AudioSource>().isPlaying == false)
+            {
+                GetComponent<AudioSource>().UnPause();
+            }
+            else
+            {
+                GetComponent<AudioSource>().Pause();
+            }
+            if (Input.GetKeyDown(KeyCode.B) && SceneManager.GetActiveScene().buildIndex == 0)
+            {
+                WaitForThunder.toggleGUI(false);
+                StartCoroutine(GameObject.Find("Thunder").GetComponent<WaitForThunder>().TimerRoutine());
+            }
         }
-        else
+        catch (System.Exception ex)
         {
-            GetComponent<AudioSource>().Pause();
-        }
-        if (Input.GetKeyDown(KeyCode.B) && SceneManager.GetActiveScene().buildIndex == 0)
-        {
-            WaitForThunder.toggleGUI(false);
-            StartCoroutine(GameObject.Find("Thunder").GetComponent<WaitForThunder>().TimerRoutine());
+            Debug.LogException(ex);
         }
     }
 

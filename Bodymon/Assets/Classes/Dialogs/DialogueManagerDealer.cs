@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class DialogueManagerDealer : MonoBehaviour
 {
-
     public GameObject dBox;
     public Text dText;
 
@@ -16,10 +15,13 @@ public class DialogueManagerDealer : MonoBehaviour
     public AudioClip[] audioClipArray;
     AudioClip lastClip;
 
+    public Items trenItem;
+
     // Start is called before the first frame update
     void Start()
     {
         audioSource.PlayOneShot(RandomClip());
+        SaveGame.AddItemToInventory(trenItem);
     }
 
     // Update is called once per frame
@@ -44,6 +46,7 @@ public class DialogueManagerDealer : MonoBehaviour
         if (Input.GetKeyDown("j"))
         {
             dText.text = "Gute Entscheidung!...\n\nBye!";
+            
             audioSource.clip = audioClipArray[6];
             audioSource.Play();
             exitScene = true;

@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 public class Shop : MonoBehaviour
 {
     [HideInInspector]
-    public Inventory inventory = new Inventory();
     private GameObject item;
     private GameObject player;
 
@@ -30,7 +29,6 @@ public class Shop : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
         LoadGrid1();
     }
 
@@ -62,7 +60,7 @@ public class Shop : MonoBehaviour
         if (Input.GetButtonDown("Interact"))
         {
             item = rows[currentY][currentX].gameObject;
-            buyItem(item);
+            SaveGame.AddItemToInventoryBuy(item.GetComponent<Item>().item);
             GetComponent<AudioSource>().Play();
         }
         Leave();            
@@ -104,47 +102,5 @@ public class Shop : MonoBehaviour
             Vector2 pos = Go.transform.GetChild(i).position;
         }
         return list;
-    }
-
-    public void buyItem(GameObject _item)
-    {
-        if (PlayerBodymon.player.Coins >= _item.GetComponent<Item>().Cost)
-        {
-            Debug.Log(inventory.slots.Count);
-            for (int i = 0; i < inventory.slots.Count; i++)
-            {
-                if (!inventory.isFull[i])
-                {
-                    addItem(i, _item);
-                    Debug.Log("BOUGHT");
-                    PlayerBodymon.player.Coins -= _item.GetComponent<Item>().Cost;
-                    Canvas.ForceUpdateCanvases();
-                    break;
-                }
-            }
-            
-        }
-        else
-        {
-            Debug.Log("Dir Fehlen: " + (PlayerBodymon.player.Coins - _item.GetComponent<Item>().Cost)*-1 + " Coins");
-        }
-    }
-
-    public void addItem(int i, GameObject _item)
-    {
-        inventory.isFull[i] = true;
-
-
-        BoxCollider2D temp = inventory.slots[i].gameObject.GetComponent<BoxCollider2D>();
-
-        GameObject go = Instantiate(_item, inventory.slots[i].transform.position, new Quaternion(), inventory.slots[i].transform) as GameObject;
-
-        Renderer rend = go.GetComponentInChildren<SpriteRenderer>();
-        go.transform.localScale = new Vector3(temp.bounds.size.x / rend.bounds.size.x - 0.1f,
-            temp.bounds.size.y / rend.bounds.size.y - 0.1f, 1);
-        rend.sortingOrder = 101;
-
-        rend.enabled = inventory.visible;
-        inventory.items[i] = go.GetComponent<Item>().item;
     }
 }

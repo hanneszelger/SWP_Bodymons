@@ -13,26 +13,33 @@ public class SaveAndRestorePosition : MonoBehaviour
     
     void Start() // Check if we've saved a position for this scene; if so, go there.
     {
-        if (Maintracks)
+        try
         {
-            if (SceneManager.GetActiveScene().buildIndex == 0)
+            if (Maintracks)
             {
-                soundSource.PlayOneShot(RandomClip());
+                if (SceneManager.GetActiveScene().buildIndex == 0)
+                {
+                    soundSource.PlayOneShot(RandomClip());
+                }
+                soundSource.Play();
             }
-            soundSource.Play();
-        }
-        else
-        {
-            soundSource.Stop();
-        }
+            else
+            {
+                soundSource.Stop();
+            }
 
-        if (SavedPositionManager.lastScene != 5 && SavedPositionManager.lastScene != 0)
-        {
-            transform.position = SavedPositionManager.savedPositions[SavedPositionManager.lastScene];
+            if (SavedPositionManager.lastScene != 5 && SavedPositionManager.lastScene != 0)
+            {
+                transform.position = SavedPositionManager.savedPositions[SavedPositionManager.lastScene];
+            }
+            else if (SavedPositionManager.lastScene == 5 && LookForESC.menuopened)
+            {
+                transform.position = lastpo;
+            }
         }
-        else if (SavedPositionManager.lastScene == 5 && LookForESC.menuopened)
+        catch (System.Exception ex)
         {
-            transform.position = lastpo;
+            Debug.Log(ex);
         }
     }
 
