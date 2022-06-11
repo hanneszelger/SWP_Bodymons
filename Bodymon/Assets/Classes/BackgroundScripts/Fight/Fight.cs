@@ -54,12 +54,18 @@ public class Fight : MonoBehaviour
 
     public void ReassignValues()
     {
+        List<AttackType> at = new List<AttackType>();
         foreach (Button b in AttackButtons)
         {
             ButtonInfo binf = b.GetComponent<ButtonInfo>();
-            //b.onClick.AddListener(() => { Attack(Bodymon.Muscles, EnemyBodymon.Muscles, b.tag); });
-            //b.onClick.AddListener(() => { Debug.Log(b.tag); });
-            //Debug.Log(b.tag);
+
+            do
+            {
+                binf.TypeOfAttack = GetRandomEnum<AttackType>();
+            } while (at.Contains(binf.TypeOfAttack));
+
+            at.Add(binf.TypeOfAttack);
+ 
             playerTurn = true;
 
             b.onClick.RemoveAllListeners();
@@ -112,19 +118,23 @@ public class Fight : MonoBehaviour
                 allyMultiplier = new double[] { 1.75, 1.05, 0.3 };
                 enemyMultiplier = new double[] { 1.5, 1, 0.3 };
                 break;
-            //case "LatSpread":
+            case AttackType.LatSpread:
+                propertyNames = new string[] { "Lat", "Biceps", "Abdominals" };
+                allyMultiplier = new double[] { 1.8, 1.05, 0.7 };
+                enemyMultiplier = new double[] { 1.5, 1, 0.7 };
+                break;
 
-            //    break;
-            
-            //case "QuadStomp":
+                //    break;
 
-            //    break;
-            //case "BackDoubleBiceps":
+                //case "QuadStomp":
 
-            //    break;
-            //case "DorianEagle":
+                //    break;
+                //case "BackDoubleBiceps":
 
-            //    break;
+                //    break;
+                //case "DorianEagle":
+
+                //    break;
         }
 
         for (int i = 0; i < propertyNames.Length; i++)
@@ -134,27 +144,13 @@ public class Fight : MonoBehaviour
         }
         mrgdV = new MergeValues(lstAlly, lstEnemy);
         Damage = (int)Calculation(mrgdV);
-        Debug.Log("Damage:" + Damage);
         lstAlly.Clear();
         lstEnemy.Clear();
         ////inflict the calculated damage 
         ////EnemyBodymon.Hp =- (int)Damage;
-        Debug.Log("Vorher");
-        Debug.Log(Bodymon.Hp + ";" + EnemyBodymon.Hp);
 
         //check if this works plz
-        if (playerTurn)
-        {
-            _ = Damage < 0 ? Bodymon.Hp += Damage : EnemyBodymon.Hp += Damage;
-        }
-        else//Enemy plays -> negative Damage ? self Damage : bodymon damage
-        {
-            _ = Damage < 0 ?  EnemyBodymon.Hp += Damage : Bodymon.Hp += Damage;
-            Damage = Damage * -1;
-        }
-        
-        Debug.Log("Nachher");
-        Debug.Log(Bodymon.Hp + ";" + EnemyBodymon.Hp);
+         _ = Damage < 0 ? Bodymon.Hp += Damage : EnemyBodymon.Hp -= Damage;
 
         DamageDelt.text = Damage.ToString();
 
@@ -190,7 +186,8 @@ public class Fight : MonoBehaviour
             valueDamage += mergeValues.Ally[i].MuscleValue * mergeValues.Ally[i].Multiplier;
             valueDamageFromEnemy += mergeValues.Enemy[i].MuscleValue * mergeValues.Enemy[i].Multiplier;
         }
-
+        Debug.Log("allyDamage: " +valueDamage);
+        Debug.Log("enemyDamage: " + valueDamageFromEnemy);
         return valueDamage - valueDamageFromEnemy;
     }
 

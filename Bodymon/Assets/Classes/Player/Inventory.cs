@@ -9,7 +9,10 @@ public class Inventory : MonoBehaviour
     public List<GameObject> slots = new List<GameObject>();
     private SpriteRenderer[] sr;
     public Items[] items;
-    public bool visible;
+    public static bool visible;
+
+    [NonSerialized]
+    public GameObject MuscleStatsGrid;
 
     // Start is called before the first frame update
     void Start()
@@ -53,6 +56,7 @@ public class Inventory : MonoBehaviour
             sr = new SpriteRenderer[9];
              items = new Items[9];
         }
+        MuscleStatsGrid = GameObject.FindGameObjectWithTag("MuscleStatGrid");
         SetVisible(false);
     }
 
@@ -129,6 +133,7 @@ public class Inventory : MonoBehaviour
         {
             sr[i].enabled = activation;
         }
+        MuscleStatsGrid.SetActive(activation);
         visible = activation;
     }
 

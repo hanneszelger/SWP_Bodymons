@@ -22,6 +22,8 @@ TagManager:
   - ui_coins
   - slot
   - gym_squat
+  - Obstacle
+  - MuscleStatGrid
   layers:
   - Default
   - TransparentFX

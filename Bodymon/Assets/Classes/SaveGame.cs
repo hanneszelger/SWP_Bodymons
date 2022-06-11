@@ -27,9 +27,7 @@ public static class SaveGame
 
     public static void AddItemToInventory(Items SOitem)
     {
-        #pragma warning disable 414
         Inventory temp = new Inventory();
-        #pragma warning restore 414
         Load("invItems", temp);
         bool bought = false;
         for (int i = 0; i < temp.isFull.Length; i++)

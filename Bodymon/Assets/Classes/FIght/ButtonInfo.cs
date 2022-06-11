@@ -17,5 +17,6 @@ public class ButtonInfo : MonoBehaviour
 public enum AttackType
 {
     FrontDoubleBiceps,
-    SideChest
+    SideChest,
+    LatSpread
 }
