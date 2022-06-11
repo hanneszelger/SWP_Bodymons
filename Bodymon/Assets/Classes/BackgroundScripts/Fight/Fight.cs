@@ -1,7 +1,10 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
-using UnityEditor.Playables;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Fight : MonoBehaviour
@@ -15,17 +18,22 @@ public class Fight : MonoBehaviour
     bool playerTurn;
 
     public List<Button> AttackButtons;
+    public Text DamageDelt;
+
+    public Text AllyHP;
+    public Text EnemyHP;
 
     void Start()
     {
-        LoadPlayers();
+        //LoadPlayers();
+        Bodymon.Hp = 100;
+        EnemyBodymon.Hp = 100;
         playerTurn = true;
-
+        ReassignValues();
         //Button btn = ButtonForAttack1.GetComponent<Button>();
         //Debug.Log(ButtonForAttack1.tag);
-
     }
-
+    
     static T GetRandomEnum<T>()
     {
         System.Array A = System.Enum.GetValues(typeof(T));
@@ -33,9 +41,15 @@ public class Fight : MonoBehaviour
         return V;
     }
 
-    public void EnemyTurn()
+    public IEnumerator EnemyTurn(Button enableAgain)
     {
+        
+        toggleButtonActive();
+        yield return new WaitForSeconds(1.5f);
         Attack(Bodymon.Muscles, EnemyBodymon.Muscles, GetRandomEnum<AttackType>());
+        yield return new WaitForSeconds(1.5f);
+        toggleButtonActive();
+        ReassignValues();
     }
 
     public void ReassignValues()
@@ -46,10 +60,29 @@ public class Fight : MonoBehaviour
             //b.onClick.AddListener(() => { Attack(Bodymon.Muscles, EnemyBodymon.Muscles, b.tag); });
             //b.onClick.AddListener(() => { Debug.Log(b.tag); });
             //Debug.Log(b.tag);
+            playerTurn = true;
 
             b.onClick.RemoveAllListeners();
-            binf.SetText(binf.TypeOfAttack.ToString());
-            b.onClick.AddListener(() => { Attack(Bodymon.Muscles, EnemyBodymon.Muscles, binf.TypeOfAttack); });
+
+            var val = binf.TypeOfAttack.ToString();
+            val = string.Concat(val.Select(x => Char.IsUpper(x) ? " " + x : x.ToString())).TrimStart(' ');
+
+            binf.SetText(val);
+
+            b.onClick.AddListener(() => {
+                if(playerTurn)Attack(Bodymon.Muscles, EnemyBodymon.Muscles, binf.TypeOfAttack);
+                playerTurn = false;
+
+                StartCoroutine(EnemyTurn(b));         
+            });
+        }
+    }
+
+    public void toggleButtonActive()
+    {
+        foreach (Button b in AttackButtons)
+        {
+            b.interactable = !b.interactable;
         }
     }
 
@@ -69,7 +102,7 @@ public class Fight : MonoBehaviour
         //Recognise what kind of attack was chosen
         switch (attackType)
         {
-            case AttackType.frontDoubleBiceps:
+            case AttackType.FrontDoubleBiceps:
                 propertyNames = new string[] { "Biceps", "Lat", "Abdominals" };
                 allyMultiplier = new double[] { 1.15, 0.45, 0.5 };
                 enemyMultiplier = new double[] { 1, 0.3, 0.5 };
@@ -110,13 +143,30 @@ public class Fight : MonoBehaviour
         Debug.Log(Bodymon.Hp + ";" + EnemyBodymon.Hp);
 
         //check if this works plz
-        _ = Damage < 0 ? Bodymon.Hp += Damage : EnemyBodymon.Hp += Damage;
+        if (playerTurn)
+        {
+            _ = Damage < 0 ? Bodymon.Hp += Damage : EnemyBodymon.Hp += Damage;
+        }
+        else//Enemy plays -> negative Damage ? self Damage : bodymon damage
+        {
+            _ = Damage < 0 ?  EnemyBodymon.Hp += Damage : Bodymon.Hp += Damage;
+            Damage = Damage * -1;
+        }
+        
         Debug.Log("Nachher");
         Debug.Log(Bodymon.Hp + ";" + EnemyBodymon.Hp);
 
-        if (Bodymon.Hp < 0)
+        DamageDelt.text = Damage.ToString();
+
+        EnemyHP.text = EnemyBodymon.Hp.ToString();
+        AllyHP.text = Bodymon.Hp.ToString();
+
+
+        if (Bodymon.Hp <= 0)
         {
             //ToDo: GameOver
+            Debug.Log("LOST");
+            SceneManager.LoadSceneAsync(8,LoadSceneMode.Single);
         }
         else if (EnemyBodymon.Hp < 0)
         {
@@ -147,7 +197,7 @@ public class Fight : MonoBehaviour
     void LoadPlayers()
     {
         //relative path + without file extension e.g. Enemies/JayCuttler
-        EnemyBodymon = Resources.Load<Bodymons>("Enemies/JayCuttler");
+        //EnemyBodymon = Resources.Load<Bodymons>("Enemies/JayCuttler");
         //JsonUtility.FromJsonOverwrite(PlayerPrefs.GetString("markusRühl_bodymon"), EnemyBodymon);
     }
 }
