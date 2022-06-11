@@ -23,7 +23,8 @@ MonoBehaviour:
     biceps: 5
     abdominals: 1
   item:
-  - {fileID: 11400000, guid: ca2be7beaea8d5b44b6ddb6804fbe6bc, type: 2}
-  - {fileID: 11400000, guid: 7736447993c40c549987178246d74ad6, type: 2}
+  - {fileID: 11400000, guid: 78486160bff691f4cad15b5a605b4c72, type: 2}
+  - {fileID: 11400000, guid: 59a675f382b6bad4f9a323909ee46f5f, type: 2}
+  - {fileID: 11400000, guid: e734d03cdb996104db03c12d0aab7bda, type: 2}
   posingSkill: 7
   coins: 2147473607

@@ -19,6 +19,6 @@ MonoBehaviour:
   Cost: 100
   ItemType: 2
   ItemBuffs:
-  - Buffstyle: 0
+  - TypeOfBuff: 3
     value: 50
     duration: 0

@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Assets\Classes\BackgroundScripts\GYM\ChildMachine.cs" />
     <Compile Include="Assets\Classes\SaveGame.cs" />
+    <Compile Include="Assets\Classes\BackgroundScripts\Fight\ArenaLoadFight.cs" />
     <Compile Include="Assets\PerfectJump\Scripts\AudioManager.cs" />
     <Compile Include="Assets\PerfectJump\Scripts\Gameplay\CameraFollowTarget.cs" />
     <Compile Include="Assets\Classes\BackgroundScripts\Shop.cs" />
@@ -89,7 +90,7 @@
     <Compile Include="Assets\Classes\UI\Stats.cs" />
     <Compile Include="Assets\Classes\Dialogs\DialogueManager.cs" />
     <Compile Include="Assets\Classes\BackgroundScripts\Fight\Fight.cs" />
-    <Compile Include="Assets\Classes\BackgroundScripts\Fight\ArenaLoadFight.cs" />
+    <Compile Include="Assets\Classes\UI\ShowBuffs.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Graphics\Battles\pokemon_pixel_font\readme.txt" />

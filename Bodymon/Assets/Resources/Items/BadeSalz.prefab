@@ -103,4 +103,5 @@ MonoBehaviour:
   Icon: {fileID: 0}
   Cost: 0
   ItemType: 0
+  ItemBuffs: []
   Prefab: {fileID: 0}
