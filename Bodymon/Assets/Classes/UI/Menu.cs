@@ -42,9 +42,9 @@ public class Menu : MonoBehaviour
 
     public void NewLevel()
     {
-       
+        PlayerBodymon.player = ScriptableObject.CreateInstance<Bodymons>();
+        SaveGame.SavePlayer();
         SceneManager.LoadScene(SaveAndRestorePosition.lastSceneForMenu, LoadSceneMode.Single); 
-        
     }
 
     public void LoadLevel()

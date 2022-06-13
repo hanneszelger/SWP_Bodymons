@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
     public bool[] isFull;
     [NonSerialized]
     public List<GameObject> slots = new List<GameObject>();
-    private SpriteRenderer[] sr;
+    [NonSerialized]
+    private Image[] sr;
     public Items[] items;
     public static bool visible;
 
@@ -19,7 +21,7 @@ public class Inventory : MonoBehaviour
     {
         
         //player = go.GetComponent<Bodymon>();
-        sr = gameObject.GetComponentsInChildren<SpriteRenderer>();
+        sr = gameObject.GetComponentsInChildren<Image>();
         Transform[] childs = gameObject.GetComponentsInChildren<Transform>();
 
         SaveGame.Load("invItems", this);
@@ -53,8 +55,8 @@ public class Inventory : MonoBehaviour
         if (isFull.Length == 0)
         {
             isFull = new bool[9];
-            sr = new SpriteRenderer[9];
-             items = new Items[9];
+            sr = new Image[9];
+            items = new Items[9];
         }
         MuscleStatsGrid = GameObject.FindGameObjectWithTag("MuscleStatGrid");
         SetVisible(false);
@@ -69,12 +71,16 @@ public class Inventory : MonoBehaviour
 
         GameObject go = Instantiate(_item, this.slots[i].transform.position, new Quaternion(), this.slots[i].transform) as GameObject;
 
-        Renderer rend = go.GetComponentInChildren<SpriteRenderer>();
-        go.transform.localScale = new Vector3(temp.bounds.size.x / rend.bounds.size.x - 0.1f,
-            temp.bounds.size.y / rend.bounds.size.y - 0.1f, 1);
-        rend.sortingOrder = 101;
+        RectTransform rend = go.GetComponentInChildren<RectTransform>();
 
-        rend.enabled = visible;
+        rend.sizeDelta = new Vector2(temp.size.x - 0.15f, temp.size.y - 0.15f);
+
+
+        //go.transform.localScale = new Vector3(temp.bounds.size.x / rend.sprite.bounds.size.x,
+        //    temp.bounds.size.y / rend.sprite.bounds.size.y, 1);
+        //rend = 101;
+
+        //rend.enabled = visible;
         this.items[i] = go.GetComponent<Item>().item;
     }
 
@@ -122,13 +128,13 @@ public class Inventory : MonoBehaviour
 
     void ToggleVisible()
     {
-        SetVisible(!gameObject.GetComponent<SpriteRenderer>().enabled);
+        SetVisible(!gameObject.GetComponent<Image>().enabled);
     }
 
     void SetVisible(bool activation)
     {
-        gameObject.GetComponent<SpriteRenderer>().enabled = activation;
-        sr = gameObject.GetComponentsInChildren<SpriteRenderer>();
+        gameObject.GetComponent<Image>().enabled = activation;
+        sr = gameObject.GetComponentsInChildren<Image>();
         for (int i = 0; i < sr.Length; i++)
         {
             sr[i].enabled = activation;

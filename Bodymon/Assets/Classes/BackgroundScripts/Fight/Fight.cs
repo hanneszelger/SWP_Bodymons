@@ -30,10 +30,11 @@ public class Fight : MonoBehaviour
         EnemyBodymon.Hp = 100;
         playerTurn = true;
         ReassignValues();
+        Bodymon = PlayerBodymon.player;
         //Button btn = ButtonForAttack1.GetComponent<Button>();
         //Debug.Log(ButtonForAttack1.tag);
     }
-    
+
     static T GetRandomEnum<T>()
     {
         System.Array A = System.Enum.GetValues(typeof(T));
@@ -43,7 +44,7 @@ public class Fight : MonoBehaviour
 
     public IEnumerator EnemyTurn(Button enableAgain)
     {
-        
+
         toggleButtonActive();
         yield return new WaitForSeconds(1.5f);
         Attack(Bodymon.Muscles, EnemyBodymon.Muscles, GetRandomEnum<AttackType>());
@@ -65,7 +66,7 @@ public class Fight : MonoBehaviour
             } while (at.Contains(binf.TypeOfAttack));
 
             at.Add(binf.TypeOfAttack);
- 
+
             playerTurn = true;
 
             b.onClick.RemoveAllListeners();
@@ -75,11 +76,12 @@ public class Fight : MonoBehaviour
 
             binf.SetText(val);
 
-            b.onClick.AddListener(() => {
-                if(playerTurn)Attack(Bodymon.Muscles, EnemyBodymon.Muscles, binf.TypeOfAttack);
+            b.onClick.AddListener(() =>
+            {
+                if (playerTurn) Attack(Bodymon.Muscles, EnemyBodymon.Muscles, binf.TypeOfAttack);
                 playerTurn = false;
 
-                StartCoroutine(EnemyTurn(b));         
+                StartCoroutine(EnemyTurn(b));
             });
         }
     }
@@ -124,9 +126,11 @@ public class Fight : MonoBehaviour
                 enemyMultiplier = new double[] { 1.5, 1, 0.7 };
                 break;
 
-                //    break;
-
-                //case "QuadStomp":
+            case AttackType.QuadStomp:
+                propertyNames = new string[] { "Quads", "Chest", "Abdominals" };
+                allyMultiplier = new double[] { 1.8, 0.7, 1.0 };
+                enemyMultiplier = new double[] { 1.5, 0.65, 1.0 };
+                break;
 
                 //    break;
                 //case "BackDoubleBiceps":
@@ -150,7 +154,7 @@ public class Fight : MonoBehaviour
         ////EnemyBodymon.Hp =- (int)Damage;
 
         //check if this works plz
-         _ = Damage < 0 ? Bodymon.Hp += Damage : EnemyBodymon.Hp -= Damage;
+        _ = Damage < 0 ? Bodymon.Hp += Damage : EnemyBodymon.Hp -= Damage;
 
         DamageDelt.text = Damage.ToString();
 
@@ -162,7 +166,7 @@ public class Fight : MonoBehaviour
         {
             //ToDo: GameOver
             Debug.Log("LOST");
-            SceneManager.LoadSceneAsync(8,LoadSceneMode.Single);
+            SceneManager.LoadSceneAsync(8, LoadSceneMode.Single);
         }
         else if (EnemyBodymon.Hp < 0)
         {
@@ -186,7 +190,7 @@ public class Fight : MonoBehaviour
             valueDamage += mergeValues.Ally[i].MuscleValue * mergeValues.Ally[i].Multiplier;
             valueDamageFromEnemy += mergeValues.Enemy[i].MuscleValue * mergeValues.Enemy[i].Multiplier;
         }
-        Debug.Log("allyDamage: " +valueDamage);
+        Debug.Log("allyDamage: " + valueDamage);
         Debug.Log("enemyDamage: " + valueDamageFromEnemy);
         return valueDamage - valueDamageFromEnemy;
     }

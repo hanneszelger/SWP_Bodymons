@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -16,6 +16,8 @@ public class DialogueManager : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip[] audioClipArray;
     AudioClip lastClip;
+
+    public Items SwagFlyHighs;
 
     // Start is called before the first frame update
     void Start()
@@ -49,6 +51,7 @@ public class DialogueManager : MonoBehaviour
         {
             audioSource.Stop();
             dText.text = "Du siehst erstaunlich breit aus!\nGönn dir eine Pause!\nDu hast Muskelmasse aufgebaut...\n\nBye!";
+            SaveGame.AddItemToInventory(SwagFlyHighs);
             audioSource.clip = audioClipArray[4];
             audioSource.Play();
             exitScene = true;
@@ -61,6 +64,12 @@ public class DialogueManager : MonoBehaviour
             exitScene = true;
         }
     }
+
+    private void OnDestroy()
+    {
+        SaveGame.SavePlayer();
+    }
+
     AudioClip RandomClip()
     {
         int attempts = 3;

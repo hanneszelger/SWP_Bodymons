@@ -48,5 +48,5 @@ public class Stats : MonoBehaviour
 
 public static class PlayerBodymon
 {
-    public static Bodymons player = Resources.Load<Bodymons>("Player");
+    public static Bodymons player = SaveGame.LoadPlayer();
 }

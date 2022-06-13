@@ -24,6 +24,8 @@ TagManager:
   - gym_squat
   - Obstacle
   - MuscleStatGrid
+  - Music
+  - gym_row
   layers:
   - Default
   - TransparentFX

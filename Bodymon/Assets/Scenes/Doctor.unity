@@ -602,6 +602,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundSource: {fileID: 0}
+  audioClipArray: []
 --- !u!1 &1257526833
 GameObject:
   m_ObjectHideFlags: 0
@@ -924,6 +925,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7e54616b07b4b6440ae52bf325f76373, type: 3}
   - {fileID: 8300000, guid: c23646128aeae024aa01f47d7757645a, type: 3}
   - {fileID: 8300000, guid: 5bdfa82fe439505478a6c37f64d9a96b, type: 3}
+  SwagFlyHighs: {fileID: 11400000, guid: 0bd0d8b8bfbe74c4e83cad850b5a368d, type: 2}
 --- !u!1 &1390934567
 GameObject:
   m_ObjectHideFlags: 0

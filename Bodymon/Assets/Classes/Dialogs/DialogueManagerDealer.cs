@@ -21,7 +21,11 @@ public class DialogueManagerDealer : MonoBehaviour
     void Start()
     {
         audioSource.PlayOneShot(RandomClip());
-        SaveGame.AddItemToInventory(trenItem);
+    }
+
+    private void OnDestroy()
+    {
+        SaveGame.SavePlayer();
     }
 
     // Update is called once per frame
@@ -46,7 +50,8 @@ public class DialogueManagerDealer : MonoBehaviour
         if (Input.GetKeyDown("j"))
         {
             dText.text = "Gute Entscheidung!...\n\nBye!";
-            
+            SaveGame.AddItemToInventory(trenItem);
+
             audioSource.clip = audioClipArray[6];
             audioSource.Play();
             exitScene = true;
@@ -59,6 +64,8 @@ public class DialogueManagerDealer : MonoBehaviour
             exitScene = true;
         }
     }
+
+    
     AudioClip RandomClip()
     {
         int attempts = 3;

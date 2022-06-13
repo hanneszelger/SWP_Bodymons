@@ -29,6 +29,10 @@ public class Bodymon : MonoBehaviour
         Coins = _Bodymons.Coins;
     }
 
+    public void OnDestroy()
+    {
+        SaveGame.SavePlayer();
+    }
 
     public int Coins
     {

@@ -18,5 +18,6 @@ public enum AttackType
 {
     FrontDoubleBiceps,
     SideChest,
-    LatSpread
+    LatSpread,
+    QuadStomp
 }

@@ -85,13 +85,19 @@ public class Bodymons : ScriptableObject
 
     public MuscleSet Muscles
     {
-        get { return muscles; }
+        get {
+            if (muscles is null)
+            {
+                muscles = new MuscleSet();
+            }
+            return muscles;
+        }
         set { muscles = value; }
     }
 
     public List<Items> Items
     {
-        get { return item; }
+        get {if (item is null){item = new List<Items>(); } return item;}
         set
         {
             if (value is null)

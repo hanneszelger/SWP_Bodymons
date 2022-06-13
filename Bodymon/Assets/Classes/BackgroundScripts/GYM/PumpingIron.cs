@@ -24,7 +24,7 @@ public class PumpingIron : MonoBehaviour
     private List<MuscleXGains> MuscleXValue;
     private string currentTag;
 
-    
+
 
 
     // Start is called before the first frame update
@@ -47,13 +47,13 @@ public class PumpingIron : MonoBehaviour
         {
             //if (currentlyRunning)
             //{
-                float tempCalc = 0;
+            float tempCalc = 0;
             switch (currentTag)
             {
                 case "bench":
                     if (currentlyRunning)
                     {
-                        MuscleXValue = new List<MuscleXGains>() { new MuscleXGains("Chest", 3), new MuscleXGains("Abdominals", 1) };
+                        MuscleXValue = new List<MuscleXGains>() { new MuscleXGains("Chest", 3), new MuscleXGains("Abdominals", 0.75) };
                         tempCalc = (float)(loadingBar.value < 0.5 ? 0 : (float)loadingBar.value);
                         if (loadingBar.value == 1)
                         {
@@ -69,10 +69,16 @@ public class PumpingIron : MonoBehaviour
                     }
                     break;
                 case "gym_squat":
-                    MinigameSave.muscleGains = new List<MuscleXGains>() { new MuscleXGains("Quads", 3), new MuscleXGains("Abdominals", 1.5) };
+                    MinigameSave.muscleGains = new List<MuscleXGains>() { new MuscleXGains("Quads", 3), new MuscleXGains("Abdominals", 1.1) };
+                    MinigameSave.lastPlayerPosition = gameObject_player.transform.position;
+                    SceneManager.LoadScene(5, LoadSceneMode.Single);
+                    break;
+                case "gym_row":
+                    MinigameSave.muscleGains = new List<MuscleXGains>() { new MuscleXGains("Lat", 7), new MuscleXGains("Biceps", 3.5) };
                     MinigameSave.lastPlayerPosition = gameObject_player.transform.position;
                     SceneManager.LoadScene(6, LoadSceneMode.Single);
                     break;
+
             }
         }
     }
@@ -90,17 +96,33 @@ public class PumpingIron : MonoBehaviour
     private void GetGainz(float calcValue)
     {
         string message = "";
+        float strengtBonus = 0;
+
+        foreach (Items actItem in PlayerBodymon.player.Items)
+        {
+            foreach (ItemBuff activeBuff in actItem.ItemBuffs)
+            {
+                if (activeBuff.TypeOfBuff == Buffstyle.Strength)
+                {
+                    strengtBonus += activeBuff.value;
+                }
+            }
+        }
+
+        strengtBonus = 1 + strengtBonus * 0.015f;
+        Debug.Log(strengtBonus);
+
         if (MuscleXValue is not null)
             for (int i = 0; i < MuscleXValue.Count; i++)
             {
                 //Debug.Log(MuscleXValue[i].MuscleName);
                 PropertyInfo propInf = PlayerBodymon.player.Muscles.GetType().GetProperty(MuscleXValue[i].MuscleName);
 
-                calcValue = calcValue * (float)MuscleXValue[i].MaxGainsPerLevel;
+                float gainsMade = calcValue * strengtBonus * (float)MuscleXValue[i].MaxGainsPerLevel;
+                Debug.Log((double)propInf.GetValue(PlayerBodymon.player.Muscles));
 
-                propInf.SetValue(PlayerBodymon.player.Muscles, (double)calcValue + +(double)propInf.GetValue(PlayerBodymon.player.Muscles, null), null);
-                message += "+" + string.Format("{0:F1}", calcValue) + " " + MuscleXValue[i].MuscleName + "\n";
-
+                propInf.SetValue(PlayerBodymon.player.Muscles, (double)gainsMade + (double)propInf.GetValue(PlayerBodymon.player.Muscles, null), null);
+                message += "+" + string.Format("{0:F1}", gainsMade) + " " + MuscleXValue[i].MuscleName + "\n";
             }
         //Debug.Log(PlayerBodymon.player.Muscles.Chest + ";" + PlayerBodymon.player.Muscles.Abdominals);
         Debug.Log(message);
