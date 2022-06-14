@@ -1160,7 +1160,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1747679751}
-  - component: {fileID: 1747679752}
+  - component: {fileID: 1747679753}
+  - component: {fileID: 1747679754}
   m_Layer: 0
   m_Name: ArenaStart
   m_TagString: Untagged
@@ -1183,16 +1184,43 @@ Transform:
   m_Father: {fileID: 447522278}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1747679752
-BoxCollider:
+--- !u!114 &1747679753
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1747679750}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 4.63494, y: 2.2898178, z: 1}
-  m_Center: {x: 1.8174701, y: -4.1919065, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42b383360ddfc384f8a187740a28bc9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneBuildIndex: 5
+  player: {fileID: 1185069075}
+--- !u!68 &1747679754
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1747679750}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.38377857, y: -5.288073}
+  - {x: -0.41062295, y: -3.0217557}
+  - {x: 3.7537904, y: -3.007059}
+  - {x: 3.8942945, y: -5.2716036}
+  - {x: -0.34960747, y: -5.237266}
+  - {x: 3.9866416, y: -5.2880735}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0

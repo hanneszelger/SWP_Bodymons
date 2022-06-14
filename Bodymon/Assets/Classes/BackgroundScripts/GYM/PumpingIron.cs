@@ -71,12 +71,12 @@ public class PumpingIron : MonoBehaviour
                 case "gym_squat":
                     MinigameSave.muscleGains = new List<MuscleXGains>() { new MuscleXGains("Quads", 3), new MuscleXGains("Abdominals", 1.1) };
                     MinigameSave.lastPlayerPosition = gameObject_player.transform.position;
-                    SceneManager.LoadScene(5, LoadSceneMode.Single);
+                    SceneManager.LoadScene(6, LoadSceneMode.Single);
                     break;
                 case "gym_row":
                     MinigameSave.muscleGains = new List<MuscleXGains>() { new MuscleXGains("Lat", 7), new MuscleXGains("Biceps", 3.5) };
                     MinigameSave.lastPlayerPosition = gameObject_player.transform.position;
-                    SceneManager.LoadScene(6, LoadSceneMode.Single);
+                    SceneManager.LoadScene(7, LoadSceneMode.Single);
                     break;
 
             }

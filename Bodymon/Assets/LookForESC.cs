@@ -25,7 +25,7 @@ public class LookForESC : MonoBehaviour
             Vector3 = playerObject.transform.position;
             Debug.Log("Got this position: "+Vector3);
             menuopened = true;
-            SceneManager.LoadScene(5, LoadSceneMode.Single);
+            SceneManager.LoadScene(9, LoadSceneMode.Single);
         }
     }
 }
