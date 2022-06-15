@@ -24,7 +24,13 @@ public enum ItemType
 [System.Serializable]
 public class ItemBuff
 {
-    public Buffstyle Buffstyle;
+    public Buffstyle TypeOfBuff;
+    public string IconPath
+    {
+        get { return ("icons/" + TypeOfBuff.ToString()); }
+        set { IconPath = value; }
+    }
+
     public int value;
     public int duration;
     //public ItemBuff(Buffstyle _Buffstyle, int _value)
@@ -35,8 +41,9 @@ public class ItemBuff
 [SerializeField]
 public enum Buffstyle
 {
-    Strenght,
+    Strength,
     Endurance,
-    Synthesis
+    Synthesis,
+    Anabol
 }
 

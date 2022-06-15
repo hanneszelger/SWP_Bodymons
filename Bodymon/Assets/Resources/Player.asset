@@ -17,12 +17,12 @@ MonoBehaviour:
   owned: 0
   muscles:
     defaultValue: 1
-    lat: 2
-    chest: 1
-    quads: 4
-    biceps: 5
-    abdominals: 1
+    lat: 11
+    chest: 121.61
+    quads: 11
+    biceps: 11
+    abdominals: 29.811875224113464
   item:
-  - {fileID: 11400000, guid: ca2be7beaea8d5b44b6ddb6804fbe6bc, type: 2}
+  - {fileID: 11400000, guid: 59a675f382b6bad4f9a323909ee46f5f, type: 2}
   posingSkill: 7
-  coins: 2147473607
+  coins: 2147474007

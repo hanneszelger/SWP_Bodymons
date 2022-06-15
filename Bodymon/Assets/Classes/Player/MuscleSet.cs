@@ -88,7 +88,14 @@ public class MuscleSet
         }
         else
         {
-            return value;
+            if (value <= maxValue)
+            {
+                return value;
+            }
+            else
+            {
+                return maxValue;
+            }
         }
     }
 }

@@ -12,7 +12,14 @@ public class Stats : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(ReloadText());
+        try
+        {
+            StartCoroutine(ReloadText());
+        }
+        catch 
+        {
+            
+        }
     }
 
     
@@ -41,5 +48,5 @@ public class Stats : MonoBehaviour
 
 public static class PlayerBodymon
 {
-    public static Bodymons player = Resources.Load<Bodymons>("Player");
+    public static Bodymons player = SaveGame.LoadPlayer();
 }

@@ -21,6 +21,11 @@ TagManager:
   - Coins
   - ui_coins
   - slot
+  - gym_squat
+  - Obstacle
+  - MuscleStatGrid
+  - Music
+  - gym_row
   layers:
   - Default
   - TransparentFX
