@@ -19,6 +19,7 @@ public class LookForESC : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //If User presses Escape the Menu opens and the position saves
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             playerObject = GameObject.FindWithTag("Player");

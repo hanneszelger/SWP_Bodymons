@@ -30,6 +30,7 @@ public class PumpingIron : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Gets the gameobjects from the scene
         gameObject_player = GameObject.FindWithTag("Player");
         player = gameObject_player.GetComponent<Bodymon>();
         gameObject_gymSpawn = GameObject.FindWithTag("GymSpawn");

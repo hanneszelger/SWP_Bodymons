@@ -25,6 +25,7 @@ public class Movement : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
+            //Only change Visibility of Loading-Canvas if it's the main scene
             WaitForThunder.toggleGUI(true);
         }
         cam = Camera.main;
@@ -53,6 +54,7 @@ public class Movement : MonoBehaviour
         //Combines user input and speed to a Vector2
         move = new Vector2(speed * horizontal, speed * vertical);
 
+        //Changes the animatorfloat for the coresponding input to get the right animation
         animator.SetFloat("Horizontal", horizontal);
         animator.SetFloat("Vertical", vertical);
         animator.SetFloat("Speed", move.sqrMagnitude);
@@ -61,14 +63,17 @@ public class Movement : MonoBehaviour
         {
             if (horizontal != 0 || vertical != 0 || move.sqrMagnitude != 0 && GetComponent<AudioSource>().isPlaying == false)
             {
+                //Play footstepsound when player is moving
                 GetComponent<AudioSource>().UnPause();
             }
             else
             {
+                //Stop footsptepsound when player stopped
                 GetComponent<AudioSource>().Pause();
             }
             if (Input.GetKeyDown(KeyCode.B) && SceneManager.GetActiveScene().buildIndex == 0)
             {
+                //Recalls to the spawnpoint with a timer and a thunderanimation
                 WaitForThunder.toggleGUI(false);
                 StartCoroutine(GameObject.Find("Thunder").GetComponent<WaitForThunder>().TimerRoutine());
             }
@@ -84,7 +89,7 @@ public class Movement : MonoBehaviour
         //Moves the player
         camRigid.velocity = new Vector2(0, 0);
         body.velocity = move;
-
+        //makes sure the camera is Pokemonlike when moving
         if ((cam.transform.position.x + camWidth - 2 < body.position.x + (body.velocity.x * Time.fixedDeltaTime) && body.velocity.x > 0) ||
             (cam.transform.position.x - camWidth + 2 > body.position.x + (body.velocity.x * Time.fixedDeltaTime) && body.velocity.x < 0))
         {

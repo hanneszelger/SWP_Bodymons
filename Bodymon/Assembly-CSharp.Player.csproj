@@ -68,7 +68,6 @@
     <Compile Include="Assets\Classes\FIght\ButtonInfo.cs" />
     <Compile Include="Assets\Classes\Items\Items.cs" />
     <Compile Include="Assets\Classes\Items\Item.cs" />
-    <Compile Include="Assets\Classes\BackgroundScripts\PumpingIron.cs" />
     <Compile Include="Assets\PerfectJump\Scripts\Gameplay\Player.cs" />
     <Compile Include="Assets\Classes\SceneManagement\SaveAndRestorePosition.cs" />
     <Compile Include="Assets\Menu.cs" />
@@ -77,6 +76,7 @@
     <Compile Include="Assets\TicTacToe\Scripts\TicTacToeSettings.cs" />
     <Compile Include="Assets\Classes\SceneManagement\ChangeScene.cs" />
     <Compile Include="Assets\Classes\Player\Bodymon.cs" />
+    <Compile Include="Assets\Classes\BackgroundScripts\home.cs" />
     <Compile Include="Assets\LightningBolt\LightningBoltScript.cs" />
     <Compile Include="Assets\Classes\Player\MuscleSet.cs" />
     <Compile Include="Assets\Classes\SceneManagement\SavedPositionManager.cs" />
@@ -92,7 +92,6 @@
     <Compile Include="Assets\Classes\Dialogs\DialogueManager.cs" />
     <Compile Include="Assets\Classes\BackgroundScripts\Fight\Fight.cs" />
     <Compile Include="Assets\Classes\UI\ShowBuffs.cs" />
-    <Compile Include="Assets\Classes\BackgroundScripts\home.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Graphics\Battles\pokemon_pixel_font\readme.txt" />

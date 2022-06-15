@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class WaitForThunder : MonoBehaviour
 {
+    //loads the Script
     private LightningBoltScript _lightningBoltScript;
     
     public Text timerText;
@@ -24,12 +25,14 @@ public class WaitForThunder : MonoBehaviour
         loadingBar.minValue = 0;
         Timeleft = 10;
 
+        //Gets the Component of the Script
         _lightningBoltScript = GameObject.Find("SimpleLightningBoltAnimatedPrefab").GetComponent<LightningBoltScript>();
+        //Switches the loading Panels to visible
         loadingPanel.SetActive(true);
         loadingBar.gameObject.SetActive(true);
         
         progressMade.gameObject.SetActive(true);
-        //StartCoroutine(TimerRoutine());
+        //Starts the Lightnings with the lightningboldscript
         _lightningBoltScript.Trigger();
     }
 
@@ -37,7 +40,9 @@ public class WaitForThunder : MonoBehaviour
     {
         while (currentTime < 10) 
         {
+            //While the time for the couruntine is not 10 it should trigger a lightning
             _lightningBoltScript.Trigger();
+            //Waits 1 second before the next event
             yield return new WaitForSeconds(step);
             _lightningBoltScript.Trigger();
             currentTime += step;
@@ -48,11 +53,12 @@ public class WaitForThunder : MonoBehaviour
         }
         if (currentTime > 9)
         {
+            //Changes the location of the player to the spawnpoint
             GameObject gameObject_player = GameObject.FindWithTag("Player");
             gameObject_player.transform.position = new Vector3(-13.77f, 1.3f, -2);
             Camera.main.transform.position = new Vector3(-13.5f, 1.68f, -10);
 
-            
+            //Stops the Coroutine and refills time
             StopCoroutine(TimerRoutine());
             currentTime = 0;
             loadingBar.value = 0;
@@ -66,6 +72,7 @@ public class WaitForThunder : MonoBehaviour
     }
     public static void toggleGUI(bool nothing)
     {
+        //Toggle the Canvas to visible/invisible
         if (nothing)
         {
             Debug.Log("Has changed to 0");

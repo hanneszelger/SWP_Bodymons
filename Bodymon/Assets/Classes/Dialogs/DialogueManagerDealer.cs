@@ -25,19 +25,17 @@ public class DialogueManagerDealer : MonoBehaviour
 
     private void OnDestroy()
     {
+        //Saves the new inventory when the scene finishes
         SaveGame.SavePlayer();
     }
 
     // Update is called once per frame
     void Update()
     {
-        int luck = Random.Range(1, 10);
+        
         if (dialogActive && Input.GetKeyDown(KeyCode.Space) && exitScene)
         {
-            //SceneManager.LoadScene(0, LoadSceneMode.Additive);
-            //GameObject gameObject_player = GameObject.FindWithTag("Player");
-            //gameObject_player.transform.position = new Vector3(-13.77f, 18.6f, -2);
-            //Debug.Log(gameObject_player.name);
+            //Changes the Scene to the main scene
             audioSource.PlayOneShot(RandomClip());
             SavedPositionManager.lastScene = 4;
             SceneManager.LoadScene(0, LoadSceneMode.Single);
@@ -50,8 +48,8 @@ public class DialogueManagerDealer : MonoBehaviour
         if (Input.GetKeyDown("j"))
         {
             dText.text = "Gute Entscheidung!...\n\nBye!";
+            //Adds Item to the inventory
             SaveGame.AddItemToInventory(trenItem);
-
             audioSource.clip = audioClipArray[6];
             audioSource.Play();
             exitScene = true;
@@ -68,6 +66,7 @@ public class DialogueManagerDealer : MonoBehaviour
     
     AudioClip RandomClip()
     {
+        //Chooses random audioclip of an array
         int attempts = 3;
         AudioClip newClip = audioClipArray[Random.Range(0, audioClipArray.Length-2)];
         while (newClip == lastClip && attempts > 0)

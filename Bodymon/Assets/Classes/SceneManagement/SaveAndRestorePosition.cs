@@ -17,6 +17,7 @@ public class SaveAndRestorePosition : MonoBehaviour
         {
             if (Maintracks)
             {
+                //If Maintracks is enabled in the Options play the Tracks
                 if (SceneManager.GetActiveScene().buildIndex == 0)
                 {
                     soundSource.PlayOneShot(RandomClip());
@@ -30,10 +31,12 @@ public class SaveAndRestorePosition : MonoBehaviour
 
             if (SavedPositionManager.lastScene != 5 && SavedPositionManager.lastScene != 0)
             {
+                //if the last scene was not the menu and not the Mainscene it loads the positions from an List
                 transform.position = SavedPositionManager.savedPositions[SavedPositionManager.lastScene];
             }
             else if (SavedPositionManager.lastScene == 5 && LookForESC.menuopened)
             {
+                //Uses the last position to avoid spawning always at home
                 transform.position = lastpo;
             }
         }
@@ -45,13 +48,14 @@ public class SaveAndRestorePosition : MonoBehaviour
 
     void OnDestroy() // Unloading scene, so save position.
     {
-        
+        //Gets the last position and saves it to avoid always spawning at home
         SavedPositionManager.lastScene = SceneManager.GetActiveScene().buildIndex;
         lastSceneForMenu = SceneManager.GetActiveScene().buildIndex;
         //soundSource.Stop();
     }
     AudioClip RandomClip()
     {
+        //Chooses a random audioclip of an array
         resume = true;
         int attempts = 3;
         AudioClip newClip = audioClipArray[Random.Range(0, audioClipArray.Length)];

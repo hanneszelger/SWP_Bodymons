@@ -9,8 +9,10 @@ public class home : MonoBehaviour
 
     void Awake()
     {
+        //Starts the Video when the player enters home
         video = GetComponent<VideoPlayer>();
         video.Play();
+        //Checks when the video is over
         video.loopPointReached += CheckOver;
 
 
@@ -19,6 +21,7 @@ public class home : MonoBehaviour
 
     void CheckOver(UnityEngine.Video.VideoPlayer vp)
     {
-        SceneManager.LoadScene(0);//the scene that you want to load after the video has ended.
+        //Changes the Scene when the video ends to mainscene
+        SceneManager.LoadScene(0);
     }
 }

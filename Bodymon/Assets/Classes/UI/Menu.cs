@@ -31,19 +31,24 @@ public class Menu : MonoBehaviour
 
     void Start()
     {
+        //Calling ChangeText() to change animated label
         ChangeText();
+        //Picture will be set to enabled once button "Aufgeben" has been clicked
         Zyzz.enabled = false;
     }
 
     public void ChangeText()
     {
+        //Changes the BlockGameLike Label to a random Text from an array
         label.text = labels[Random.Range(0, labels.Length)];
     }
 
     public void NewLevel()
     {
+        //Player gets created
         PlayerBodymon.player = ScriptableObject.CreateInstance<Bodymons>();
         SaveGame.SavePlayer();
+        //Loads Main scene
         SceneManager.LoadScene(SaveAndRestorePosition.lastSceneForMenu, LoadSceneMode.Single); 
     }
 
@@ -54,12 +59,14 @@ public class Menu : MonoBehaviour
 
     public void ShowOptions()
     {
+        //Optionsmenu gets visible
         mainMenu.SetActive(false);
         optionsMenu.SetActive(true);
     }
 
     public void HideOptions()
     {
+        //Optionsmenu gets invisible
         optionsMenu.SetActive(false);
         mainMenu.SetActive(true);
         ChangeText();
@@ -67,12 +74,14 @@ public class Menu : MonoBehaviour
 
     public void ToggleZyzz()
     {
+        //Shows a Picture of a motivating Zyzz for 2 Seconds
         if(!Zyzz.enabled)
             StartCoroutine(ShowZyzzXSec(2));
     }
 
     public IEnumerator ShowZyzzXSec(byte seconds)
     {
+        //Zyzz will be shown here for however seconds
         Zyzz.enabled = true;
         yield return new WaitForSeconds(seconds);
         Zyzz.enabled = false;
@@ -80,6 +89,7 @@ public class Menu : MonoBehaviour
 
     public void SwitchMusic()
     {
+        //Background Music will be turned on/off depending on buttonsetting
         if(musicSource.volume > 0)
         {
             musicSource.volume = 0;
@@ -96,6 +106,7 @@ public class Menu : MonoBehaviour
 
     public void SwitchSounds()
     {
+        //Klicking Sounds will be turned on/off depending on buttonsetting
         if (soundSource.volume > 0)
         {
             soundSource.volume = 0;
@@ -110,6 +121,7 @@ public class Menu : MonoBehaviour
 
     public void ChangeFOV()
     {
+        //Only button text changes by now
         if (distanceText.text == "Render Distanz: WEIT")
         {
             distanceText.text = "Render Distanz: KURZ";
@@ -125,6 +137,7 @@ public class Menu : MonoBehaviour
     }
     void Update()
     {
+        //Return from options with escape button
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             optionsMenu.SetActive(false);
