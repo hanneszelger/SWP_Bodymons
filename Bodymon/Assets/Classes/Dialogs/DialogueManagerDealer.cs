@@ -49,7 +49,7 @@ public class DialogueManagerDealer : MonoBehaviour
         {
             dText.text = "Gute Entscheidung!...\n\nBye!";
             //Adds Item to the inventory
-            SaveGame.AddItemToInventory(trenItem);
+            SaveGame.AddItemToInventoryBuy(trenItem);
             audioSource.clip = audioClipArray[6];
             audioSource.Play();
             exitScene = true;

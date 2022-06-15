@@ -25,7 +25,6 @@ public class MuscleSet
     public double biceps;
     public double abdominals;
 
-    
     public double MaxValue
     {
         get { return maxValue; }
@@ -65,20 +64,6 @@ public class MuscleSet
         get { return checkDouble(abdominals); }
         set { abdominals = value; }
     }
-
-
-    //private int checkInt(int value)
-    //    {
-    //        if (value < 1 || value.Equals(null))
-    //        {
-    //            return defaultValue;
-    //        }
-    //        else
-    //        {
-    //            return value;
-    //        }
-    //    }
-
     
     private double checkDouble(double value)
     {

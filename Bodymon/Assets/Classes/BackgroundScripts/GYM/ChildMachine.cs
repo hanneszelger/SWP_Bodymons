@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ChildMachine : MonoBehaviour
@@ -18,7 +16,7 @@ public class ChildMachine : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D playerCollider)
     {
-
+        // if player collides calls PlayerNowInRange of PumpingIron
         if (playerCollider.CompareTag("Player"))
         {
             transform.parent.GetComponent<PumpingIron>().PlayerNowInRange(gameObject.tag);
@@ -28,6 +26,7 @@ public class ChildMachine : MonoBehaviour
 
     public void OnTriggerExit2D(Collider2D playerCollider)
     {
+        // if player collides calls PlayerNowOutOfRange of PumpingIron 
         if (playerCollider.CompareTag("Player"))
         {
             transform.parent.GetComponent<PumpingIron>().PlayerNowOutOfRange();

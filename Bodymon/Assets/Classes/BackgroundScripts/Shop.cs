@@ -48,6 +48,7 @@ public class Shop : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Checks the currently selected item (Movement controlled with arrows or WASD)
         if (Input.anyKeyDown)
         {
             horizontal = Input.GetAxisRaw("Horizontal");
@@ -87,6 +88,7 @@ public class Shop : MonoBehaviour
         txt_itemCost.text = rows[currentY][currentX].gameObject.GetComponent<Item>().item.Cost.ToString();
         txt_itemCost.color = PlayerBodymon.player.Coins >= Int32.Parse(txt_itemCost.text) ? Color.green : Color.red;
 
+        //Checks for ESC and then changes scene
         Leave();
     }
 
@@ -101,6 +103,7 @@ public class Shop : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //Moves the Arrow and fire to the currently selected item's position
         Vector2 targetPosition = rows[currentY][currentX].position;
         arrow.transform.position = Vector2.SmoothDamp(arrow.transform.position, new Vector2(targetPosition.x, targetPosition.y + 2.5f), ref velocity, smoothTime);
         fire.transform.position = new Vector2(targetPosition.x, targetPosition.y);
@@ -112,10 +115,11 @@ public class Shop : MonoBehaviour
 
         List<RectTransform> positions = new List<RectTransform>();
 
+        //iterates through the children of the gameobject and if the y value differs, a new row is created
+        //NOTE: Mind the hierachy!
         for (int i = 0; i < gameObject.transform.childCount; i++)
         {
             RectTransform child = gameObject.transform.GetChild(i).GetComponent<RectTransform>();
-            //positions.Add(new Vector2(child.position.x, child.position.y + 2.5f));
             positions.Add(child);
             previousY = child.position.y;
             if (i + 1 == gameObject.transform.childCount || (child.position.y != gameObject.transform.GetChild(i + 1).position.y))
@@ -123,8 +127,6 @@ public class Shop : MonoBehaviour
                 rows.Add(new List<RectTransform>(positions));
                 positions.Clear();
             }
-
-            //Debug.Log(new Vector2(items[i].position.x, items[i].position.y) + ";" + rows.Count + items);
         }
     }
 

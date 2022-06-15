@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
+//ScriptableObject -> makes loading Data way easier
 [CreateAssetMenu(menuName = "ScriptableObject/Items", fileName = "Item", order = 0)]
 public class Items : ScriptableObject
 {
@@ -25,6 +25,7 @@ public enum ItemType
 public class ItemBuff
 {
     public Buffstyle TypeOfBuff;
+    //returns the IconPath according to the TypeOfBuff
     public string IconPath
     {
         get { return ("icons/" + TypeOfBuff.ToString()); }
@@ -33,10 +34,7 @@ public class ItemBuff
 
     public int value;
     public int duration;
-    //public ItemBuff(Buffstyle _Buffstyle, int _value)
-    //{
-    //    value = _value;
-    //}
+
 }
 [SerializeField]
 public enum Buffstyle

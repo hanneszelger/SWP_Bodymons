@@ -11,7 +11,6 @@ public class PumpingIron : MonoBehaviour
     private GameObject gameObject_gymSpawn;
     [System.NonSerialized]
     public bool inRange;
-    Bodymon player;
 
     public GameObject loadingPanel;
     public Slider loadingBar;
@@ -32,7 +31,6 @@ public class PumpingIron : MonoBehaviour
     {
         //Gets the gameobjects from the scene
         gameObject_player = GameObject.FindWithTag("Player");
-        player = gameObject_player.GetComponent<Bodymon>();
         gameObject_gymSpawn = GameObject.FindWithTag("GymSpawn");
 
         loadingPanel.SetActive(false);
@@ -46,8 +44,6 @@ public class PumpingIron : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Interact"))
         {
-            //if (currentlyRunning)
-            //{
             float tempCalc = 0;
             switch (currentTag)
             {
@@ -84,6 +80,7 @@ public class PumpingIron : MonoBehaviour
         }
     }
 
+    //multiplies the values
     public void ContinueGame()
     {
         if (MinigameSave.stillOpen)
@@ -99,6 +96,7 @@ public class PumpingIron : MonoBehaviour
         string message = "";
         float strengtBonus = 0;
 
+        // iterates trhough the items, checks its buffs and adds the strength buff
         foreach (Items actItem in PlayerBodymon.player.Items)
         {
             foreach (ItemBuff activeBuff in actItem.ItemBuffs)
@@ -110,9 +108,10 @@ public class PumpingIron : MonoBehaviour
             }
         }
 
+        // adjust the multiplier for the bouns
         strengtBonus = 1 + strengtBonus * 0.015f;
-        Debug.Log(strengtBonus);
 
+        // Calculates the Values and adds it to the message
         if (MuscleXValue is not null)
             for (int i = 0; i < MuscleXValue.Count; i++)
             {
@@ -130,6 +129,7 @@ public class PumpingIron : MonoBehaviour
         progressMade.text = message;
         StartCoroutine(showText());
 
+        //Resets Values
         currCountdownValue = 0;
         MuscleXValue = new List<MuscleXGains>();
         MinigameSave.stillOpen = false;
@@ -140,8 +140,11 @@ public class PumpingIron : MonoBehaviour
         Debug.Log(src.GetType().GetProperty(propName).GetValue(src, null));
     }
 
-
-
+    /// <summary>
+    /// Increases the value of the loadingBar ever 0.2 seconds
+    /// </summary>
+    /// <param name="countdownValue"></param>
+    /// <returns></returns>
     public IEnumerator Progress(float countdownValue)
     {
         currCountdownValue = countdownValue;
@@ -154,11 +157,12 @@ public class PumpingIron : MonoBehaviour
             currCountdownValue--;
         }
 
+        // makes loadingBar the invisible and currentlyRunning -> false
         loadingBar.value = 0;
         loadingPanel.SetActive(false);
         currentlyRunning = false;
     }
-
+    // fades progressBar in, out and shows it for 1 sec
     IEnumerator showText()
     {
         progressMade.CrossFadeAlpha(1, 1, false);
@@ -166,33 +170,24 @@ public class PumpingIron : MonoBehaviour
         progressMade.CrossFadeAlpha(0, 1, false);
     }
 
+    /// <summary>
+    /// Sets inRange true and sets tag of machine
+    /// </summary>
+    /// <param name="GameTag"></param>
     public void PlayerNowInRange(string GameTag)
     {
         inRange = true;
         currentTag = GameTag;
     }
 
+    /// <summary>
+    /// Sets InRange false and removes currentTag
+    /// </summary>
     public void PlayerNowOutOfRange()
     {
         inRange = false;
         currentTag = "";
     }
-
-    //public void OnTriggerEnter2D(Collider2D playerCollider)
-    //{
-    //    if (playerCollider.CompareTag("Player"))
-    //    {
-    //        inRange = true;
-    //    }
-    //}
-
-    //public void OnTriggerExit2D(Collider2D playerCollider)
-    //{
-    //    if (playerCollider.CompareTag("Player"))
-    //    {
-    //        inRange = false;
-    //    }
-    //}
 }
 
 public class MuscleXGains
@@ -207,6 +202,7 @@ public class MuscleXGains
     }
 }
 
+//Stores data while in Minigame
 public static class MinigameSave
 {
     public static Vector3 lastPlayerPosition;

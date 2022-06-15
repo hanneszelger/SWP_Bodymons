@@ -21,8 +21,11 @@ public class MuscleUI : MonoBehaviour
 
         foreach(var item in list)
         {
+            //Loads PrefabGameobject
             GameObject goName = Resources.Load<GameObject>("Prefabs/TextTemplate");
+            //e.g. Chest, Lat
             goName.GetComponent<Text>().text = item.Key;
+            //creates copy at position
             GameObject displayedName = GameObject.Instantiate(goName, gameObject.transform);
 
             GameObject goTemp = Resources.Load<GameObject>("Prefabs/TextTemplate");
@@ -39,6 +42,7 @@ public class MuscleUI : MonoBehaviour
     {
         foreach (GameObject go in goList)
         {
+            //Refreshes the Values every frame with 2 decimals format
             string temp = string.Format("{0:F1}", PlayerBodymon.player.Muscles.GetType().GetProperty(go.name).GetValue(PlayerBodymon.player.Muscles, null));
 
             go.GetComponent<Text>().text = temp;

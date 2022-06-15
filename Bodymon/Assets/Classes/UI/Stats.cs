@@ -22,25 +22,25 @@ public class Stats : MonoBehaviour
         }
     }
 
-    
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    /// <summary>
+    /// Reloads playerstats once every second
+    /// </summary>
+    /// <returns></returns>
     public IEnumerator ReloadText()
     {
+        // while true -> so it runs all the time
         while (true)
         {
             childrenOfUI = gameObject.GetComponentsInChildren<Text>();
 
             for (int i = 0; i < childrenOfUI.Length; i++)
             {
+                
                 object temp = PlayerBodymon.player.GetType().GetProperty((string)childrenOfUI[i].tag).GetValue(PlayerBodymon.player, null);
                 childrenOfUI[i].text = temp.ToString();
+                Debug.Log(temp);
             }
+            
             yield return new WaitForSeconds(1);
         }
     }
@@ -48,5 +48,12 @@ public class Stats : MonoBehaviour
 
 public static class PlayerBodymon
 {
-    public static Bodymons player = SaveGame.LoadPlayer();
+    //Already leveled user with items
+    //public static Bodymons player = Resources.Load<Bodymons>("Player");
+
+    //if object alreay exists in playerprefs and you want to test other scenes
+    //public static Bodymons player = SaveGame.LoadPlayer();
+
+    //default case, requires MainMenu as first loaded scene
+    public static Bodymons player;
 }

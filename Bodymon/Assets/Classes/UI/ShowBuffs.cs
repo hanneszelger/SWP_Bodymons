@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class ShowBuffs : MonoBehaviour
 {
     public bool buffsVisible;
+    List<Buffstyle> list = new List<Buffstyle>();
     // Start is called before the first frame update
     void Start()
     {
-        List<Buffstyle> list = new List<Buffstyle>();
         foreach (Items item in PlayerBodymon.player.Items)
         {
             Debug.Log(item.name);
@@ -24,7 +24,6 @@ public class ShowBuffs : MonoBehaviour
                     GameObject displayedObject = GameObject.Instantiate(goTemp, gameObject.transform);
                     displayedObject.name = ibuff.TypeOfBuff.ToString();
                     list.Add(ibuff.TypeOfBuff);
-
                 }
             }
         }
@@ -34,6 +33,7 @@ public class ShowBuffs : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        Start();
         if (Input.GetKeyDown(KeyCode.I))
         {
             ToggleBuffVisible();

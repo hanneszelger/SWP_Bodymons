@@ -24,7 +24,7 @@ public static class SaveGame
 
     public static Bodymons LoadPlayer()
     {
-        Bodymons tempBodymon = new Bodymons();
+        Bodymons tempBodymon = ScriptableObject.CreateInstance<Bodymons>();
         JsonUtility.FromJsonOverwrite(PlayerPrefs.GetString("bodymonPlayer"), tempBodymon);
         return tempBodymon;
     }
@@ -79,6 +79,7 @@ public static class SaveGame
     {
         if (PlayerBodymon.player.Coins >= SOitem.Cost)
         {
+            PlayerBodymon.player.Coins -= SOitem.Cost;
              return AddItemToInventory(SOitem);
         }
         else

@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 public class Fight : MonoBehaviour
 {
-
+    //declare variables
     public static int Damage;
     public Bodymons Bodymon;
     public Bodymons EnemyBodymon;
@@ -22,6 +22,8 @@ public class Fight : MonoBehaviour
 
     public Text AllyHP;
     public Text EnemyHP;
+
+    public Text WinLoose;
 
     void Start()
     {
@@ -37,6 +39,7 @@ public class Fight : MonoBehaviour
 
     static T GetRandomEnum<T>()
     {
+        //Get Values from the Enum as array and chooses as well as returns random item
         System.Array A = System.Enum.GetValues(typeof(T));
         T V = (T)A.GetValue(UnityEngine.Random.Range(0, A.Length));
         return V;
@@ -44,7 +47,7 @@ public class Fight : MonoBehaviour
 
     public IEnumerator EnemyTurn(Button enableAgain)
     {
-
+        //
         toggleButtonActive();
         yield return new WaitForSeconds(1.5f);
         Attack(Bodymon.Muscles, EnemyBodymon.Muscles, GetRandomEnum<AttackType>());
@@ -86,6 +89,9 @@ public class Fight : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Toggles interactable state of all AttackButtons
+    /// </summary>
     public void toggleButtonActive()
     {
         foreach (Button b in AttackButtons)
@@ -93,7 +99,6 @@ public class Fight : MonoBehaviour
             b.interactable = !b.interactable;
         }
     }
-
 
     public void Attack(MuscleSet BodymonMS, MuscleSet EnemyBodymonMS, AttackType attackType)
     {
@@ -131,16 +136,9 @@ public class Fight : MonoBehaviour
                 allyMultiplier = new double[] { 1.8, 0.7, 1.0 };
                 enemyMultiplier = new double[] { 1.5, 0.65, 1.0 };
                 break;
-
-                //    break;
-                //case "BackDoubleBiceps":
-
-                //    break;
-                //case "DorianEagle":
-
-                //    break;
         }
 
+        //Gets all Muscles with values and multipliers from Enemy and Ally Bodymon
         for (int i = 0; i < propertyNames.Length; i++)
         {
             lstAlly.Add(new Calculator(GetPropValue(BodymonMS, propertyNames[i]), allyMultiplier[i]));
@@ -171,40 +169,52 @@ public class Fight : MonoBehaviour
         else if (EnemyBodymon.Hp < 0)
         {
             //ToDo: WON
+            Debug.Log(PlayerBodymon.player.Coins);
             Bodymon.Coins += EnemyBodymon.Coins;
+            SceneManager.LoadSceneAsync(8, LoadSceneMode.Single);
         }
     }
+
+    //IEnumerator showText(string WonOrLost)
+    //{
+    //    //WinLoose.
+    //    //WonText.CrossFadeAlpha(1, 1, false);
+    //    //yield return new WaitForSeconds(1);
+    //    //progressMade.CrossFadeAlpha(0, 1, false);
+    //}
+
 
     public static double GetPropValue(object src, string propName)
     {
         return (double)src.GetType().GetProperty(propName).GetValue(src, null);
     }
 
+    /// <summary>
+    /// Calculates effective Damage
+    /// </summary>
+    /// <param name="mergeValues"></param>
+    /// <returns>Damage dealt to Enemy -> if negative self damage</returns>
     public static double Calculation(MergeValues mergeValues)
     {
         double valueDamage = 0;
         double valueDamageFromEnemy = 0;
 
+        //go through all the items and multiply the muscle values with the multipliers for the total damage output 
         for (int i = 0; i < mergeValues.Ally.Count; i++)
         {
             valueDamage += mergeValues.Ally[i].MuscleValue * mergeValues.Ally[i].Multiplier;
             valueDamageFromEnemy += mergeValues.Enemy[i].MuscleValue * mergeValues.Enemy[i].Multiplier;
         }
-        Debug.Log("allyDamage: " + valueDamage);
-        Debug.Log("enemyDamage: " + valueDamageFromEnemy);
         return valueDamage - valueDamageFromEnemy;
-    }
-
-    void LoadPlayers()
-    {
-        //relative path + without file extension e.g. Enemies/JayCuttler
-        //EnemyBodymon = Resources.Load<Bodymons>("Enemies/JayCuttler");
-        //JsonUtility.FromJsonOverwrite(PlayerPrefs.GetString("markusRühl_bodymon"), EnemyBodymon);
     }
 }
 
+/// <summary>
+/// Combines muscle value with the multiplier 
+/// </summary>
 public class Calculator
 {
+
     public double MuscleValue { get; set; }
     public double Multiplier { get; set; }
 
@@ -220,6 +230,9 @@ public class Calculator
     }
 }
 
+/// <summary>
+/// Merges the enemy and ally values into one list
+/// </summary>
 public class MergeValues
 {
     public List<Calculator> Ally { get; set; }

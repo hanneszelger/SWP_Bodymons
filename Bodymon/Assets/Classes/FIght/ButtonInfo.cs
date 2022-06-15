@@ -7,6 +7,7 @@ public class ButtonInfo : MonoBehaviour
 {
     public AttackType TypeOfAttack;
 
+    //allows different script to set text
     public void SetText(string text)
     {
         Text temp = GetComponentInChildren<Text>();

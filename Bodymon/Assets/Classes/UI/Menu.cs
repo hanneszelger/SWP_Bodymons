@@ -46,10 +46,21 @@ public class Menu : MonoBehaviour
     public void NewLevel()
     {
         //Player gets created
-        PlayerBodymon.player = ScriptableObject.CreateInstance<Bodymons>();
-        SaveGame.SavePlayer();
+        if (PlayerPrefs.HasKey("bodymonPlayer"))
+        {
+            Debug.Log("The key " + "Bodymon" + " exists");
+            PlayerBodymon.player = SaveGame.LoadPlayer();
+        }
+        else
+        {
+            Debug.Log("Yeahbuddy");
+            PlayerBodymon.player = ScriptableObject.CreateInstance<Bodymons>();
+            SaveGame.SavePlayer();
+        }
+    
+
         //Loads Main scene
-        SceneManager.LoadScene(SaveAndRestorePosition.lastSceneForMenu, LoadSceneMode.Single); 
+        //SceneManager.LoadScene(SaveAndRestorePosition.lastSceneForMenu, LoadSceneMode.Single); 
     }
 
     public void LoadLevel()
