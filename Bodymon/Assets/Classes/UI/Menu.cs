@@ -1,8 +1,7 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
@@ -29,7 +28,7 @@ public class Menu : MonoBehaviour
     public Text bobbingText;
     public Text limitText;
 
-    void Start()
+    private void Start()
     {
         //Calling ChangeText() to change animated label
         ChangeText();
@@ -57,15 +56,9 @@ public class Menu : MonoBehaviour
             PlayerBodymon.player = ScriptableObject.CreateInstance<Bodymons>();
             SaveGame.SavePlayer();
         }
-    
 
         //Loads Main scene
-        //SceneManager.LoadScene(SaveAndRestorePosition.lastSceneForMenu, LoadSceneMode.Single); 
-    }
-
-    public void LoadLevel()
-    {
-        //Load level
+        SceneManager.LoadScene(SaveAndRestorePosition.lastSceneForMenu, LoadSceneMode.Single);
     }
 
     public void ShowOptions()
@@ -86,7 +79,7 @@ public class Menu : MonoBehaviour
     public void ToggleZyzz()
     {
         //Shows a Picture of a motivating Zyzz for 2 Seconds
-        if(!Zyzz.enabled)
+        if (!Zyzz.enabled)
             StartCoroutine(ShowZyzzXSec(2));
     }
 
@@ -101,7 +94,7 @@ public class Menu : MonoBehaviour
     public void SwitchMusic()
     {
         //Background Music will be turned on/off depending on buttonsetting
-        if(musicSource.volume > 0)
+        if (musicSource.volume > 0)
         {
             musicSource.volume = 0;
             musicText.text = "Musik: AUS";
@@ -146,7 +139,8 @@ public class Menu : MonoBehaviour
             distanceText.text = "Render Distanz: WEIT";
         }
     }
-    void Update()
+
+    private void Update()
     {
         //Return from options with escape button
         if (Input.GetKeyDown(KeyCode.Escape))

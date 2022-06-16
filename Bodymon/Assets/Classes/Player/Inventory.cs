@@ -6,10 +6,13 @@ using UnityEngine.UI;
 public class Inventory : MonoBehaviour
 {
     public bool[] isFull;
+
     [NonSerialized]
     public List<GameObject> slots = new List<GameObject>();
+
     [NonSerialized]
     private Image[] sr;
+
     public Items[] items;
     public static bool visible;
 
@@ -17,9 +20,8 @@ public class Inventory : MonoBehaviour
     public GameObject MuscleStatsGrid;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-
         //player = go.GetComponent<Bodymon>();
         sr = gameObject.GetComponentsInChildren<Image>();
         Transform[] childs = gameObject.GetComponentsInChildren<Transform>();
@@ -87,7 +89,7 @@ public class Inventory : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         for (int number = 1; number <= 9; number++)
         {
@@ -101,7 +103,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    void ToggleVisible()
+    private void ToggleVisible()
     {
         SetVisible(!gameObject.GetComponent<Image>().enabled);
     }
@@ -110,7 +112,7 @@ public class Inventory : MonoBehaviour
     /// Sets visibility of all Images accrodingly
     /// </summary>
     /// <param name="activation"></param>
-    void SetVisible(bool activation)
+    private void SetVisible(bool activation)
     {
         gameObject.GetComponent<Image>().enabled = activation;
         sr = gameObject.GetComponentsInChildren<Image>();
@@ -122,7 +124,7 @@ public class Inventory : MonoBehaviour
         visible = activation;
     }
 
-    void UseItem(int i)
+    private void UseItem(int i)
     {
         if ((float)slots[i].transform.childCount != 0)
         {
@@ -145,7 +147,6 @@ public class Inventory : MonoBehaviour
                 Debug.Log("Das Item ist bereits aktiv: " + item.Name);
             }
         }
-
     }
 
     private void OnDestroy()

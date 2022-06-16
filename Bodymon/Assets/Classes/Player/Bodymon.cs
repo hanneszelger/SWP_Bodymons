@@ -19,6 +19,7 @@ public class Bodymon : MonoBehaviour
     private int posingSkill;
     private int coins;
 
+    //Assigns values of the scriptableObject
     public void Start()
     {
         Hp = _Bodymons.Hp;
@@ -40,7 +41,6 @@ public class Bodymon : MonoBehaviour
         set { coins = value; }
     }
 
-
     public int PosingSkill
     {
         get
@@ -57,7 +57,6 @@ public class Bodymon : MonoBehaviour
         set { }
     }
 
-
     public int Hp
     {
         get
@@ -73,31 +72,28 @@ public class Bodymon : MonoBehaviour
             else
             {
                 hp = value;
-
             }
         }
     }
 
-    
     public string Name
     {
         get
         {
             return name;
         }
-        set 
+        set
         {
             if (String.IsNullOrEmpty(value))
             {
-                 name = defaultName;
+                name = defaultName;
             }
             else
             {
-                 name = value;
+                name = value;
             }
         }
     }
-
 
     public MuscleSet Muscles
     {

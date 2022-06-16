@@ -1,14 +1,13 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Reflection;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class MuscleUI : MonoBehaviour
 {
     public List<GameObject> goList = new List<GameObject>();
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         var list = new Dictionary<string, double>()
         {
@@ -19,7 +18,7 @@ public class MuscleUI : MonoBehaviour
             {"Biceps", PlayerBodymon.player.Muscles.biceps}
         };
 
-        foreach(var item in list)
+        foreach (var item in list)
         {
             //Loads PrefabGameobject
             GameObject goName = Resources.Load<GameObject>("Prefabs/TextTemplate");
@@ -38,7 +37,7 @@ public class MuscleUI : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         foreach (GameObject go in goList)
         {

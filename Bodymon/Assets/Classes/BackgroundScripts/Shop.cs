@@ -1,26 +1,23 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.Rendering;
-using UnityEngine.Rendering.RendererUtils;
 using UnityEngine.SceneManagement;
 
 public class Shop : MonoBehaviour
 {
     [HideInInspector]
     private GameObject item;
+
     private GameObject player;
 
     public GameObject fire;
     public GameObject arrow;
-    List<List<RectTransform>> rows = new List<List<RectTransform>>();
+    private List<List<RectTransform>> rows = new List<List<RectTransform>>();
     private int currentX = 0;
     private int currentY = 0;
     public float smoothTime = 0.3F;
     private Vector2 velocity = Vector2.zero;
-
 
     private float horizontal;
     private float vertical;
@@ -29,14 +26,14 @@ public class Shop : MonoBehaviour
     public UnityEngine.UI.Image panel;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         LoadGrid1();
         txt_message.CrossFadeAlpha(0, 0, false);
         panel.CrossFadeAlpha(0, 0, false);
     }
 
-    void Leave()
+    private void Leave()
     {
         if (Input.GetButtonDown("Cancel"))
         {
@@ -46,7 +43,7 @@ public class Shop : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         // Checks the currently selected item (Movement controlled with arrows or WASD)
         if (Input.anyKeyDown)
@@ -71,12 +68,15 @@ public class Shop : MonoBehaviour
                 case -2:
                     txt_message.text = "Seems like you are missing some coins!";
                     break;
+
                 case -1:
                     txt_message.text = "Master, you already have this item!";
                     break;
+
                 case 0:
                     txt_message.text = "You have no place to store this item!";
                     break;
+
                 case 1:
                     txt_message.text = "Bought! GET BIG!";
                     GetComponent<AudioSource>().Play();
@@ -92,7 +92,7 @@ public class Shop : MonoBehaviour
         Leave();
     }
 
-    IEnumerator FadeTextInAndOut(float fadeDuration, float activeDuration)
+    private IEnumerator FadeTextInAndOut(float fadeDuration, float activeDuration)
     {
         txt_message.CrossFadeAlpha(1, fadeDuration, false);
         panel.CrossFadeAlpha(1, fadeDuration, false);
@@ -109,7 +109,7 @@ public class Shop : MonoBehaviour
         fire.transform.position = new Vector2(targetPosition.x, targetPosition.y);
     }
 
-    void LoadGrid1()
+    private void LoadGrid1()
     {
         float previousY = 0;
 

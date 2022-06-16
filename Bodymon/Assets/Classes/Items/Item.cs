@@ -17,7 +17,7 @@ public class Item : MonoBehaviour
     //private ItemType _ItemType;
 
     //assigns values, so you are able to get it of the gameObject
-    void Start()
+    private void Start()
     {
         PrefabName = item.PrefabName;
         gameObject.name = item.PrefabName;
@@ -29,8 +29,7 @@ public class Item : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-
     }
 }

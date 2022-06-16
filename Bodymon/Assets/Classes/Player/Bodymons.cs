@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,24 +6,29 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ScriptableObject/Bodymons", fileName = "Bodymon", order = 0)]
 public class Bodymons : ScriptableObject
 {
-
     private int defaultHp = 100;
     private string defaultName = "Mwenye Munyaradzi";
     private MuscleSet defaultMuscleset = new MuscleSet();
     private int defaultPosingSkill = 1;
-    
+
     [SerializeField]
     private int hp;
+
     [SerializeField]
     private new string name;
+
     [SerializeField]
     private bool owned;
+
     [SerializeField]
     private MuscleSet muscles;
+
     [SerializeField]
     private List<Items> item;
+
     [SerializeField]
     private int posingSkill;
+
     [SerializeField]
     private int coins;
 
@@ -59,7 +63,6 @@ public class Bodymons : ScriptableObject
             else
             {
                 hp = value;
-
             }
         }
     }
@@ -85,7 +88,8 @@ public class Bodymons : ScriptableObject
 
     public MuscleSet Muscles
     {
-        get {
+        get
+        {
             if (muscles is null)
             {
                 muscles = new MuscleSet();
@@ -97,7 +101,7 @@ public class Bodymons : ScriptableObject
 
     public List<Items> Items
     {
-        get {if (item is null){item = new List<Items>(); } return item;}
+        get { if (item is null) { item = new List<Items>(); } return item; }
         set
         {
             if (value is null)

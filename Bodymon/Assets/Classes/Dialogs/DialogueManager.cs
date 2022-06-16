@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
-
     public GameObject dBox;
     public Text dText;
 
@@ -15,19 +12,19 @@ public class DialogueManager : MonoBehaviour
 
     public AudioSource audioSource;
     public AudioClip[] audioClipArray;
-    AudioClip lastClip;
+    private AudioClip lastClip;
 
     public Items SwagFlyHighs;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         //Play a random sound of an array of soundclips
         audioSource.PlayOneShot(RandomClip());
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         //Luck decides if you get a debuff or a buff
         int luck = Random.Range(1, 10);
@@ -77,7 +74,7 @@ public class DialogueManager : MonoBehaviour
         SaveGame.SavePlayer();
     }
 
-    AudioClip RandomClip()
+    private AudioClip RandomClip()
     {
         //Chooses a random audioclip of an array
         int attempts = 3;

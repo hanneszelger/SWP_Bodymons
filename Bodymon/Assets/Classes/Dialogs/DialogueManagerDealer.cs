@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class DialogueManagerDealer : MonoBehaviour
 {
@@ -13,12 +11,12 @@ public class DialogueManagerDealer : MonoBehaviour
     public bool exitScene = false;
     public AudioSource audioSource;
     public AudioClip[] audioClipArray;
-    AudioClip lastClip;
+    private AudioClip lastClip;
 
     public Items trenItem;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         audioSource.PlayOneShot(RandomClip());
     }
@@ -30,9 +28,8 @@ public class DialogueManagerDealer : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
         if (dialogActive && Input.GetKeyDown(KeyCode.Space) && exitScene)
         {
             //Changes the Scene to the main scene
@@ -63,19 +60,17 @@ public class DialogueManagerDealer : MonoBehaviour
         }
     }
 
-    
-    AudioClip RandomClip()
+    private AudioClip RandomClip()
     {
         //Chooses random audioclip of an array
         int attempts = 3;
-        AudioClip newClip = audioClipArray[Random.Range(0, audioClipArray.Length-2)];
+        AudioClip newClip = audioClipArray[Random.Range(0, audioClipArray.Length - 2)];
         while (newClip == lastClip && attempts > 0)
         {
-            newClip = audioClipArray[Random.Range(0, audioClipArray.Length-2)];
+            newClip = audioClipArray[Random.Range(0, audioClipArray.Length - 2)];
             attempts--;
         }
         lastClip = newClip;
         return newClip;
     }
 }
-

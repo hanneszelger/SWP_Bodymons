@@ -7,11 +7,11 @@ public class SaveAndRestorePosition : MonoBehaviour
     public AudioSource soundSource;
     public AudioClip[] audioClipArray;
     private bool resume = false;
-    AudioClip lastClip;
-    Vector3 lastpo = LookForESC.Vector3;
+    private AudioClip lastClip;
+    private Vector3 lastpo = LookForESC.Vector3;
     public static int lastSceneForMenu;
-    
-    void Start() // Check if we've saved a position for this scene; if so, go there.
+
+    private void Start() // Check if we've saved a position for this scene; if so, go there.
     {
         try
         {
@@ -46,14 +46,15 @@ public class SaveAndRestorePosition : MonoBehaviour
         }
     }
 
-    void OnDestroy() // Unloading scene, so save position.
+    private void OnDestroy() // Unloading scene, so save position.
     {
         //Gets the last position and saves it to avoid always spawning at home
         SavedPositionManager.lastScene = SceneManager.GetActiveScene().buildIndex;
         lastSceneForMenu = SceneManager.GetActiveScene().buildIndex;
         //soundSource.Stop();
     }
-    AudioClip RandomClip()
+
+    private AudioClip RandomClip()
     {
         //Chooses a random audioclip of an array
         resume = true;

@@ -25,6 +25,7 @@ public enum ItemType
 public class ItemBuff
 {
     public Buffstyle TypeOfBuff;
+
     //returns the IconPath according to the TypeOfBuff
     public string IconPath
     {
@@ -34,8 +35,8 @@ public class ItemBuff
 
     public int value;
     public int duration;
-
 }
+
 [SerializeField]
 public enum Buffstyle
 {
@@ -44,4 +45,3 @@ public enum Buffstyle
     Synthesis,
     Anabol
 }
-

@@ -3,18 +3,16 @@ using UnityEngine;
 public class ChildMachine : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-
     }
 
-    void OnTriggerEnter2D(Collider2D playerCollider)
+    private void OnTriggerEnter2D(Collider2D playerCollider)
     {
         // if player collides calls PlayerNowInRange of PumpingIron
         if (playerCollider.CompareTag("Player"))
@@ -26,7 +24,7 @@ public class ChildMachine : MonoBehaviour
 
     public void OnTriggerExit2D(Collider2D playerCollider)
     {
-        // if player collides calls PlayerNowOutOfRange of PumpingIron 
+        // if player collides calls PlayerNowOutOfRange of PumpingIron
         if (playerCollider.CompareTag("Player"))
         {
             transform.parent.GetComponent<PumpingIron>().PlayerNowOutOfRange();

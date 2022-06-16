@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
 public static class SaveGame
 {
     public static void Save(string preferenceName, string data)
@@ -12,6 +11,9 @@ public static class SaveGame
         //https://answers.unity.com/questions/1325056/how-to-use-playerprefs-2.html
     }
 
+    /// <summary>
+    /// Saves PlayerBodymon.player in PlaerPrefs as 'bodymonPlayer'
+    /// </summary>
     public static void SavePlayer()
     {
         Save("bodymonPlayer", JsonUtility.ToJson(PlayerBodymon.player));
@@ -22,6 +24,10 @@ public static class SaveGame
         JsonUtility.FromJsonOverwrite(PlayerPrefs.GetString(preferenceName), output);
     }
 
+    /// <summary>
+    /// Loads Player
+    /// </summary>
+    /// <returns>Bodymons 'bodymonPlayer' from the PlayerPrefs</returns>
     public static Bodymons LoadPlayer()
     {
         Bodymons tempBodymon = ScriptableObject.CreateInstance<Bodymons>();
@@ -30,7 +36,7 @@ public static class SaveGame
     }
 
     /// <summary>
-    /// 
+    /// Adds Item to Inventory
     /// </summary>
     /// <param name="SOitem"></param>
     /// <returns>-1 = Player already has this item, 0 = Inventory full, 1 = Bought</returns>
@@ -71,7 +77,7 @@ public static class SaveGame
     }
 
     /// <summary>
-    /// 
+    /// Adds Item to Inventory and reduces the amount of coins the player has for it's cost
     /// </summary>
     /// <param name="SOitem"></param>
     /// <returns>-2 = Player has not enough Coins, -1 = Player already has this item, 0 = Inventory full, 1 = Bought</returns>
@@ -80,24 +86,12 @@ public static class SaveGame
         if (PlayerBodymon.player.Coins >= SOitem.Cost)
         {
             PlayerBodymon.player.Coins -= SOitem.Cost;
-             return AddItemToInventory(SOitem);
+            return AddItemToInventory(SOitem);
         }
         else
         {
             Debug.Log("Player has not enough Coins to buy this Item(" + (SOitem.Cost - PlayerBodymon.player.Coins) + " Coins missing");
             return -2;
-            //throw new System.Exception("Player has not enough Coins to buy this Item (" + (SOitem.Cost - PlayerBodymon.player.Coins) + " Coins missing");
         }
     }
-
-    //public static void loadItems()
-    //{
-    //    Resources.Load<GameObject>("Items/BadeSalz");
-    //    SaveGame.Load("inventory", );
-    //}
-
-    //public static void SaveInventoryItems()
-    //{
-    //    SaveGame.Save("inventory", );
-    //}
 }

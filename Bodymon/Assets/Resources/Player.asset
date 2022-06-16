@@ -12,17 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3e1bd55cb317b44d84bc3239147486e, type: 3}
   m_Name: Player
   m_EditorClassIdentifier: 
-  hp: 100
+  hp: 33
   name: ZYZZMASTER69
   owned: 0
   muscles:
     defaultValue: 1
-    lat: 107.84000015258789
-    chest: 108.39999961853027
-    quads: 11.839999973773956
-    biceps: 14.920000076293945
-    abdominals: 38.51987484097481
+    lat: 81
+    chest: 79
+    quads: 81
+    biceps: 79
+    abdominals: 81
   item:
   - {fileID: 11400000, guid: 7736447993c40c549987178246d74ad6, type: 2}
   posingSkill: 7
-  coins: 1000
+  coins: 9500

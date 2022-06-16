@@ -1,8 +1,5 @@
-using DigitalRuby.LightningBolt;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class Movement : MonoBehaviour
 {
@@ -19,6 +16,7 @@ public class Movement : MonoBehaviour
 
     //public allows to edit its value in Unity
     public float speed;
+
     public Animator animator;
 
     private void Start()
@@ -37,14 +35,11 @@ public class Movement : MonoBehaviour
 
         camRigid.position = transform.position;
 
-
         //progressMade.CrossFadeAlpha(0, 0, false);
-
     }
 
     private void Update()
     {
-
         //Left/A = -1, none = 0, Right/D = 1
         horizontal = Input.GetAxisRaw("Horizontal");
 
@@ -101,7 +96,4 @@ public class Movement : MonoBehaviour
             camRigid.velocity = new Vector2(camRigid.velocity.x, body.velocity.y);
         }
     }
-
-
-
 }

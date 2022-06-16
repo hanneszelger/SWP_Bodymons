@@ -9,6 +9,7 @@ public class PumpingIron : MonoBehaviour
 {
     private GameObject gameObject_player;
     private GameObject gameObject_gymSpawn;
+
     [System.NonSerialized]
     public bool inRange;
 
@@ -23,11 +24,8 @@ public class PumpingIron : MonoBehaviour
     private List<MuscleXGains> MuscleXValue;
     private string currentTag;
 
-
-
-
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         //Gets the gameobjects from the scene
         gameObject_player = GameObject.FindWithTag("Player");
@@ -40,7 +38,7 @@ public class PumpingIron : MonoBehaviour
         ContinueGame();
     }
 
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Interact"))
         {
@@ -65,17 +63,18 @@ public class PumpingIron : MonoBehaviour
                         StartCoroutine(Progress(10));
                     }
                     break;
+
                 case "gym_squat":
                     MinigameSave.muscleGains = new List<MuscleXGains>() { new MuscleXGains("Quads", 3), new MuscleXGains("Abdominals", 1.1) };
                     MinigameSave.lastPlayerPosition = gameObject_player.transform.position;
                     SceneManager.LoadScene(6, LoadSceneMode.Single);
                     break;
+
                 case "gym_row":
                     MinigameSave.muscleGains = new List<MuscleXGains>() { new MuscleXGains("Lat", 7), new MuscleXGains("Biceps", 3.5) };
                     MinigameSave.lastPlayerPosition = gameObject_player.transform.position;
                     SceneManager.LoadScene(7, LoadSceneMode.Single);
                     break;
-
             }
         }
     }
@@ -162,8 +161,9 @@ public class PumpingIron : MonoBehaviour
         loadingPanel.SetActive(false);
         currentlyRunning = false;
     }
+
     // fades progressBar in, out and shows it for 1 sec
-    IEnumerator showText()
+    private IEnumerator showText()
     {
         progressMade.CrossFadeAlpha(1, 1, false);
         yield return new WaitForSeconds(1);

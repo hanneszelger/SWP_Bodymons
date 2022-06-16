@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,13 +5,14 @@ using UnityEngine.UI;
 public class ShowBuffs : MonoBehaviour
 {
     public bool buffsVisible;
-    List<Buffstyle> list = new List<Buffstyle>();
+    private List<Buffstyle> list = new List<Buffstyle>();
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
+        //iterates through all items the player has active and adds a GameObject with the BuffIcon as a child
         foreach (Items item in PlayerBodymon.player.Items)
         {
-            Debug.Log(item.name);
             foreach (ItemBuff ibuff in item.ItemBuffs)
             {
                 if (!list.Contains(ibuff.TypeOfBuff))
@@ -33,7 +33,9 @@ public class ShowBuffs : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        //checks if a new buff is activated
         Start();
+
         if (Input.GetKeyDown(KeyCode.I))
         {
             ToggleBuffVisible();
@@ -48,11 +50,10 @@ public class ShowBuffs : MonoBehaviour
     private void ToggleBuffVisible(bool visible)
     {
         Transform[] temp = gameObject.GetComponentsInChildren<Transform>(true);
-        for(int i = 0; i < temp.Length; i++)
+        for (int i = 0; i < temp.Length; i++)
         {
-            if(i != 0)temp[i].gameObject.SetActive(visible);
+            if (i != 0) temp[i].gameObject.SetActive(visible);
         }
         buffsVisible = visible;
     }
-
 }

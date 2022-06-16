@@ -1,24 +1,20 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Reflection;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Stats : MonoBehaviour
 {
-    Text[] childrenOfUI;
+    private Text[] childrenOfUI;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         try
         {
             StartCoroutine(ReloadText());
         }
-        catch 
+        catch
         {
-            
         }
     }
 
@@ -35,12 +31,10 @@ public class Stats : MonoBehaviour
 
             for (int i = 0; i < childrenOfUI.Length; i++)
             {
-                
                 object temp = PlayerBodymon.player.GetType().GetProperty((string)childrenOfUI[i].tag).GetValue(PlayerBodymon.player, null);
                 childrenOfUI[i].text = temp.ToString();
-                Debug.Log(temp);
             }
-            
+
             yield return new WaitForSeconds(1);
         }
     }
@@ -49,11 +43,8 @@ public class Stats : MonoBehaviour
 public static class PlayerBodymon
 {
     //Already leveled user with items
-    //public static Bodymons player = Resources.Load<Bodymons>("Player");
+    public static Bodymons player = Resources.Load<Bodymons>("Player");
 
     //if object alreay exists in playerprefs and you want to test other scenes
     //public static Bodymons player = SaveGame.LoadPlayer();
-
-    //default case, requires MainMenu as first loaded scene
-    public static Bodymons player;
 }

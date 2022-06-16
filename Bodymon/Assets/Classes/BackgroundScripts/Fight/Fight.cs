@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -11,11 +10,12 @@ public class Fight : MonoBehaviour
 {
     //declare variables
     public static int Damage;
+
     public Bodymons Bodymon;
     public Bodymons EnemyBodymon;
     public static string TypeOfAttack;
 
-    bool playerTurn;
+    private bool playerTurn;
 
     public List<Button> AttackButtons;
     public Text DamageDelt;
@@ -24,8 +24,9 @@ public class Fight : MonoBehaviour
     public Text EnemyHP;
 
     public Text WinLoose;
+    public Text CoinsWon;
 
-    void Start()
+    private void Start()
     {
         //LoadPlayers();
         Bodymon.Hp = 100;
@@ -33,11 +34,13 @@ public class Fight : MonoBehaviour
         playerTurn = true;
         ReassignValues();
         Bodymon = PlayerBodymon.player;
-        //Button btn = ButtonForAttack1.GetComponent<Button>();
-        //Debug.Log(ButtonForAttack1.tag);
+
+        //hides text
+        WinLoose.CrossFadeAlpha(0, 0, false);
+        CoinsWon.CrossFadeAlpha(0, 0, false);
     }
 
-    static T GetRandomEnum<T>()
+    private static T GetRandomEnum<T>()
     {
         //Get Values from the Enum as array and chooses as well as returns random item
         System.Array A = System.Enum.GetValues(typeof(T));
@@ -47,7 +50,6 @@ public class Fight : MonoBehaviour
 
     public IEnumerator EnemyTurn(Button enableAgain)
     {
-        //
         toggleButtonActive();
         yield return new WaitForSeconds(1.5f);
         Attack(Bodymon.Muscles, EnemyBodymon.Muscles, GetRandomEnum<AttackType>());
@@ -107,7 +109,6 @@ public class Fight : MonoBehaviour
 
         MergeValues mrgdV = new MergeValues();
 
-
         string[] propertyNames = new string[3];
         double[] allyMultiplier = new double[3];
         double[] enemyMultiplier = new double[3];
@@ -120,11 +121,13 @@ public class Fight : MonoBehaviour
                 allyMultiplier = new double[] { 1.15, 0.45, 0.5 };
                 enemyMultiplier = new double[] { 1, 0.3, 0.5 };
                 break;
+
             case AttackType.SideChest:
                 propertyNames = new string[] { "Chest", "Biceps", "Abdominals" };
                 allyMultiplier = new double[] { 1.75, 1.05, 0.3 };
                 enemyMultiplier = new double[] { 1.5, 1, 0.3 };
                 break;
+
             case AttackType.LatSpread:
                 propertyNames = new string[] { "Lat", "Biceps", "Abdominals" };
                 allyMultiplier = new double[] { 1.8, 1.05, 0.7 };
@@ -148,7 +151,7 @@ public class Fight : MonoBehaviour
         Damage = (int)Calculation(mrgdV);
         lstAlly.Clear();
         lstEnemy.Clear();
-        ////inflict the calculated damage 
+        ////inflict the calculated damage
         ////EnemyBodymon.Hp =- (int)Damage;
 
         //check if this works plz
@@ -159,30 +162,27 @@ public class Fight : MonoBehaviour
         EnemyHP.text = EnemyBodymon.Hp.ToString();
         AllyHP.text = Bodymon.Hp.ToString();
 
-
+        //Checks if player wins or looses
         if (Bodymon.Hp <= 0)
         {
-            //ToDo: GameOver
-            Debug.Log("LOST");
-            SceneManager.LoadSceneAsync(8, LoadSceneMode.Single);
+            StartCoroutine(showResult(false));
         }
-        else if (EnemyBodymon.Hp < 0)
+        else if (EnemyBodymon.Hp <= 0)
         {
-            //ToDo: WON
-            Debug.Log(PlayerBodymon.player.Coins);
             Bodymon.Coins += EnemyBodymon.Coins;
-            SceneManager.LoadSceneAsync(8, LoadSceneMode.Single);
+            CoinsWon.text = EnemyBodymon.Coins.ToString();
+            StartCoroutine(showResult(true));
         }
     }
 
-    //IEnumerator showText(string WonOrLost)
-    //{
-    //    //WinLoose.
-    //    //WonText.CrossFadeAlpha(1, 1, false);
-    //    //yield return new WaitForSeconds(1);
-    //    //progressMade.CrossFadeAlpha(0, 1, false);
-    //}
-
+    IEnumerator showResult(bool won)
+    {
+        WinLoose.text = won ? "WON" : "LOST";
+        CoinsWon.CrossFadeAlpha(1, 1, false);
+        WinLoose.CrossFadeAlpha(1, 1, false);
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadSceneAsync(8, LoadSceneMode.Single);
+    }
 
     public static double GetPropValue(object src, string propName)
     {
@@ -199,7 +199,7 @@ public class Fight : MonoBehaviour
         double valueDamage = 0;
         double valueDamageFromEnemy = 0;
 
-        //go through all the items and multiply the muscle values with the multipliers for the total damage output 
+        //go through all the items and multiply the muscle values with the multipliers for the total damage output
         for (int i = 0; i < mergeValues.Ally.Count; i++)
         {
             valueDamage += mergeValues.Ally[i].MuscleValue * mergeValues.Ally[i].Multiplier;
@@ -210,11 +210,10 @@ public class Fight : MonoBehaviour
 }
 
 /// <summary>
-/// Combines muscle value with the multiplier 
+/// Combines muscle value with the multiplier
 /// </summary>
 public class Calculator
 {
-
     public double MuscleValue { get; set; }
     public double Multiplier { get; set; }
 
@@ -226,7 +225,6 @@ public class Calculator
 
     public Calculator()
     {
-
     }
 }
 
@@ -243,8 +241,8 @@ public class MergeValues
         Ally = ally;
         Enemy = enemy;
     }
+
     public MergeValues()
     {
-
     }
 }

@@ -7,36 +7,52 @@ public class TicTacToeSettings : MonoBehaviour
 {
     [SerializeField]
     private TicTacToeController ticTacToeController;
+
     [SerializeField]
     private RectTransform canvasRect;
+
     [SerializeField]
     private Text p1WinsText;
+
     [SerializeField]
     private Toggle p1AiToggle;
+
     [SerializeField]
     private Text p2WinsText;
+
     [SerializeField]
     private Toggle p2AiToggle;
+
     [SerializeField]
     private Transform settingsPanel;
+
     [SerializeField]
     private GameObject settingsAiPanel;
+
     [SerializeField]
     private float animationSpeed = 1;
+
     [SerializeField]
     private Text speedSliderText;
+
     [SerializeField]
     private Slider speedSlider;
+
     [SerializeField]
     private Text gameOverText;
+
     [SerializeField]
     private Button startButton;
+
     [SerializeField]
     private Button hideButton;
+
     [SerializeField]
     private Button showButton;
+
     [SerializeField]
     private float buttonBlinkSpeed = 4;
+
     [SerializeField]
     private float buttonBlinkDuration = 2.3f;
 
@@ -72,17 +88,20 @@ public class TicTacToeSettings : MonoBehaviour
         ticTacToeController.p1Ai = active;
         CheckIfAnyAiIsActive();
     }
+
     public void OnP2AiToggled(bool active)
     {
         // Debug.Log("OnP2AiToggled " + active);
         ticTacToeController.p2Ai = active;
         CheckIfAnyAiIsActive();
     }
+
     public void OnShortcutsToggled(bool active)
     {
         // Debug.Log("OnShortcutsToggled " + active);
         ticTacToeController.useShortcuts = active;
     }
+
     public void OnVisualizeToggled(bool active)
     {
         // Debug.Log("OnVisualizeToggled " + active);
@@ -90,12 +109,14 @@ public class TicTacToeSettings : MonoBehaviour
         speedSliderText.gameObject.SetActive(active);
         speedSlider.gameObject.SetActive(active);
     }
+
     public void OnSpeedChanged(float value)
     {
         // Debug.Log("OnSpeedChanged " + value);
         ticTacToeController.algorithmStepDuration = value;
         speedSliderText.text = "Step Duration: " + System.Math.Round(value, 2) + "s";
     }
+
     public void OnStartClicked()
     {
         // Debug.Log("OnStartClicked");
@@ -103,11 +124,13 @@ public class TicTacToeSettings : MonoBehaviour
         OnHideClicked();
         ticTacToeController.StartGame();
     }
+
     public void OnHideClicked()
     {
         StopAnimationCoroutines();
         hideSettingsCoroutine = StartCoroutine(HideSettingsCoroutine());
     }
+
     public void OnShowClicked()
     {
         StopAnimationCoroutines();
@@ -147,6 +170,7 @@ public class TicTacToeSettings : MonoBehaviour
             yield return null;
         }
     }
+
     private IEnumerator ShowSettingsCoroutine()
     {
         showButton.gameObject.SetActive(false);
@@ -193,9 +217,6 @@ public class TicTacToeSettings : MonoBehaviour
         }
     }
 
-
-  
-
     public void OnGameOver(int win)
     {
         // Debug.Log("OnGameOver: " + win);
@@ -203,7 +224,6 @@ public class TicTacToeSettings : MonoBehaviour
         {
             gameOverText.text = "DRAW";
             drawCount++;
-
         }
         else if (win == 0)
         {
